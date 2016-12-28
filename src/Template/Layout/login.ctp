@@ -13,6 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 $cakeDescription = 'CakePHP: the rapid development php framework';
+use Cake\Routing\Router;
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,6 +60,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <![endif]-->
 
         <?php echo $this->Html->script("loginJS.js"); ?>
+
+        <?php $path = Router::url('/', true); ?>
+        <script type="text/javascript">            
+        var BASEURL = '<?php echo $path; ?>';
+        </script>
 
     </head>
 

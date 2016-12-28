@@ -30,7 +30,7 @@
 
                                         <label class="block clearfix">
                                             <span class="block input-icon input-icon-right">
-                                                <?php echo $this->Form->input('password', array('class' => 'form-control', 'placeholder' => 'Password', 'label' => false, 'required' => true)); ?>
+                                                <?php echo $this->Form->input('password', array('class' => 'form-control', 'placeholder' => 'Password', 'label' => false, 'type' => 'password','required' => true)); ?>
                                                 <i class="ace-icon fa fa-lock"></i>
                                             </span>
                                         </label>

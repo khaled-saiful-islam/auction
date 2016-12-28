@@ -12,7 +12,7 @@ class UsersController extends AppController
 {
     public function beforeFilter(\Cake\Event\Event $event)
     {
-        $this->Auth->allow(['add', 'logout']);
+        $this->Auth->allow(['add', 'logout', 'register']);
     }
 
     /**
@@ -51,7 +51,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
+            $user = $this->Users->patchEntity($user, $this->request->data);          
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -61,6 +61,22 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
+    }
+    
+    public function register() {
+        $data = [];
+        $user = $this->Users->newEntity();
+        if ($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $data['response'] = 'User was saved successfully';
+            } else {
+                $data['response'] = 'User was not saved successfully';
+            }
+        }
+        $this->set(compact('data'));
+        $this->set('_serialize', 'data');
     }
 
     /**

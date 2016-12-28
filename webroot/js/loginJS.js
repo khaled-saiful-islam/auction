@@ -32,4 +32,24 @@ jQuery(function ($) {
         e.preventDefault();
     });
 
+    $("#addUser").submit(function (e)
+    {
+        var postData = $(this).serializeArray();
+        $.ajax({
+            url: BASEURL + 'users/register',
+            type: "POST",
+            data: postData,
+            success: function (data, textStatus, jqXHR)
+            {
+
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                console.log(textStatus);
+            }
+        });
+        e.preventDefault();
+    });
+
+    $("#addUser").submit();
 });
