@@ -3,6 +3,7 @@
     <ul class="side-nav">
         <li><?= $this->Html->link(__('New Bookmark'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Dashboard'), ['controller' => 'Dashboard', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
     </ul>
 </div>

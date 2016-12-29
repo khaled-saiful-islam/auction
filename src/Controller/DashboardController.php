@@ -9,10 +9,10 @@ use App\Controller\AppController;
  */
 class DashboardController extends AppController
 {
-    public function beforeFilter(\Cake\Event\Event $event)
-    {
-        $this->Auth->allow(['index']);
-    }
+//    public function beforeFilter(\Cake\Event\Event $event)
+//    {
+//        //$this->Auth->allow(['index']);
+//    }
 
     /**
      * Index method
@@ -21,8 +21,15 @@ class DashboardController extends AppController
      */
     public function index()
     {
-        $this->set('users', $this->paginate($this->Users));
-        $this->set('_serialize', ['users']);
+        $this->viewBuilder()->layout('dashboard');
+    }
+    
+    public function isAuthorized($user)
+    {
+        $action = $this->request->params['action'];
+        if (in_array($action, ['index'])) {
+            return true;
+        }
     }
 }
 

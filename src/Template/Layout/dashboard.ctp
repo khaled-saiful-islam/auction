@@ -1,3 +1,4 @@
+
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
@@ -26,7 +27,7 @@ use Cake\Routing\Router;
         <meta charset="utf-8" />
         <title>Auction Site</title>
 
-        <meta name="description" content="User login page" />
+        <meta name="description" content="overview &amp; stats" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
         <!-- bootstrap & fontawesome -->
@@ -40,12 +41,14 @@ use Cake\Routing\Router;
         <?php echo $this->Html->css('ace.min.css') ?>
 
         <!-- Custom -->
-        <?php echo $this->Html->css('custom.css') ?>
+        <?php //echo $this->Html->css('custom.css') ?>
 
         <!--[if lte IE 9]>
         <?php echo $this->Html->css('ace-part2.min.css') ?>
         <![endif]-->
 
+        <?php echo $this->Html->css('ace-skins.min.css') ?>
+        
         <?php echo $this->Html->css('ace-rtl.min.css') ?>
 
         <!--[if lte IE 9]>
@@ -59,12 +62,14 @@ use Cake\Routing\Router;
         <!--[if IE]>
         <?php echo $this->Html->script("jquery-1.11.3.min.js"); ?>
         <![endif]-->
-
-        <?php echo $this->Html->script("bootstrap.min.js"); ?>       
-
-        <?php echo $this->Html->script("bootbox.js"); ?>       
-
-        <?php echo $this->Html->script("loginJS.js"); ?>       
+        
+        <?php echo $this->Html->script("bootstrap.min.js"); ?>
+     
+        <?php echo $this->Html->script('ace-extra.min.js') ?>
+        
+        <?php echo $this->Html->script('ace-elements.min.js') ?>
+        
+        <?php echo $this->Html->script('ace.min.js') ?>
 
         <?php $path = Router::url('/', true); ?>
         <script type="text/javascript">
@@ -72,7 +77,7 @@ use Cake\Routing\Router;
         </script>
     </head>
 
-    <body class="login-layout">
+    <body class="no-skin">
         <?php echo $this->fetch('content') ?>
     </body>
 </html>
