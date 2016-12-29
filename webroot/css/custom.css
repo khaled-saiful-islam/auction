@@ -22,3 +22,13 @@ and open the template in the editor.
     border-color: #d6e9c6;
     color: #3c763d;
 }
+#loading_text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: -10px;
+    line-height: 20px;
+    text-align: center;
+}

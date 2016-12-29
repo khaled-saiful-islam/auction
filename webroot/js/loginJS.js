@@ -3,12 +3,11 @@ jQuery(function ($) {
     $(document).on('click', '.toolbar a[data-target]', function (e) {
         e.preventDefault();
         var target = $(this).data('target');
-        $('.widget-box.visible').removeClass('visible');//hide others
-        $(target).addClass('visible');//show target
+        $('.widget-box.visible').removeClass('visible');
+        $(target).addClass('visible');
     });
 });
 
-//you don't need this, just used for changing background
 jQuery(function ($) {
     $('#btn-login-dark').on('click', function (e) {
         $('body').attr('class', 'login-layout');
@@ -36,20 +35,36 @@ jQuery(function ($) {
     {
         var postData = $(this).serializeArray();
         $.ajax({
+            beforeSend: function (xhr) {
+                $('#loading_text').show();
+            },
+            complete: function (jqXHR, textStatus) {
+                $('#loading_text').hide();
+            },
             url: BASEURL + 'users/register',
             type: "POST",
             data: postData,
             success: function (data, textStatus, jqXHR)
             {
-
+                bootbox.dialog({
+                    message: data,
+                    buttons: {
+                        "OK": {
+                            "label": "<i class='ace-icon fa fa-check'></i> OK",
+                            "className": "btn-sm btn-success",
+                            "callback": function () {
+                                location.reload();
+                            }
+                        }
+                    }
+                }
+                );
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
-                console.log(textStatus);
+
             }
         });
         e.preventDefault();
     });
-
-    $("#addUser").submit();
 });

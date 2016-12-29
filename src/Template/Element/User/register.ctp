@@ -67,3 +67,7 @@
         </div>
     </div><!-- /.widget-body -->
 </div><!-- /.signup-box -->
+
+<div id="loading_text">
+    <img src="img/ajax-loader.gif" />
+</div>
