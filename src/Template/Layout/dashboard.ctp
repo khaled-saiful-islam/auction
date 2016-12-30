@@ -54,6 +54,8 @@ use Cake\Routing\Router;
         <!--[if lte IE 9]>
         <?php echo $this->Html->css('ace-ie.min.css') ?>
         <![endif]-->
+        
+        <?php echo $this->Html->css('custom.css') ?>
 
         <!--[if !IE]> -->
         <?php echo $this->Html->script("jquery-2.1.4.min.js"); ?>
@@ -80,6 +82,11 @@ use Cake\Routing\Router;
     </head>
 
     <body class="no-skin">
-        <?php echo $this->fetch('content') ?>
+        <div class="main-container ace-save-state" id="main-container">
+            <?php echo $this->element('Dashboard/navbar') ?>
+            <?php echo $this->element('Dashboard/leftNev') ?>
+            <?php echo $this->fetch('content') ?>
+            <?php echo $this->element('Dashboard/footer') ?>
+        </div><!-- /.main-container -->
     </body>
 </html>

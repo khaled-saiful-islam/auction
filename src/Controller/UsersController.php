@@ -12,7 +12,7 @@ use App\Controller\AppController;
 class UsersController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
-        $this->Auth->allow(['add', 'logout', 'register']);
+        $this->Auth->allow(['logout', 'register']);
     }
 
     /**
@@ -21,8 +21,12 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
+        $this->viewBuilder()->layout('dashboard');
+        $loginUser = $this->Auth->user();
+
+        $this->set('loginUser', $loginUser);
         $this->set('users', $this->paginate($this->Users));
-        $this->set('_serialize', ['users']);
+        $this->set('_serialize', ['users', 'loginUser']);
     }
 
     /**
@@ -46,6 +50,9 @@ class UsersController extends AppController {
      * @return void Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $this->viewBuilder()->layout('dashboard');
+        $loginUser = $this->Auth->user();
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -56,8 +63,8 @@ class UsersController extends AppController {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
+        $this->set(compact('user', 'loginUser'));
+        $this->set('_serialize', ['user', 'loginUser']);
     }
 
     public function register() {
@@ -123,7 +130,7 @@ class UsersController extends AppController {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                $this->Flash->set('Congratulations! You are Loggin In', [
+                $this->Flash->set('Congratulations! You are Logged In', [
                     'params' => [
                         'class' => 'alert alert-success dash-success-msg'
                     ]
@@ -137,6 +144,13 @@ class UsersController extends AppController {
     public function logout() {
         $this->Flash->success('You are now logged out.');
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function isAuthorized($user) {
+        $action = $this->request->params['action'];
+        if (in_array($action, ['add', 'index'])) {
+            return true;
+        }
     }
 
 }

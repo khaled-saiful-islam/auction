@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -7,30 +8,26 @@ use App\Controller\AppController;
  * Dashboard Controller
  *
  */
-class DashboardController extends AppController
-{
+class DashboardController extends AppController {
 
     /**
      * Index method
      *
      * @return void
      */
-    public function index()
-    {
+    public function index() {
         $this->viewBuilder()->layout('dashboard');
-        
-        $user = $this->Auth->user();
-        $this->set('user', $user);
-        $this->set('_serialize', ['user']);
+
+        $loginUser = $this->Auth->user();
+        $this->set(compact('loginUser'));
+        $this->set('_serialize', ['loginUser']);
     }
-    
-    public function isAuthorized($user)
-    {
+
+    public function isAuthorized($user) {
         $action = $this->request->params['action'];
         if (in_array($action, ['index'])) {
             return true;
         }
     }
+
 }
-
-
