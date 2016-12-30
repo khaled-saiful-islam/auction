@@ -13,7 +13,7 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Auction: an auction site';
 
 use Cake\Routing\Router;
 ?>
@@ -48,7 +48,7 @@ use Cake\Routing\Router;
         <![endif]-->
 
         <?php echo $this->Html->css('ace-skins.min.css') ?>
-        
+
         <?php echo $this->Html->css('ace-rtl.min.css') ?>
 
         <!--[if lte IE 9]>
@@ -62,14 +62,16 @@ use Cake\Routing\Router;
         <!--[if IE]>
         <?php echo $this->Html->script("jquery-1.11.3.min.js"); ?>
         <![endif]-->
-        
+
         <?php echo $this->Html->script("bootstrap.min.js"); ?>
-     
+
         <?php echo $this->Html->script('ace-extra.min.js') ?>
-        
+
         <?php echo $this->Html->script('ace-elements.min.js') ?>
-        
+
         <?php echo $this->Html->script('ace.min.js') ?>
+
+        <?php echo $this->Html->script('custom.js') ?>
 
         <?php $path = Router::url('/', true); ?>
         <script type="text/javascript">

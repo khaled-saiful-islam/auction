@@ -9,10 +9,6 @@ use App\Controller\AppController;
  */
 class DashboardController extends AppController
 {
-//    public function beforeFilter(\Cake\Event\Event $event)
-//    {
-//        //$this->Auth->allow(['index']);
-//    }
 
     /**
      * Index method
@@ -22,6 +18,10 @@ class DashboardController extends AppController
     public function index()
     {
         $this->viewBuilder()->layout('dashboard');
+        
+        $user = $this->Auth->user();
+        $this->set('user', $user);
+        $this->set('_serialize', ['user']);
     }
     
     public function isAuthorized($user)

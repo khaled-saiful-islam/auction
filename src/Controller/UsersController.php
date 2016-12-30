@@ -123,6 +123,11 @@ class UsersController extends AppController {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
+                $this->Flash->set('Congratulations! You are Loggin In', [
+                    'params' => [
+                        'class' => 'alert alert-success dash-success-msg'
+                    ]
+                ]);
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error('Your email or password is incorrect.');
