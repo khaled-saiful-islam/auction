@@ -21,11 +21,13 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
+        $leftNavActive['user'] = true;
+        $leftNavActive['userIndex'] = true;
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
-        $this->set('loginUser', $loginUser);
         $this->set('users', $this->paginate($this->Users));
+        $this->set(compact('users', 'loginUser', 'leftNavActive'));
         $this->set('_serialize', ['users', 'loginUser']);
     }
 
@@ -50,6 +52,8 @@ class UsersController extends AppController {
      * @return void Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $leftNavActive['user'] = true;
+        $leftNavActive['userAdd'] = true;
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
@@ -57,14 +61,22 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success('The user has been saved.', [
+                    'params' => [
+                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                    ]
+                ]);
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error('The user could not be saved.', [
+                    'params' => [
+                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                    ]
+                ]);
             }
         }
-        $this->set(compact('user', 'loginUser'));
-        $this->set('_serialize', ['user', 'loginUser']);
+        $this->set(compact('user', 'loginUser', 'leftNavActive'));
+        $this->set('_serialize', ['user', 'loginUser', 'leftNavActive']);
     }
 
     public function register() {
@@ -114,12 +126,20 @@ class UsersController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null) {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->viewBuilder()->layout('dashboard');
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success('The user has been deleted.', [
+                'params' => [
+                    'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                ]
+            ]);
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error('The user could not be deleted. Please, try again.', [
+                'params' => [
+                    'class' => 'alert alert-block alert-danger'
+                ]
+            ]);
         }
         return $this->redirect(['action' => 'index']);
     }
@@ -130,27 +150,36 @@ class UsersController extends AppController {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                $this->Flash->set('Congratulations! You are Logged In', [
+                $this->Flash->success('Welcome! ' . $user["name"] . ' to Auction', [
                     'params' => [
-                        'class' => 'alert alert-success dash-success-msg'
+                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error('Your email or password is incorrect.');
+            $this->Flash->error('Your email or password is incorrect.', [
+                'params' => [
+                    'class' => 'alert alert-block alert-danger'
+                ]
+            ]);
         }
     }
 
     public function logout() {
-        $this->Flash->success('You are now logged out.');
+        $this->Flash->success('You are now logged out.', [
+            'params' => [
+                'class' => 'alert alert-block alert-success alert-custom-msg-block'
+            ]
+        ]);
         return $this->redirect($this->Auth->logout());
     }
 
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['add', 'index'])) {
+        if (in_array($action, ['add', 'index', 'delete'])) {
             return true;
         }
+        return parent::isAuthorized($user);
     }
 
 }

@@ -1,5 +1,5 @@
 jQuery(function ($) {
-    $('.dash-success-msg').animate({opacity: 1.0}, 5000).fadeOut();
+    $('.alert-custom-msg-block').animate({opacity: 1.0}, 5000).fadeOut();
 
     try {
         ace.settings.loadState('main-container')

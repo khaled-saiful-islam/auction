@@ -1,5 +1,6 @@
 
 jQuery(function ($) {
+    $('.alert-custom-msg-block').animate({opacity: 1.0}, 5000).fadeOut();
     $(document).on('click', '.toolbar a[data-target]', function (e) {
         e.preventDefault();
         var target = $(this).data('target');
@@ -8,7 +9,7 @@ jQuery(function ($) {
     });
 });
 
-jQuery(function ($) {
+jQuery(function ($) {    
     $('#btn-login-dark').on('click', function (e) {
         $('body').attr('class', 'login-layout');
         $('#id-text2').attr('class', 'white');

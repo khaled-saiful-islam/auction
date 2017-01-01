@@ -45,47 +45,8 @@
             </ul>
         </li>
 
-        <li class="">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-gavel"></i>
-                <span class="menu-text"> Auction </span>
-
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-
-            <b class="arrow"></b>
-
-            <ul class="submenu">
-                <li class="">
-                    <a href="#">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Add Auction
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-                <li class="">
-                    <a href="#">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        View Auction
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-                <li class="">
-                    <a href="#">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        History of Auction
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-            </ul>
-        </li>
-
-        <li class="">
+        <!--<li class="active open">-->
+        <li class="<?php echo (isset($leftNavActive['user']) && $leftNavActive['user']) ? "active open" : "" ?>">    
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-users"></i>
                 <span class="menu-text"> Users </span>
@@ -96,17 +57,17 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-                <li class="">
+                <li class="<?php echo (isset($leftNavActive['userAdd']) && $leftNavActive['userAdd']) ? "active" : "" ?>">
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>Add User', array('controller' => 'Users', 'action' => 'add'), array('escape' => false)) ?>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
-                    <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View User', array('controller' => 'Users', 'action' => 'index'), array('escape' => false)) ?>
+                <li class="<?php echo (isset($leftNavActive['userIndex']) && $leftNavActive['userIndex']) ? "active" : "" ?>">
+                    <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false)) ?>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
+                <li class="<?php echo (isset($leftNavActive['userHistory']) && $leftNavActive['userHistory']) ? "active" : "" ?>">
                     <a href="#">
                         <i class="menu-icon fa fa-caret-right"></i>
                         History of Users
