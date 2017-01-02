@@ -70,7 +70,7 @@ class UsersController extends AppController {
             } else {
                 $this->Flash->error('The user could not be saved.', [
                     'params' => [
-                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                        'class' => 'alert alert-block alert-danger alert-custom-msg-block'
                     ]
                 ]);
             }
@@ -102,20 +102,36 @@ class UsersController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
+        $leftNavActive['user'] = true;
+        $leftNavActive['userIndex'] = true;
+        $this->viewBuilder()->layout('dashboard');
+        $loginUser = $this->Auth->user();
+
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            if (isset($this->request->data['password']) && empty($this->request->data['password'])) {
+                unset($user['password']);
+            }
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success('The user has been Edited.', [
+                    'params' => [
+                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                    ]
+                ]);
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error('The user could not be Edited.', [
+                    'params' => [
+                        'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                    ]
+                ]);
             }
         }
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
+        $this->set(compact('user', 'leftNavActive', 'loginUser'));
+        $this->set('_serialize', ['user', 'leftNavActive', 'loginUser']);
     }
 
     /**
@@ -176,7 +192,7 @@ class UsersController extends AppController {
 
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['add', 'index', 'delete'])) {
+        if (in_array($action, ['add', 'index', 'delete', 'edit'])) {
             return true;
         }
         return parent::isAuthorized($user);

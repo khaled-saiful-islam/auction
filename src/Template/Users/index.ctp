@@ -49,10 +49,8 @@
 
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
-                                            <a class="green" href="#">
-                                                <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                            </a>
-                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-trash-o bigger-130"></i>', array('controller' => 'Users', 'action' => 'delete', $user->id), array('escape' => false, 'confirm' => __('Are you sure you want to delete?'))) ?>
+                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-pencil bigger-130"></i>', array('controller' => 'Users', 'action' => 'edit', $user->id), array('class' => 'green', 'escape' => false)) ?>
+                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-trash-o bigger-130"></i>', array('controller' => 'Users', 'action' => 'delete', $user->id), array('class' => 'red', 'escape' => false, 'confirm' => __('Are you sure you want to delete?'))) ?>
                                         </div>
                                     </td>
                                 </tr>

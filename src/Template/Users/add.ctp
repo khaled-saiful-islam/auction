@@ -1,6 +1,5 @@
 <div class="main-content">
-    <div class="main-content-inner">
-        <?php echo $this->Flash->render(); ?>
+    <div class="main-content-inner">        
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
             <ul class = "breadcrumb">
                 <li>
@@ -11,7 +10,7 @@
                 <li class="active">Add User</li>
             </ul>
         </div>
-
+        <?php echo $this->Flash->render(); ?>
         <div class="page-content">
             <div class="page-header">
                 <h1>Add User</h1>

@@ -1,31 +1,56 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Apps'), ['controller' => 'Apps', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New App'), ['controller' => 'Apps', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Bookmarks'), ['controller' => 'Bookmarks', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Bookmark'), ['controller' => 'Bookmarks', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Profiles'), ['controller' => 'Profiles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Profile'), ['controller' => 'Profiles', 'action' => 'add']) ?></li>
-    </ul>
-</div>
-<div class="users form large-10 medium-9 columns">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->input('email');
-            echo $this->Form->input('password');
-            echo $this->Form->input('dob', ['empty' => true, 'default' => '']);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<div class="main-content">
+    <div class="main-content-inner">        
+        <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
+            <ul class = "breadcrumb">
+                <li>
+                    <i class = "ace-icon fa fa-users home-icon"></i>
+                    <?php echo $this->Html->link('Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false))
+                    ?>
+                </li>
+                <li class="active">Edit User</li>
+            </ul>
+        </div>
+        <?php echo $this->Flash->render(); ?>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Edit User</h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <?php echo $this->Form->create($user, array('class' => 'form-horizontal', 'role' => 'form')) ?>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Name: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('name', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('email', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Email', 'label' => false, 'required' => true)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Password: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('password', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'value' => '', 'required' => false)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                        <div class="col-sm-9">
+                            <button type="Submit" class="btn btn-white btn-info btn-bold">
+                                <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+                                Edit
+                            </button>
+                        </div>                            
+                    </div>
+                    <?php echo $this->Form->end() ?>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

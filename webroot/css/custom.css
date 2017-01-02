@@ -27,3 +27,6 @@ and open the template in the editor.
 .alert{
     font-size: 13px;
 }
+.error-message{
+    color: red;
+}
