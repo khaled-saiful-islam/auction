@@ -39,11 +39,14 @@ class UsersController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null) {
-        $user = $this->Users->get($id, [
-            'contain' => ['Apps', 'Bookmarks', 'Profiles']
-        ]);
-        $this->set('user', $user);
-        $this->set('_serialize', ['user']);
+        $leftNavActive['user'] = true;
+        $leftNavActive['userIndex'] = true;
+        $this->viewBuilder()->layout('dashboard');
+        $loginUser = $this->Auth->user();
+
+        $user = $this->Users->get($id);
+        $this->set(compact('user', 'loginUser', 'leftNavActive'));
+        $this->set('_serialize', ['user', 'loginUser', 'leftNavActive']);
     }
 
     /**
@@ -192,7 +195,7 @@ class UsersController extends AppController {
 
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['add', 'index', 'delete', 'edit'])) {
+        if (in_array($action, ['add', 'index', 'delete', 'edit', 'view'])) {
             return true;
         }
         return parent::isAuthorized($user);

@@ -84,7 +84,7 @@ use Cake\Routing\Router;
     <body class="no-skin">
         <div class="main-container ace-save-state" id="main-container">
             <?php echo $this->element('Dashboard/navbar') ?>
-            <?php echo $this->element('Dashboard/leftNev') ?>
+            <?php echo $this->element('Dashboard/leftNav') ?>
             <?php echo $this->fetch('content') ?>
             <?php echo $this->element('Dashboard/footer') ?>
         </div><!-- /.main-container -->

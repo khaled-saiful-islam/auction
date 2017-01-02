@@ -34,18 +34,11 @@
                                 <tr>
                                     <td>
                                         <div class="action-buttons">
-                                            <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                                                <i class="ace-icon fa fa-angle-double-down"></i>
-                                                <span class="sr-only">Details</span>
-                                            </a>
+                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-angle-double-down"></i><span class="sr-only">Details</span>', array('controller' => 'Users', 'action' => 'view', $user->id), array('class' => 'green bigger-140 show-details-btn', 'escape' => false)) ?>
                                         </div>
                                     </td>
-                                    <td>
-                                        <?php echo h($user->name) ?>
-                                    </td>
-                                    <td>
-                                        <?php echo h($user->email) ?>
-                                    </td>
+                                    <td><?php echo h($user->name) ?></td>
+                                    <td><?php echo h($user->email) ?></td>
 
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">

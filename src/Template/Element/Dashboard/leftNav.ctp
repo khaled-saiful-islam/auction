@@ -66,15 +66,6 @@
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false)) ?>
                     <b class="arrow"></b>
                 </li>
-
-                <li class="<?php echo (isset($leftNavActive['userHistory']) && $leftNavActive['userHistory']) ? "active" : "" ?>">
-                    <a href="#">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        History of Users
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
             </ul>
         </li>
     </ul><!-- /.nav-list -->

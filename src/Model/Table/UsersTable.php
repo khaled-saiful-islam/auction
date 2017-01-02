@@ -45,10 +45,11 @@ class UsersTable extends Table {
 
         $validator
                 ->add('name', 'valid', ['rule' => 'alphaNumeric'])
+                ->add('name', 'valid', ['rule' => ['minLength', 8], 'message' => 'Minimum length 8'])
                 ->notEmpty('name');
 
         $validator
-                ->add('email', 'valid', ['rule' => 'email'])
+                ->add('email', 'valid', ['rule' => 'email', 'message' => 'Provide valid email'])
                 ->requirePresence('email', 'create')
                 ->notEmpty('email');
 
@@ -66,4 +67,5 @@ class UsersTable extends Table {
         $rules->add($rules->isUnique(['email']));
         return $rules;
     }
+
 }

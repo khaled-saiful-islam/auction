@@ -1,168 +1,161 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Apps'), ['controller' => 'Apps', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New App'), ['controller' => 'Apps', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Bookmarks'), ['controller' => 'Bookmarks', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Bookmark'), ['controller' => 'Bookmarks', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Profiles'), ['controller' => 'Profiles', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Profile'), ['controller' => 'Profiles', 'action' => 'add']) ?> </li>
-    </ul>
-</div>
-<div class="users view large-10 medium-9 columns">
-    <h2><?= h($user->id) ?></h2>
-    <div class="row">
-        <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Email') ?></h6>
-            <p><?= h($user->email) ?></p>
-            <h6 class="subheader"><?= __('Password') ?></h6>
-            <p><?= h($user->password) ?></p>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
+            <ul class = "breadcrumb">
+                <li>
+                    <i class = "ace-icon fa fa-users home-icon"></i>
+                    <?php echo $this->Html->link('Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false))
+                    ?>
+                </li>
+                <li class="active">View User</li>
+            </ul>
         </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($user->id) ?></p>
-        </div>
-        <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Dob') ?></h6>
-            <p><?= h($user->dob) ?></p>
-            <h6 class="subheader"><?= __('Created') ?></h6>
-            <p><?= h($user->created) ?></p>
-            <h6 class="subheader"><?= __('Updated') ?></h6>
-            <p><?= h($user->updated) ?></p>
-        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>User Profile</h1>
+            </div><!-- /.page-header -->
+            <?php echo $this->Flash->render(); ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="user-profile">
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs padding-18">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#home">
+                                        <i class="green ace-icon fa fa-user bigger-120"></i>
+                                        Profile
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a data-toggle="tab" href="#activity_histories">
+                                        <i class="blue ace-icon fa fa-history bigger-120"></i>
+                                        Activity Histories
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content no-border padding-24">
+                                <div id="home" class="tab-pane in active">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-2 center">
+                                            <span class="profile-picture">
+                                                <?php echo $this->Html->image('profile-pic.jpg', ['id' => 'avatar2','class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
+                                            </span>
+
+                                            <div class="space space-4"></div>
+
+                                            <a href="#" class="btn btn-sm btn-block btn-success">
+                                                <i class="ace-icon fa fa-plus-circle bigger-120"></i>
+                                                <span>Make as an Admin</span>
+                                            </a>
+
+                                            <a href="#" class="btn btn-sm btn-block btn-primary">
+                                                <i class="ace-icon fa fa-envelope-o bigger-110"></i>
+                                                <span>Send a message</span>
+                                            </a>
+                                        </div><!-- /.col -->
+
+                                        <div class="col-xs-12 col-sm-9">
+                                            <h4 class="blue">
+                                                <span class="middle"><?php echo $user['name'] ?></span>
+
+                                                <span class="label label-purple arrowed-in-right">
+                                                    <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+                                                    User
+                                                </span>
+                                            </h4>
+
+                                            <div class="profile-user-info">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Email </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span><?php echo $user['email'] ?></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Location </div>
+
+                                                    <div class="profile-info-value">
+                                                        <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                                        <span>Bangladesh</span>
+                                                        <span>Dhaka</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Age </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>38</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Joined </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>2010/06/20</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Last Online </div>
+
+                                                    <div class="profile-info-value">
+                                                        <span>3 hours ago</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="hr hr-8 dotted"></div>
+
+                                            <div class="profile-user-info">
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name"> Website </div>
+
+                                                    <div class="profile-info-value">
+                                                        <a href="#" target="_blank">www.alexdoe.com</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">
+                                                        <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
+                                                    </div>
+
+                                                    <div class="profile-info-value">
+                                                        <a href="#">Find me on Facebook</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile-info-row">
+                                                    <div class="profile-info-name">
+                                                        <i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
+                                                    </div>
+
+                                                    <div class="profile-info-value">
+                                                        <a href="#">Follow me on Twitter</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                                </div><!-- /#home -->
+
+                                <div id="activity_histories" class="tab-pane">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
     </div>
-</div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related Apps') ?></h4>
-    <?php if (!empty($user->apps)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('Id') ?></th>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Name') ?></th>
-            <th><?= __('Slug') ?></th>
-            <th><?= __('Title') ?></th>
-            <th><?= __('Domain') ?></th>
-            <th><?= __('Theme') ?></th>
-            <th><?= __('Secure') ?></th>
-            <th><?= __('Description') ?></th>
-            <th><?= __('Keywords') ?></th>
-            <th><?= __('Tags') ?></th>
-            <th><?= __('Type') ?></th>
-            <th><?= __('Modified') ?></th>
-            <th><?= __('Created') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($user->apps as $apps): ?>
-        <tr>
-            <td><?= h($apps->id) ?></td>
-            <td><?= h($apps->user_id) ?></td>
-            <td><?= h($apps->name) ?></td>
-            <td><?= h($apps->slug) ?></td>
-            <td><?= h($apps->title) ?></td>
-            <td><?= h($apps->domain) ?></td>
-            <td><?= h($apps->theme) ?></td>
-            <td><?= h($apps->secure) ?></td>
-            <td><?= h($apps->description) ?></td>
-            <td><?= h($apps->keywords) ?></td>
-            <td><?= h($apps->tags) ?></td>
-            <td><?= h($apps->type) ?></td>
-            <td><?= h($apps->modified) ?></td>
-            <td><?= h($apps->created) ?></td>
-
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Apps', 'action' => 'view', $apps->id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Apps', 'action' => 'edit', $apps->id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Apps', 'action' => 'delete', $apps->id], ['confirm' => __('Are you sure you want to delete # {0}?', $apps->id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
-    </div>
-</div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related Bookmarks') ?></h4>
-    <?php if (!empty($user->bookmarks)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('Id') ?></th>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Title') ?></th>
-            <th><?= __('Description') ?></th>
-            <th><?= __('Url') ?></th>
-            <th><?= __('Created') ?></th>
-            <th><?= __('Updated') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($user->bookmarks as $bookmarks): ?>
-        <tr>
-            <td><?= h($bookmarks->id) ?></td>
-            <td><?= h($bookmarks->user_id) ?></td>
-            <td><?= h($bookmarks->title) ?></td>
-            <td><?= h($bookmarks->description) ?></td>
-            <td><?= h($bookmarks->url) ?></td>
-            <td><?= h($bookmarks->created) ?></td>
-            <td><?= h($bookmarks->updated) ?></td>
-
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Bookmarks', 'action' => 'view', $bookmarks->id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Bookmarks', 'action' => 'edit', $bookmarks->id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Bookmarks', 'action' => 'delete', $bookmarks->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bookmarks->id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
-    </div>
-</div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related Profiles') ?></h4>
-    <?php if (!empty($user->profiles)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('Id') ?></th>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Twitter') ?></th>
-            <th><?= __('Created') ?></th>
-            <th><?= __('Modified') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($user->profiles as $profiles): ?>
-        <tr>
-            <td><?= h($profiles->id) ?></td>
-            <td><?= h($profiles->user_id) ?></td>
-            <td><?= h($profiles->twitter) ?></td>
-            <td><?= h($profiles->created) ?></td>
-            <td><?= h($profiles->modified) ?></td>
-
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Profiles', 'action' => 'view', $profiles->id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Profiles', 'action' => 'edit', $profiles->id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Profiles', 'action' => 'delete', $profiles->id], ['confirm' => __('Are you sure you want to delete # {0}?', $profiles->id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
-    </div>
-</div>
+</div><!-- /.main-content -->

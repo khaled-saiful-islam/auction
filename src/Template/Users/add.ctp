@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Name: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('name', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
+                            <?php echo $this->Form->input('name', array('pattern' => '.{8,}', 'title' => 'Minimum length 8','class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Password: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('password', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'required' => true)); ?>
+                            <?php echo $this->Form->input('password', array('pattern' => '.{6,}', 'title' => 'Minimum length 6','class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'required' => true)); ?>
                         </div>
                     </div>
                     <div class="form-group">
