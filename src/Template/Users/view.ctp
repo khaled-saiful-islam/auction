@@ -42,30 +42,47 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-2 center">
                                             <span class="profile-picture">
-                                                <?php echo $this->Html->image('profile-pic.jpg', ['id' => 'avatar2','class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
+                                                <?php echo $this->Html->image('profile-pic.jpg', ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
                                             </span>
 
                                             <div class="space space-4"></div>
 
-                                            <a href="#" class="btn btn-sm btn-block btn-success">
-                                                <i class="ace-icon fa fa-plus-circle bigger-120"></i>
-                                                <span>Make as an Admin</span>
-                                            </a>
-
-                                            <a href="#" class="btn btn-sm btn-block btn-primary">
-                                                <i class="ace-icon fa fa-envelope-o bigger-110"></i>
-                                                <span>Send a message</span>
-                                            </a>
+                                            <?php
+                                            if ($user['level'] > 20 && $loginUser['level'] < 21) {
+                                                echo $this->Html->link('<i class="ace-icon fa fa-plus-circle bigger-120"></i><span>Make as an Admin</span>', array(), array('value' => $user->id, 'id' => 'makeAdmin', 'class' => 'btn btn-sm btn-block btn-success', 'escape' => false));
+                                            }
+                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Profile Edit</span>', array('controller' => 'Users', 'action' => 'edit', $user->id, $loginUser['level']), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            ?>                                           
                                         </div><!-- /.col -->
 
                                         <div class="col-xs-12 col-sm-9">
                                             <h4 class="blue">
                                                 <span class="middle"><?php echo $user['name'] ?></span>
 
-                                                <span class="label label-purple arrowed-in-right">
-                                                    <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
-                                                    User
-                                                </span>
+                                                <?php
+                                                if ($user['level'] > 20) {
+                                                    ?>
+                                                    <span class="label label-success arrowed-in-right">
+                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+                                                        User
+                                                    </span>
+                                                    <?php
+                                                } else if ($user['level'] > 10) {
+                                                    ?>
+                                                    <span class="label label-warning arrowed-in-right">
+                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+                                                        Admin
+                                                    </span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <span class="label label-danger arrowed-in-right">
+                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+                                                        Super Admin
+                                                    </span>
+                                                    <?php
+                                                }
+                                                ?>
                                             </h4>
 
                                             <div class="profile-user-info">
@@ -148,7 +165,7 @@
                                 </div><!-- /#home -->
 
                                 <div id="activity_histories" class="tab-pane">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -159,3 +176,7 @@
         </div><!-- /.page-content -->
     </div>
 </div><!-- /.main-content -->
+
+<div id="loading_text">
+    <?php echo $this->Html->image('ajax-loader.gif'); ?>
+</div>

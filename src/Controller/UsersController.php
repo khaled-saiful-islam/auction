@@ -82,21 +82,6 @@ class UsersController extends AppController {
         $this->set('_serialize', ['user', 'loginUser', 'leftNavActive']);
     }
 
-    public function register() {
-        $message = "";
-        $user = $this->Users->newEntity();
-        if ($this->request->is('ajax')) {
-            $this->autoRender = false;
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $message = 'User was saved successfully';
-            } else {
-                $message = 'User was not saved successfully';
-            }
-        }
-        echo $message;
-    }
-
     /**
      * Edit method
      *
@@ -104,15 +89,13 @@ class UsersController extends AppController {
      * @return void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null) {
+    public function edit($id = null, $loginID = null) {
         $leftNavActive['user'] = true;
         $leftNavActive['userIndex'] = true;
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
-        $user = $this->Users->get($id, [
-            'contain' => []
-        ]);
+        $user = $this->Users->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if (isset($this->request->data['password']) && empty($this->request->data['password'])) {
@@ -124,7 +107,11 @@ class UsersController extends AppController {
                         'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
-                return $this->redirect(['action' => 'index']);
+                if ($loginID > 20) {
+                    return $this->redirect(['controller' => 'Users','action' => 'view', $id]);
+                } else {
+                    return $this->redirect(['action' => 'index']);
+                }
             } else {
                 $this->Flash->error('The user could not be Edited.', [
                     'params' => [
@@ -193,9 +180,41 @@ class UsersController extends AppController {
         return $this->redirect($this->Auth->logout());
     }
 
+    public function register() {
+        $message = "";
+        $user = $this->Users->newEntity();
+        if ($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $message = 'User was saved successfully';
+            } else {
+                $message = 'User was not saved';
+            }
+        }
+        echo $message;
+    }
+
+    public function makeAdmin($id = null) {
+        $this->autoRender = false;
+        $message = "";
+
+        $user = $this->Users->get($id, ['contain' => []]);
+        if ($this->request->is('ajax')) {
+            $data['level'] = 11;
+            $user = $this->Users->patchEntity($user, $data);
+            if ($this->Users->save($user)) {
+                $message = 'User was Promoted Admin successfully';
+            } else {
+                $message = 'User was not Promoted Admin';
+            }
+        }
+        echo $message;
+    }
+
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['add', 'index', 'delete', 'edit', 'view'])) {
+        if (in_array($action, ['add', 'index', 'delete', 'edit', 'view', 'makeAdmin'])) {
             return true;
         }
         return parent::isAuthorized($user);

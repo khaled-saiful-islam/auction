@@ -35,10 +35,7 @@
                         </li>
 
                         <li>
-                            <a href="profile.html">
-                                <i class="ace-icon fa fa-user"></i>
-                                Profile
-                            </a>
+                            <?php echo $this->Html->link('<i class="ace-icon fa fa-user"></i>Profile', array('controller' => 'Users', 'action' => 'view', $loginUser['id']), array('escape' => false)) ?>
                         </li>
 
                         <li class="divider"></li>
