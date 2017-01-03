@@ -75,6 +75,14 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <div class="paginator">
+                        <ul class="pagination pull-right no-margin">
+                            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                            <?= $this->Paginator->numbers() ?>
+                            <?= $this->Paginator->next(__('next') . ' >') ?>
+                        </ul>
+                        <p><?= $this->Paginator->counter() ?></p>
+                    </div>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->

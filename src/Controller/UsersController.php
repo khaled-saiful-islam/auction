@@ -26,7 +26,7 @@ class UsersController extends AppController {
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
-        $this->set('users', $this->paginate($this->Users));
+        $this->set('users', $this->paginate($this->Users, ['limit' => 5, 'order' => array('id' => 'asc')]));
         $this->set(compact('users', 'loginUser', 'leftNavActive'));
         $this->set('_serialize', ['users', 'loginUser']);
     }
@@ -108,7 +108,7 @@ class UsersController extends AppController {
                     ]
                 ]);
                 if ($loginID > 20) {
-                    return $this->redirect(['controller' => 'Users','action' => 'view', $id]);
+                    return $this->redirect(['controller' => 'Users', 'action' => 'view', $id]);
                 } else {
                     return $this->redirect(['action' => 'index']);
                 }
