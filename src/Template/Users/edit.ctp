@@ -19,11 +19,11 @@
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <?php echo $this->Form->create($user, array('class' => 'form-horizontal', 'role' => 'form')) ?>
+                    <?php echo $this->Form->create($user, array('class' => 'form-horizontal', 'role' => 'form', 'enctype' => 'multipart/form-data')) ?>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Name: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('name', array('pattern' => '.{8,}', 'title' => 'Minimum length 8','class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
+                            <?php echo $this->Form->input('name', array('pattern' => '.{8,}', 'title' => 'Minimum length 8', 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -36,6 +36,12 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Password: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('password', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'value' => '', 'required' => false)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Profile Image: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('image_path', array('id' => 'upload_file', 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
                         </div>
                     </div>
                     <div class="form-group">

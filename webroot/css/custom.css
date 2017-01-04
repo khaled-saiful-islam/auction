@@ -30,3 +30,6 @@ and open the template in the editor.
 .error-message{
     color: red;
 }
+.ace-file-input{
+    max-width: 42%;
+}

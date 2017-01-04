@@ -62,6 +62,34 @@ class UsersController extends AppController {
 
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+            if (!empty($this->request->data['image_path']['name'])) {
+                $ext = substr(strtolower(strrchr($this->request->data['image_path']['name'], '.')), 1);
+                $supported_ext = array('jpg', 'jpeg', 'gif');
+                if (in_array($ext, $supported_ext)) {
+                    $uploadFolder = WWW_ROOT . 'img/upload_images';
+                    $file_name = time() . '_' . $this->request->data['image_path']['name'];
+                    $uploadPath = $uploadFolder . DS . $file_name;
+                    if (!file_exists($uploadFolder)) {
+                        mkdir($uploadFolder);
+                    }
+                    if (move_uploaded_file($this->request->data['image_path']['tmp_name'], $uploadPath)) {
+                        $this->request->data['image_path'] = $file_name;
+                    } else {
+                        $this->Flash->error('Image has not been saved', [
+                            'params' => [
+                                'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                            ]
+                        ]);
+                    }
+                } else {
+                    $this->Flash->error('Image extension was not supported', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.', [
@@ -97,9 +125,45 @@ class UsersController extends AppController {
 
         $user = $this->Users->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            if (!empty($this->request->data['image_path']['name'])) {
+                $ext = substr(strtolower(strrchr($this->request->data['image_path']['name'], '.')), 1);
+                $supported_ext = array('jpg', 'jpeg', 'gif');
+                if (in_array($ext, $supported_ext)) {
+                    $uploadFolder = WWW_ROOT . 'img/upload_images';
+                    $file_name = time() . '_' . $this->request->data['image_path']['name'];
+                    $uploadPath = $uploadFolder . DS . $file_name;
+                    if (!file_exists($uploadFolder)) {
+                        mkdir($uploadFolder);
+                    }
+
+                    if (!empty($user['image_path']) && file_exists($uploadFolder . DS . $user['image_path'])) {
+                        unlink($uploadFolder . DS . $user['image_path']);
+                    }
+
+                    if (move_uploaded_file($this->request->data['image_path']['tmp_name'], $uploadPath)) {
+                        $this->request->data['image_path'] = $file_name;
+                    } else {
+                        $this->Flash->error('Image has not been saved', [
+                            'params' => [
+                                'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                            ]
+                        ]);
+                    }
+                } else {
+                    $this->Flash->error('Image extension was not supported', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if (isset($this->request->data['password']) && empty($this->request->data['password'])) {
                 unset($user['password']);
+            }
+            if (isset($this->request->data['image_path']) && empty($this->request->data['image_path'])) {
+                unset($user['image_path']);
             }
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been Edited.', [

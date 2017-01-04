@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2017 at 11:28 AM
+-- Generation Time: Jan 04, 2017 at 01:24 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -32,17 +32,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `level` int(11) NOT NULL DEFAULT '21',
+  `image_path` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `level`, `created`, `modified`) VALUES
-(1, 'Khaled Saiful Islam', 'khaled_sfl@yahoo.com', '$2y$10$mC71iGlr.MzYoueQDoOmcOHIq3621JHfUhLy.jT2fvH2fx.6ACwou', 1, '2016-12-01 03:10:35', '2016-12-01 03:10:35');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `level`, `image_path`, `created`, `modified`) VALUES
+(1, 'Khaled Saiful Islam', 'khaled_sfl@yahoo.com', '$2y$10$mC71iGlr.MzYoueQDoOmcOHIq3621JHfUhLy.jT2fvH2fx.6ACwou', 1, '', '2016-12-01 03:10:35', '2016-12-01 03:10:35');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
