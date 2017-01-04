@@ -42,7 +42,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-2 center">
                                             <span class="profile-picture">
-                                                <?php echo $this->Html->image('profile-pic.jpg', ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
+                                                <?php echo $this->Html->image('upload_images/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
                                             </span>
 
                                             <div class="space space-4"></div>

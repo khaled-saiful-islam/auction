@@ -17,7 +17,7 @@
             <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <?php echo $this->Html->image('user.png', ['class' => 'nav-user-photo', 'alt' => "User's Photo"]); ?>
+                        <?php echo $this->Html->image('upload_images/' . $loginUser['image_path'], ['class' => 'nav-user-photo', 'alt' => "User's Photo"]); ?>
                         <span class="user-info">
                             <small>Welcome,</small>
                             <?php echo $loginUser['name']; ?>
