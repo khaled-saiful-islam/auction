@@ -14,7 +14,7 @@
             <fieldset>
                 <label class="block clearfix">
                     <span class="block input-icon input-icon-right">
-                        <?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
+                        <?php echo $this->Form->input('name', array('pattern' => '.{8,}', 'title' => 'Minimum length 8', 'class' => 'form-control', 'placeholder' => 'Name', 'label' => false, 'required' => true)); ?>
                         <i class="ace-icon fa fa-user"></i>
                     </span>
                 </label>
@@ -28,7 +28,7 @@
 
                 <label class="block clearfix">
                     <span class="block input-icon input-icon-right">
-                        <?php echo $this->Form->input('password', array('class' => 'form-control', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'required' => true)); ?>
+                        <?php echo $this->Form->input('password', array('pattern' => '.{6,}', 'title' => 'Minimum length 6', 'class' => 'form-control', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'required' => true)); ?>
                         <i class="ace-icon fa fa-lock"></i>
                     </span>
                 </label>

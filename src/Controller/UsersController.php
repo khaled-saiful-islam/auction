@@ -64,7 +64,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if (!empty($this->request->data['image_path']['name'])) {
                 $ext = substr(strtolower(strrchr($this->request->data['image_path']['name'], '.')), 1);
-                $supported_ext = array('jpg', 'jpeg', 'gif');
+                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($ext, $supported_ext)) {
                     $uploadFolder = WWW_ROOT . 'img/upload_images';
                     $file_name = time() . '_' . $this->request->data['image_path']['name'];
@@ -127,7 +127,7 @@ class UsersController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             if (!empty($this->request->data['image_path']['name'])) {
                 $ext = substr(strtolower(strrchr($this->request->data['image_path']['name'], '.')), 1);
-                $supported_ext = array('jpg', 'jpeg', 'gif');
+                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($ext, $supported_ext)) {
                     $uploadFolder = WWW_ROOT . 'img/upload_images';
                     $file_name = time() . '_' . $this->request->data['image_path']['name'];
