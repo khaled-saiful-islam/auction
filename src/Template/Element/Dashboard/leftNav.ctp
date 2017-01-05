@@ -1,6 +1,10 @@
 <div id="sidebar" class="sidebar responsive ace-save-state">
     <ul class="nav nav-list">
         <li class="">
+            <?php echo $this->Html->link('<i class="menu-icon fa fa-home"></i><span class="menu-text"> Home </span>', array('controller' => 'Home', 'action' => 'index'), array('escape' => false)) ?>
+            <b class="arrow"></b>
+        </li>
+        <li class="">
             <?php echo $this->Html->link('<i class="menu-icon fa fa-tachometer"></i><span class="menu-text"> Dashboard </span>', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
             <b class="arrow"></b>
         </li>

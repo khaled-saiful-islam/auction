@@ -13,7 +13,6 @@
                             <div class="widget-body">
                                 <div class="widget-main">
                                     <h4 class="header blue lighter bigger">
-                                        <i class="ace-icon fa fa-coffee green"></i>
                                         Please Enter Your Information
                                     </h4>
 

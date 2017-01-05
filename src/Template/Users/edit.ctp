@@ -49,7 +49,7 @@
                         <div class="col-sm-9">
                             <button type="Submit" class="btn btn-white btn-info btn-bold">
                                 <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
-                                Edit
+                                Save
                             </button>
                         </div>                            
                     </div>

@@ -40,9 +40,6 @@ use Cake\Routing\Router;
         <!-- ace styles -->
         <?php echo $this->Html->css('ace.min.css') ?>
 
-        <!-- Custom -->
-        <?php //echo $this->Html->css('custom.css') ?>
-
         <!--[if lte IE 9]>
         <?php echo $this->Html->css('ace-part2.min.css') ?>
         <![endif]-->
