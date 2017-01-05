@@ -198,6 +198,14 @@ class UsersController extends AppController {
     public function delete($id = null) {
         $this->viewBuilder()->layout('dashboard');
         $user = $this->Users->get($id);
+
+        $uploadFolder = WWW_ROOT . 'img/upload_images';
+        $uploadPath = $uploadFolder . DS . $user['image_path'];
+
+        if (!empty($user['image_path']) && file_exists($uploadFolder . DS . $user['image_path'])) {
+            unlink($uploadFolder . DS . $user['image_path']);
+        }
+
         if ($this->Users->delete($user)) {
             $this->Flash->success('The user has been deleted.', [
                 'params' => [
