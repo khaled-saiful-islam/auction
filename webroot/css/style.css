@@ -74,7 +74,7 @@ body{
 }
 .header-bottom{
 	background:#fff;
-	padding:2% 0;
+	/*padding:2% 0;*/
 }
 .logo{
 	float:left;
@@ -157,7 +157,7 @@ body{
 	text-indent: -9999px;
 	outline:none;
 	cursor: pointer;
-	background: url("../images/search.png") no-repeat 0px 3px; 
+	background: url("../img/search.png") no-repeat 0px 3px; 
 	width:30px;
 	height:25px;
 	padding:8px;
@@ -214,9 +214,9 @@ body{
 .icon1 li:hover > a {
 	color: #fafafa;
 }
-*html .icon1 li a:hover { /* IE6 only */
+/**html .icon1 li a:hover {  IE6 only 
 	color: #fafafa;
-}
+}*/
 .icon1 ul {
 	width:300px;
 	margin: 20px 0 0 0;
@@ -305,14 +305,14 @@ body{
 	vertical-align:middle;
 }
 .c1{
-	background: url(../images/tag.png) no-repeat 0px 0px;
+	background: url(../img/tag.png) no-repeat 0px 0px;
 	width:42px;
 	height:42px;
 	display: inline-block;
 	vertical-align: middle;
 }
 .c2{
-	background: url(../images/cart.png) no-repeat 0px 1px;
+	background: url(../img/cart.png) no-repeat 0px 1px;
 	width:42px;
 	height:42px;
 	display: inline-block;
@@ -793,7 +793,7 @@ ul.f-list1 li a:hover {
 	height: 40px;
 	width: 40px;
 	display: block;
-	background: url(../images/img-sprite.png);
+	background: url(../img/img-sprite.png);
 }
 .social-media li a:hover {
 	zoom: 1;
@@ -876,16 +876,16 @@ ul.f-list1 li a:hover {
 }
 /*------------end social simptip----------------*/
 .social-media li:nth-child(1) a{
-	background: url(../images/img-sprite.png) -20px -170px;
+	background: url(../img/img-sprite.png) -20px -170px;
 }
 .social-media li:nth-child(2) a{
-	background: url(../images/img-sprite.png) -68px -170px;
+	background: url(../img/img-sprite.png) -68px -170px;
 }
 .social-media li:nth-child(3) a{
-	background: url(../images/img-sprite.png) -112px -170px;
+	background: url(../img/img-sprite.png) -112px -170px;
 }
 .social-media li:nth-child(4) a{
-	background: url(../images/img-sprite.png) -157px -170px;
+	background: url(../img/img-sprite.png) -157px -170px;
 }
 /*--footer-bottom--*/
 .footer-bottom{
@@ -1845,11 +1845,11 @@ p.m_text{
 }
 .nbs-flexisel-nav-left {
 	left: 0px;
-	background: url(../images/img-sprite.png) no-repeat -23px -217px;
+	background: url(../img/img-sprite.png) no-repeat -23px -217px;
 }
 .nbs-flexisel-nav-right {
 	right: 0px;
-	background: url(../images/img-sprite.png) no-repeat -51px -217px;
+	background: url(../img/img-sprite.png) no-repeat -51px -217px;
 }
 .toogle{
 	margin-top:4%;

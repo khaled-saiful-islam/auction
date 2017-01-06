@@ -11,44 +11,59 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <?php echo $this->Html->link('<small><i class="fa fa-leaf"></i>Auction Admin</small>', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>
+            <?php echo $this->Html->link('<small><i class="fa fa-leaf"></i>Auction</small>', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>
         </div>
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
-                <li class="light-blue dropdown-modal">
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <?php
-                        if (isset($loginUser['image_path']) && !empty($loginUser['image_path'])) {
-                            echo $this->Html->image('upload_images/' . $loginUser['image_path'], ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
-                        } else {
-                            echo $this->Html->image('blank_image.png', ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
-                        }
-                        ?>
-                        <span class="user-info">
-                            <small>Welcome,</small>
-                            <?php echo $loginUser['name']; ?>
-                        </span>
+                <?php
+                if (isset($loginUser['id']) && !empty($loginUser['id'])) {
+                    ?>
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <?php
+                            if (isset($loginUser['image_path']) && !empty($loginUser['image_path'])) {
+                                echo $this->Html->image('upload_images/' . $loginUser['image_path'], ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
+                            } else {
+                                echo $this->Html->image('blank_image.png', ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
+                            }
+                            ?>
+                            <span class="user-info">
+                                <small>Welcome,</small>
+                                <?php echo $loginUser['name']; ?>
+                            </span>
 
-                        <i class="ace-icon fa fa-caret-down"></i>
-                    </a>
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
 
-                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-cog"></i>
-                                Settings
-                            </a>
-                        </li>
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
 
-                        <li>
-                            <?php echo $this->Html->link('<i class="ace-icon fa fa-user"></i>Profile', array('controller' => 'Users', 'action' => 'view', $loginUser['id']), array('escape' => false)) ?>
-                        </li>
+                            <li>
+                                <?php echo $this->Html->link('<i class="ace-icon fa fa-user"></i>Profile', array('controller' => 'Users', 'action' => 'view', $loginUser['id']), array('escape' => false)) ?>
+                            </li>
 
-                        <li class="divider"></li>
+                            <li class="divider"></li>
 
-                        <li><?php echo $this->Html->link('<i class="ace-icon fa fa-power-off"></i>Logout', array('controller' => 'Users', 'action' => 'logout'), array('escape' => false)) ?></li>
-                    </ul>
-                </li>
+                            <li><?php echo $this->Html->link('<i class="ace-icon fa fa-power-off"></i>Logout', array('controller' => 'Users', 'action' => 'logout'), array('escape' => false)) ?></li>
+                        </ul>
+                    </li>
+                    <?php
+                } else {
+                    ?>
+                    <div class="cssmenu">
+                        <ul>                        
+                            <li><a href="#">Log In</a></li> |
+                            <li><a href="#">Sign Up</a></li>
+                        </ul>
+                    </div> 
+                    <?php
+                }
+                ?>               
             </ul>
         </div>
     </div><!-- /.navbar-container -->

@@ -18,9 +18,9 @@ class HomeController extends AppController {
     public function index() {
         $this->viewBuilder()->layout('home');
 
-//        $loginUser = $this->Auth->user();
-//        $this->set(compact('loginUser'));
-//        $this->set('_serialize', ['loginUser']);
+        $loginUser = $this->Auth->user();
+        $this->set(compact('loginUser'));
+        $this->set('_serialize', ['loginUser']);
     }
 
     public function isAuthorized($user) {
