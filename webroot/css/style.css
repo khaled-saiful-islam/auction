@@ -5,8 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
 /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer-home,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer-home, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0;padding:0;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
@@ -479,7 +479,7 @@ p.title a:hover{
 }
 .cart-right {
 	float: right;
-	background: url(../images/cart2.png)2px 0px #7db122;
+	background: url(../img/cart2.png)2px 0px #7db122;
 	border-radius: 100px;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -491,7 +491,7 @@ p.title a:hover{
 }
 .span_1_of_3:hover .cart-right{
 	float: right;
-	background: url(../images/cart3.png)2px 0px #000;
+	background: url(../img/cart3.png)2px 0px #000;
 	border-radius: 100px;
 	width: 40px;
 	height: 40px;
@@ -549,7 +549,7 @@ span.reducedfrom {
 	margin-bottom:4%;
 }
 .left-banner{
-	background: url(../images/t-img1.jpg)no-repeat 0px 0px;
+	background: url(../img/t-img1.jpg)no-repeat 0px 0px;
 	width:226px;
 	height:450px;
 }
@@ -736,7 +736,7 @@ p.m_2{
 	width:50px;
 	height:50px;
 	display: block;
-	background: url(../images/f-tw.png) no-repeat;
+	background: url(../img/f-tw.png) no-repeat;
 }
 .recent-tweet-info {
 	float: right;
@@ -754,7 +754,7 @@ p.m_2{
 	color:#fff;
 }
 ul.f-list1 li {
-	list-style-image: url(../images/f-icon.png);
+	list-style-image: url(../img/f-icon.png);
 	margin: 0 15px 5px;
 }
 ul.f-list1 li a {
@@ -1222,7 +1222,7 @@ ul.dc_pagination li a:hover{
 	background: transparent;
 }
 .metro.focus:after{
-	background:url(../images/minus.gif);
+	background:url(../img/minus.gif);
 	width: 13px;
 	height: 13px;
 	right: 10px;
@@ -1236,7 +1236,7 @@ ul.dc_pagination li a:hover{
 	right: 10px;
 	top: 50%;
 	margin-top: -4px;
-	background: url(../images/plus.gif);
+	background: url(../img/plus.gif);
 	width: 13px;
 	height: 13px;
 	-webkit-transform-origin: 50% 20%;
@@ -2020,7 +2020,7 @@ p.m_text2{
 	display: block;
 	width: 41px;
 	height: 38px;
-	background: url(../images/quotes.png) 0 0 no-repeat;
+	background: url(../img/quotes.png) 0 0 no-repeat;
 	content: "";
 }
 .testimonials .testi-item blockquote > a:hover {
@@ -2059,7 +2059,7 @@ span.rollover {
 	-o-transition-duration: 1s;
 	-moz-transition-duration: 1s;
 	-webkit-transition: -webkit-transform 1s;
-	background: url(../images/magnify-alt.png) center center no-repeat rgba(0, 0, 0, 0.4);
+	background: url(../img/magnify-alt.png) center center no-repeat rgba(0, 0, 0, 0.4);
 	cursor: pointer;
 	height: 215px;
 	width: 252px;
@@ -2086,7 +2086,7 @@ ul.delivery-list{
 ul.delivery-list li{
 	font-size: 0.85em;
 	margin: 0 0 8px 10px;
-	list-style-image: url(../images/list_marker.png);
+	list-style-image: url(../img/list_marker.png);
 }
 ul.delivery-list li a{
 	color: #777;

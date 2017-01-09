@@ -150,5 +150,397 @@ use Cake\Routing\Router;
             <div class="slidePrev"><span></span></div>
             <div class="slideNext"><span></span></div>
         </div>
+        <div class="main">
+            <div class="wrap">
+                <div class="section group">
+                    <div class="cont span_2_of_3">
+                        <h2 class="head">Featured Products</h2>
+                        <div class="top-box">
+                            <div class="col_1_of_3 span_1_of_3"> 
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic1.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic2.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box1"><span class="on_sale title_shop">Sale</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="reducedfrom">$66.00</span>
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>	
+                        <div class="top-box">
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic3.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic4.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic5.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>	
+                        <div class="top-box1">
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic6.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic7.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box1"><span class="on_sale title_shop">Sale</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="reducedfrom">$66.00</span>
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic8.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>	
+                        <h2 class="head">Staff Pick</h2>
+                        <div class="top-box1">
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic8.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic4.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic2.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>	
+                        <h2 class="head">New Products</h2>	
+                        <div class="section group">
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic5.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic2.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <a href="single.html">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <?php echo $this->Html->image('pic3.jpg', ['alt' => ""]); ?>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
+                                        <div class="price">
+                                            <div class="cart-left">
+                                                <p class="title">Lorem Ipsum simply</p>
+                                                <div class="price1">
+                                                    <span class="actual">$12.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-right"> </div>
+                                            <div class="clear"></div>
+                                        </div>				
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>			 						 			    
+                    </div>
+                    <div class="rsidebar span_1_of_left">
+                        <div class="top-border"> </div>
+                        <div class="border">
+                            <?php echo $this->Html->css('default.css') ?>
+                            <?php echo $this->Html->css('nivo-slider.css') ?>
+                            <?php echo $this->Html->script("jquery.nivo.slider.js"); ?>
+                            <script type="text/javascript">
+                                $(window).load(function () {
+                                    $('#slider').nivoSlider();
+                                });
+                            </script>
+                            <div class="slider-wrapper theme-default">
+                                <div id="slider" class="nivoSlider">
+                                    <?php echo $this->Html->image('t-img1.jpg', ['alt' => ""]); ?>
+                                    <?php echo $this->Html->image('t-img2.jpg', ['alt' => ""]); ?>
+                                    <?php echo $this->Html->image('t-img3.jpg', ['alt' => ""]); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-border"> </div>
+                        <div class="sidebar-bottom">
+                            <h2 class="m_1">Newsletters<br> Signup</h2>
+                            <p class="m_text">Lorem ipsum dolor sit amet, consectetuer</p>
+                            <div class="subscribe">
+                                <form>
+                                    <input name="userName" type="text" class="textbox">
+                                    <input type="submit" value="Subscribe">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-home">
+            <div class="footer-top">
+                <div class="wrap">
+                    <div class="section group example">
+                        <div class="col_1_of_2 span_1_of_2">
+                            <ul class="f-list">
+                                <li><?php echo $this->Html->image('2.png', ['alt' => ""]); ?><span class="f-text">Free Shipping on orders over $ 100</span><div class="clear"></div></li>
+                            </ul>
+                        </div>
+                        <div class="col_1_of_2 span_1_of_2">
+                            <ul class="f-list">
+                                <li><?php echo $this->Html->image('3.png', ['alt' => ""]); ?><span class="f-text">Call us! toll free-222-555-6666 </span><div class="clear"></div></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="wrap">
+                    <div class="copy">
+                        <p>© 2017 <a href="#" target="_blank">Auction Site</a></p>
+                    </div>
+                    <div class="f-list2">
+                        <ul>
+                            <li class="active"><a href="about.html">About Us</a></li> |
+                            <li><a href="delivery.html">Delivery & Returns</a></li> |
+                            <li><a href="delivery.html">Terms & Conditions</a></li> |
+                            <li><a href="contact.html">Contact Us</a></li> 
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
