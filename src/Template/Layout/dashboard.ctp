@@ -81,11 +81,15 @@ use Cake\Routing\Router;
     </head>
 
     <body class="no-skin">
+        <?php
+        echo $this->element('Dashboard/navbar');
+        ?>
         <div class="main-container ace-save-state" id="main-container">
-            <?php echo $this->element('Dashboard/navbar') ?>
-            <?php echo $this->element('Dashboard/leftNav') ?>
-            <?php echo $this->fetch('content') ?>
-            <?php echo $this->element('Dashboard/footer') ?>
-        </div><!-- /.main-container -->
+            <?php
+            echo $this->element('Dashboard/leftNav');
+            echo $this->fetch('content');
+            echo $this->element('Dashboard/footer');
+            ?>
+        </div>
     </body>
 </html>

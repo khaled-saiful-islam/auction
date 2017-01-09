@@ -1,14 +1,20 @@
 <div id="navbar" class="navbar navbar-default ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
-        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-            <span class="sr-only">Toggle sidebar</span>
+        <?php
+        if (isset($this->layout) && $this->layout == 'dashboard') {
+            ?>
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
 
-            <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
 
-            <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
 
-            <span class="icon-bar"></span>
-        </button>
+                <span class="icon-bar"></span>
+            </button>
+            <?php
+        }
+        ?>
 
         <div class="navbar-header pull-left">
             <?php echo $this->Html->link('<small><i class="fa fa-leaf"></i>Auction</small>', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>

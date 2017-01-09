@@ -59,21 +59,13 @@ use Cake\Routing\Router;
     </head>
 
     <body>
-        <div class="main-container ace-save-state">
-            <?php echo $this->element('Dashboard/navbar') ?>
-        </div>
+        <?php echo $this->element('Dashboard/navbar') ?>
         <div class="header-bottom">
             <div class="wrap">
                 <div class="header-bottom-left">
-                    <!--                    <div class="logo">
-                                            <a href="index.html">
-                    <?php echo $this->Html->image('logo.png', ['alt' => ""]); ?>
-                                            </a>
-                                        </div>-->
                     <div class="menu">
                         <ul class="megamenu skyblue">
-                            <li class="active grid"><a href="index.html">Home</a></li>
-                            <li><a class="color4" href="#">women</a>
+                            <li class="active grid"><a href="#">All Categories</a>
                                 <div class="megapanel">
                                     <div class="row">
                                         <div class="col1">
@@ -112,36 +104,10 @@ use Cake\Routing\Router;
                                         </div>
                                     </div>
                                 </div>
-                            </li>				
-                            <li><a class="color6" href="other.html">Other</a></li>
-                            <li><a class="color7" href="other.html">Purchase</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="header-bottom-right">
-                    <!--                    <div class="search">	  
-                                            <input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                        this.value = 'Search';
-                                                    }">
-                                            <input type="submit" value="Subscribe" id="submit" name="submit">
-                                            <div id="response"> </div>
-                                        </div>-->
-                    <div class="tag-list">
-                        <ul class="icon1 sub-icon1 profile_img">
-                            <li><a class="active-icon c1" href="#"> </a>
-<!--                                <ul class="sub-icon1 list">
-                                    <li><h3>sed diam nonummy</h3><a href=""></a></li>
-                                    <li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-                                </ul>-->
                             </li>
-                        </ul>
-                        <ul class="icon1 sub-icon1 profile_img">
-                            <li><a class="active-icon c2" href="#"> </a>
-<!--                                <ul class="sub-icon1 list">
-                                    <li><h3>No Products</h3><a href=""></a></li>
-                                    <li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-                                </ul>-->
-                            </li>
+                            <li><a class="color4" href="#">Current Bid</a></li>				
+                            <li><a class="color6" href="#">Upcoming Bid</a></li>
+                            <li><a class="color7" href="#">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
