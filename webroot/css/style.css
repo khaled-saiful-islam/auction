@@ -58,7 +58,7 @@ body{
 }
 .cssmenu{
 	float:right;
-	color:#96e8fc;
+	color:#fff;
 	font-size: 0.8125em;
 }
 .cssmenu ul li {
@@ -70,7 +70,7 @@ body{
 	margin:10px;
 }
 .cssmenu li> a:hover {
-	color: #ACEAFA;
+	color: #fff;
 }
 .header-bottom{
 	background:#fff;
@@ -889,32 +889,32 @@ ul.f-list1 li a:hover {
 }
 /*--footer-bottom--*/
 .footer-bottom{
-	background:#0b4b5a;
-	padding:2% 0;
+	background:#438eb9;
+	padding:1% 0;
 }
 .copy{
 	float:left;
 }
 .copy p{
-	color:#87D8EB;
+	color:#ffffff;
 	font-size:0.8125em;
 }
 .copy p a{
 	color:#fff;
 }
 .copy p a:hover{
-	color:#87D8EB;
+	color:#ffffff;
 }
 .f-list2{
 	float:right;
-	color:#87D8EB;
+	color:#ffffff;
 }
 .f-list2 li{
 	display:inline-block;
 	margin:0 10px;
 }
 .f-list2 li a{
-	color:#87D8EB;
+	color:#ffffff;
 	font-size:0.8125em;
 }
 .f-list2 li a:hover{

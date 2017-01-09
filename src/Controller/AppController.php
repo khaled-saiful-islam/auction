@@ -48,11 +48,11 @@ class AppController extends Controller
                 ]
             ],
             'loginAction' => [
-                'controller' => 'Users',
-                'action' => 'login'
+                'controller' => 'Home',
+                'action' => 'index'
             ],
             'loginRedirect' => [
-                'controller' => 'Dashboard',
+                'controller' => 'Home',
                 'action' => 'index',
             ],
             'authorize' => 'Controller',

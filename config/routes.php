@@ -54,7 +54,7 @@ Router::scope('/', function ($routes) {
      * Connect the default / and /pages/* routes that come
      * with the application skeleton.
      */
-    $routes->connect('/', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
 
     /**
      * Connect catchall routes for all controllers.

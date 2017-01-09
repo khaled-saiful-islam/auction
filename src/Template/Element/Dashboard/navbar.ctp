@@ -17,7 +17,7 @@
         ?>
 
         <div class="navbar-header pull-left">
-            <?php echo $this->Html->link('<small><i class="fa fa-leaf"></i>Auction</small>', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>
+            <?php echo $this->Html->link('<small><i class="fa fa-legal"></i> Auction</small>', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>
         </div>
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
@@ -43,10 +43,7 @@
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                             <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-cog"></i>
-                                    Settings
-                                </a>
+                                <?php echo $this->Html->link('<i class="ace-icon fa fa-dashboard"></i>Profile', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
                             </li>
 
                             <li>
@@ -63,8 +60,8 @@
                     ?>
                     <div class="cssmenu">
                         <ul>                        
-                            <li><a href="#">Log In</a></li> |
-                            <li><a href="#">Sign Up</a></li>
+                            <li><?php echo $this->Html->link('Log In', array('controller' => 'Users', 'action' => 'login')) ?></li> |
+                            <li><?php echo $this->Html->link('Sign Up', array('controller' => 'Users', 'action' => 'login')) ?></li>
                         </ul>
                     </div> 
                     <?php

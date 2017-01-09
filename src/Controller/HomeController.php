@@ -10,6 +10,10 @@ use App\Controller\AppController;
  */
 class HomeController extends AppController {
 
+    public function beforeFilter(\Cake\Event\Event $event) {
+        $this->Auth->allow(['index']);
+    }
+
     /**
      * Index method
      *
@@ -25,7 +29,7 @@ class HomeController extends AppController {
 
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['index'])) {
+        if (in_array($action, ['indexq'])) {
             return true;
         }
     }
