@@ -69,5 +69,5 @@
 </div><!-- /.signup-box -->
 
 <div id="loading_text">
-    <img src="img/ajax-loader.gif" />
+    <?php echo $this->Html->image('ajax-loader.gif', ['alt' => ""]); ?>
 </div>

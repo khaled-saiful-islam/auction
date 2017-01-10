@@ -1,3 +1,4 @@
+<?php echo $this->Flash->render(); ?>
 
 <div class="cont span_2_of_3">
     <h2 class="head">Featured Products</h2>
@@ -128,17 +129,10 @@
         <div class="clear"></div>
     </div>			 						 			    
 </div>
+
 <div class="rsidebar span_1_of_left">
     <div class="top-border"> </div>
-    <div class="border">
-        <?php echo $this->Html->css('default.css') ?>
-        <?php echo $this->Html->css('nivo-slider.css') ?>
-        <?php echo $this->Html->script("jquery.nivo.slider.js"); ?>
-        <script type="text/javascript">
-            $(window).load(function () {
-                $('#slider').nivoSlider();
-            });
-        </script>
+    <div class="border">        
         <div class="slider-wrapper theme-default">
             <div id="slider" class="nivoSlider">
                 <?php echo $this->Html->image('t-img1.jpg', ['alt' => ""]); ?>

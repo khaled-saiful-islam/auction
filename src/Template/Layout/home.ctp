@@ -18,16 +18,16 @@ use Cake\Routing\Router;
 
         <?php echo $this->Html->css('style.css') ?>
         <?php echo $this->Html->css('form.css') ?>
-
-        <!-- text fonts -->
         <?php echo $this->Html->css('fonts.googleapis.com.css') ?>
-
         <?php echo $this->Html->css('megamenu.css') ?>
         <?php echo $this->Html->css('fwslider.css') ?>
         <?php echo $this->Html->css('bootstrap.min.css') ?>
         <?php echo $this->Html->css('font-awesome/4.5.0/css/font-awesome.min.css') ?>
         <?php echo $this->Html->css('fonts.googleapis.com.css') ?>
         <?php echo $this->Html->css('ace.min.css') ?>
+        <?php echo $this->Html->css('default.css') ?>
+        <?php echo $this->Html->css('nivo-slider.css') ?>
+        <?php echo $this->Html->css('etalage.css') ?>
 
         <!--[if !IE]> -->
         <?php echo $this->Html->script("jquery-2.1.4.min.js"); ?>
@@ -38,22 +38,22 @@ use Cake\Routing\Router;
         <![endif]-->
 
         <?php echo $this->Html->script("megamenu.js"); ?>
-
         <?php echo $this->Html->script("jquery-ui.min.js"); ?>
-
         <?php echo $this->Html->script("css3-mediaqueries.js"); ?>
-
         <?php echo $this->Html->script("fwslider.js"); ?> 
-
         <?php echo $this->Html->script("jquery.easydropdown.js"); ?> 
-
         <?php echo $this->Html->script("bootstrap.min.js"); ?>
+        <?php echo $this->Html->script("jquery.nivo.slider.js"); ?>
+        <?php echo $this->Html->script("jquery.etalage.min.js"); ?>
+        <?php echo $this->Html->script("jquery.flexisel.js"); ?>
+        <?php echo $this->Html->script("custom.js"); ?>
 
         <?php $path = Router::url('/', true); ?>
         <script type="text/javascript">
             var BASEURL = '<?php echo $path; ?>';
             $(document).ready(function () {
                 $(".megamenu").megamenu();
+                $('#slider').nivoSlider();
             });
         </script>
     </head>
