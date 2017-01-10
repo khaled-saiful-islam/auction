@@ -43,7 +43,7 @@
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                             <li>
-                                <?php echo $this->Html->link('<i class="ace-icon fa fa-dashboard"></i>Profile', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
+                                <?php echo $this->Html->link('<i class="ace-icon fa fa-dashboard"></i>Dashboard', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
                             </li>
 
                             <li>

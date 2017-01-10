@@ -20,18 +20,12 @@ class HomeController extends AppController {
      * @return void
      */
     public function index() {
+        $home['slider'] = true;
         $this->viewBuilder()->layout('home');
 
         $loginUser = $this->Auth->user();
-        $this->set(compact('loginUser'));
-        $this->set('_serialize', ['loginUser']);
-    }
-
-    public function isAuthorized($user) {
-        $action = $this->request->params['action'];
-        if (in_array($action, ['indexq'])) {
-            return true;
-        }
+        $this->set(compact('loginUser', 'home'));
+        $this->set('_serialize', ['loginUser', 'home']);
     }
 
 }
