@@ -60,7 +60,7 @@
                     ?>
                     <div class="cssmenu">
                         <ul>                        
-                            <li><?php echo $this->Html->link('Log In', array('controller' => 'Users', 'action' => 'login')) ?></li> |
+                            <li><?php echo $this->Html->link('Log In', array('controller' => 'Users', 'action' => 'login')) ?></li> /
                             <li><?php echo $this->Html->link('Sign Up', array('controller' => 'Users', 'action' => 'login')) ?></li>
                         </ul>
                     </div> 

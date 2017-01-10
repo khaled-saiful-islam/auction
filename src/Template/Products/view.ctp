@@ -37,7 +37,7 @@
         </div>
         <div class="clear"></div>	
         <div class="clients">
-            <h3 class="m_3">10 Other Products in the same category</h3>
+            <h3 class="m_3">Similar Products: </h3>
             <ul id="flexiselDemo3">
                 <li><?php echo $this->Html->image('s5.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>
                 <li><?php echo $this->Html->image('s6.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>

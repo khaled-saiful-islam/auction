@@ -33,3 +33,10 @@ and open the template in the editor.
 .ace-file-input{
     max-width: 42%;
 }
+.item-hover:hover{
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.1) none repeat scroll 0 0;
+    opacity: .4;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
+}

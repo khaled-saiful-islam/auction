@@ -28,6 +28,7 @@ use Cake\Routing\Router;
         <?php echo $this->Html->css('default.css') ?>
         <?php echo $this->Html->css('nivo-slider.css') ?>
         <?php echo $this->Html->css('etalage.css') ?>
+        <?php echo $this->Html->css('custom.css') ?>
 
         <!--[if !IE]> -->
         <?php echo $this->Html->script("jquery-2.1.4.min.js"); ?>

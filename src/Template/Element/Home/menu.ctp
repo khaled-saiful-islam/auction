@@ -4,8 +4,8 @@
         <div class="header-bottom-left">
             <div class="menu">
                 <ul class="megamenu skyblue">
-                    <li><?php echo $this->Html->link('Home', array('controller' => 'Home', 'action' => 'index'), array('class' => 'color4')) ?></li>	
-                    <li class="active grid"><a href="#">All Categories</a>
+                    <li><?php echo $this->Html->link('Home', array('controller' => 'Home', 'action' => 'index'), array('class' => 'color4 item-hover')) ?></li>	
+                    <li class=""><a class="item-hover" href="#">All Categories</a>
                         <div class="megapanel">
                             <div class="row">
                                 <div class="col1">
@@ -45,9 +45,9 @@
                             </div>
                         </div>
                     </li>
-                    <li><a class="color4" href="#">Current Bid</a></li>				
-                    <li><a class="color6" href="#">Upcoming Bid</a></li>
-                    <li><a class="color7" href="#">Contact Us</a></li>
+                    <li><a class="color4 item-hover" href="#">Current Bid</a></li>				
+                    <li><a class="color6 item-hover" href="#">Upcoming Bid</a></li>
+                    <li><a class="color7 item-hover" href="#">Contact Us</a></li>
                 </ul>
             </div>
         </div>
