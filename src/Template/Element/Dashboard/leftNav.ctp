@@ -9,7 +9,7 @@
             <b class="arrow"></b>
         </li>
         <?php if ($loginUser['level'] < 21) { ?>
-            <li class="">
+            <li class="<?php echo (isset($leftNavActive['product']) && $leftNavActive['product']) ? "active open" : "" ?>">    
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-barcode"></i>
                     <span class="menu-text"> Products </span>
@@ -20,30 +20,13 @@
                 <b class="arrow"></b>
 
                 <ul class="submenu">
-                    <li class="">
-                        <a href="#">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            Add Product
-                        </a>
-
+                    <li class="<?php echo (isset($leftNavActive['productAdd']) && $leftNavActive['productAdd']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>Add Product', array('controller' => 'Products', 'action' => 'add'), array('escape' => false)) ?>
                         <b class="arrow"></b>
                     </li>
 
-                    <li class="">
-                        <a href="#">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            View Product
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="#">
-                            <i class="menu-icon fa fa-caret-right"></i>
-                            History of Products
-                        </a>
-
+                    <li class="<?php echo (isset($leftNavActive['productIndex']) && $leftNavActive['productIndex']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Products', array('controller' => 'Products', 'action' => 'index'), array('escape' => false)) ?>
                         <b class="arrow"></b>
                     </li>
                 </ul>

@@ -446,7 +446,7 @@ h2.head{
 	background: #CB3D27;
 }
 .sale-box span.on_sale {
-	background:#4cb1ca;
+	background:#7db122;
 	color: #FFF;
 	display: block;
 	left: -9px;
@@ -463,7 +463,7 @@ h2.head{
 	width: 140px;
 	z-index: 2;
 	text-transform:uppercase;
-	border-bottom: 2px solid #2892AC;
+	border-bottom: 2px solid #6b9c15;
 }
 .cart-left{
 	width:73.5%;
@@ -523,7 +523,7 @@ span.reducedfrom {
 	background: #CB3D27;
 }
 .sale-box1 span.on_sale {
-	background: #7DB122;
+	background: #E80000;
 	color: #FFF;
 	display: block;
 	left: -35px;
@@ -540,7 +540,7 @@ span.reducedfrom {
 	width: 140px;
 	z-index: 2;
 	text-transform:uppercase;
-	border-bottom: 2px solid #6B9C15;
+	border-bottom: 2px solid #D00000;
 }
 .top-box{
 	margin-bottom:2%;
