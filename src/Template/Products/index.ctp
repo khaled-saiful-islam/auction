@@ -34,7 +34,7 @@
                                 <tr>
                                     <td>
                                         <div class="action-buttons">
-                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-barcode"></i><span class="sr-only">Details</span>', array('controller' => 'Products', 'action' => 'view', $product->id), array('class' => 'blue bigger-140 show-details-btn', 'escape' => false)) ?>
+                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-barcode"></i><span class="sr-only">Details</span>', array('controller' => 'Products', 'action' => 'view', $product->id, 'index'), array('class' => 'blue bigger-140 show-details-btn', 'escape' => false)) ?>
                                         </div>
                                     </td>
                                     <td><?php echo h($product->code) ?></td>

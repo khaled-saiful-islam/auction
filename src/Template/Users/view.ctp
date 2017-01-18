@@ -58,7 +58,7 @@
                                             if ($user['level'] > 20 && $loginUser['level'] < 11) {
                                                 echo $this->Html->link('<i class="ace-icon fa fa-plus-circle bigger-120"></i><span>Make as an Admin</span>', array(), array('value' => $user->id, 'id' => 'makeAdmin', 'class' => 'btn btn-sm btn-block btn-success', 'escape' => false));
                                             }
-                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Profile Edit</span>', array('controller' => 'Users', 'action' => 'edit', $user->id, $loginUser['level']), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Profile Edit</span>', array('controller' => 'Users', 'action' => 'edit', $user->id, 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
                                             ?>                                           
                                         </div><!-- /.col -->
 
