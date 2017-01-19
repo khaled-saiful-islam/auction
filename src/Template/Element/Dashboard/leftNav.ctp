@@ -8,6 +8,39 @@
             <?php echo $this->Html->link('<i class="menu-icon fa fa-tachometer"></i><span class="menu-text"> Dashboard </span>', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
             <b class="arrow"></b>
         </li>
+
+        <?php if ($loginUser['level'] <= 20) { ?>
+            <li class="<?php echo (isset($leftNavActive['category']) && $leftNavActive['category']) ? "active open" : "" ?>">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-tag"></i>
+                    <span class="menu-text"> Categories </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <?php if ($loginUser['level'] <= 10) { ?>
+                        <li class="<?php echo (isset($leftNavActive['categoryAdd']) && $leftNavActive['categoryAdd']) ? "active" : "" ?>">
+                            <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>Add Category', array('controller' => 'Categories', 'action' => 'add'), array('escape' => false)) ?>
+                            <b class="arrow"></b>
+                        </li>
+                    <?php } ?>
+
+                    <li class="<?php echo (isset($leftNavActive['categoryIndex']) && $leftNavActive['categoryIndex']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Categories', array('controller' => 'Categories', 'action' => 'index'), array('escape' => false)) ?>
+                        <b class="arrow"></b>
+                    </li>
+
+<!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>All Categories', array('controller' => 'Categories', 'action' => 'all'), array('escape' => false)) ?>
+                        <b class="arrow"></b>
+                    </li>-->
+                </ul>
+            </li>
+        <?php } ?>
+
         <?php if ($loginUser['level'] < 21) { ?>
             <li class="<?php echo (isset($leftNavActive['product']) && $leftNavActive['product']) ? "active open" : "" ?>">    
                 <a href="#" class="dropdown-toggle">
