@@ -16,7 +16,7 @@ namespace App\Controller;
 class ProductsController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
-        $this->Auth->allow(['view']);
+        $this->Auth->allow(['viewFromHome']);
     }
 
     public function index() {
@@ -38,6 +38,35 @@ class ProductsController extends AppController {
 
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
+
+            if (!empty($this->request->data['image1_path']['name'])) {
+                $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
+                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($ext, $supported_ext)) {
+                    $uploadFolder = WWW_ROOT . 'img/uploaded_images/products';
+                    $file_name = time() . '_' . $this->request->data['image1_path']['name'];
+                    $uploadPath = $uploadFolder . DS . $file_name;
+                    if (!file_exists($uploadFolder)) {
+                        mkdir($uploadFolder);
+                    }
+                    if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
+                        $this->request->data['image1_path'] = $file_name;
+                    } else {
+                        $this->Flash->error('Image has not been saved', [
+                            'params' => [
+                                'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                            ]
+                        ]);
+                    }
+                } else {
+                    $this->Flash->error('Image extension was not supported', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
+            }
+
             $product = $this->Products->patchEntity($product, $this->request->data);
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.', [
@@ -58,7 +87,7 @@ class ProductsController extends AppController {
         $this->set('_serialize', ['product', 'loginUser', 'leftNavActive']);
     }
 
-    public function edit($id = null) {
+    public function edit($id = null, $from = '') {
         $leftNavActive['product'] = true;
         $leftNavActive['productIndex'] = true;
         $this->viewBuilder()->layout('dashboard');
@@ -66,7 +95,45 @@ class ProductsController extends AppController {
 
         $product = $this->Products->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if (!empty($this->request->data['image1_path']['name'])) {
+                $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
+                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($ext, $supported_ext)) {
+                    $uploadFolder = WWW_ROOT . 'img/uploaded_images/products';
+                    $file_name = time() . '_' . $this->request->data['image1_path']['name'];
+                    $uploadPath = $uploadFolder . DS . $file_name;
+                    if (!file_exists($uploadFolder)) {
+                        mkdir($uploadFolder);
+                    }
+
+                    if (!empty($product['image1_path']) && file_exists($uploadFolder . DS . $product['image1_path'])) {
+                        unlink($uploadFolder . DS . $product['image1_path']);
+                    }
+
+                    if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
+                        $this->request->data['image1_path'] = $file_name;
+                    } else {
+                        $this->Flash->error('Image has not been saved', [
+                            'params' => [
+                                'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                            ]
+                        ]);
+                    }
+                } else {
+                    $this->Flash->error('Image extension was not supported', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
+            }
+
             $product = $this->Products->patchEntity($product, $this->request->data);
+
+            if (isset($this->request->data['image1_path']['name']) && empty($this->request->data['image1_path']['name'])) {
+                unset($product['image1_path']);
+            }
 
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been Edited.', [
@@ -74,7 +141,11 @@ class ProductsController extends AppController {
                         'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
-                return $this->redirect(['action' => 'index']);
+                if ($from == 'view') {
+                    return $this->redirect(['controller' => 'Products', 'action' => 'view', $id]);
+                } else {
+                    return $this->redirect(['action' => 'index']);
+                }
             } else {
                 $this->Flash->error('The product could not be Edited.', [
                     'params' => [
@@ -92,13 +163,15 @@ class ProductsController extends AppController {
      *
      * @return void
      */
-    public function view() {
-        $home['slider'] = false;
-        $this->viewBuilder()->layout('home');
-
+    public function view($id = null) {
+        $leftNavActive['product'] = true;
+        $leftNavActive['productIndex'] = true;
+        $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
-        $this->set(compact('loginUser', 'home'));
-        $this->set('_serialize', ['loginUser', 'home']);
+
+        $product = $this->Products->get($id);
+        $this->set(compact('loginUser', 'product', 'leftNavActive'));
+        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive']);
     }
 
     public function delete($id = null) {
@@ -121,9 +194,18 @@ class ProductsController extends AppController {
         return $this->redirect(['action' => 'index']);
     }
 
+    public function viewFromHome() {
+        $home['slider'] = false;
+        $this->viewBuilder()->layout('home');
+
+        $loginUser = $this->Auth->user();
+        $this->set(compact('loginUser', 'home'));
+        $this->set('_serialize', ['loginUser', 'home']);
+    }
+
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['add', 'index', 'edit', 'delete'])) {
+        if (in_array($action, ['add', 'index', 'edit', 'view', 'delete'])) {
             return true;
         }
         return parent::isAuthorized($user);

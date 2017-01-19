@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Profile Image: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('image_path', array('id' => 'upload_file', 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
+                            <?php echo $this->Form->input('image_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,17 +60,3 @@
         </div><!-- /.page-content -->
     </div>
 </div><!-- /.main-content -->
-<script type="text/javascript">
-    $('#upload_file').ace_file_input({
-        no_file: 'No File ...',
-        btn_choose: 'Choose',
-        btn_change: 'Change',
-        droppable: false,
-        onchange: null,
-        thumbnail: false //| true | large
-                //whitelist:'gif|png|jpg|jpeg'
-                //blacklist:'exe|php'
-                //onchange:''
-                //
-    });
-</script>

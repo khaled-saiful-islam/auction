@@ -117,7 +117,7 @@ class UsersController extends AppController {
      * @return void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null, $loginID = null) {
+    public function edit($id = null, $from = null) {
         $leftNavActive['user'] = true;
         $leftNavActive['userIndex'] = true;
         $this->viewBuilder()->layout('dashboard');
@@ -171,7 +171,7 @@ class UsersController extends AppController {
                         'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
-                if ($loginID > 20) {
+                if ($from == 'view') {
                     return $this->redirect(['controller' => 'Users', 'action' => 'view', $id]);
                 } else {
                     return $this->redirect(['action' => 'index']);

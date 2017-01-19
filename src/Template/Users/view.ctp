@@ -42,7 +42,6 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-2 center">
                                             <span class="profile-picture">
-                                                <?php //echo $this->Html->image('upload_images/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
                                                 <?php
                                                 if (isset($user['image_path']) && !empty($user['image_path'])) {
                                                     echo $this->Html->image('upload_images/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]);
@@ -58,7 +57,7 @@
                                             if ($user['level'] > 20 && $loginUser['level'] < 11) {
                                                 echo $this->Html->link('<i class="ace-icon fa fa-plus-circle bigger-120"></i><span>Make as an Admin</span>', array(), array('value' => $user->id, 'id' => 'makeAdmin', 'class' => 'btn btn-sm btn-block btn-success', 'escape' => false));
                                             }
-                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Profile Edit</span>', array('controller' => 'Users', 'action' => 'edit', $user->id, $loginUser['level']), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Profile Edit</span>', array('controller' => 'Users', 'action' => 'edit', $user->id, 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
                                             ?>                                           
                                         </div><!-- /.col -->
 

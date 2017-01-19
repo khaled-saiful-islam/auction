@@ -71,6 +71,8 @@ use Cake\Routing\Router;
         <?php echo $this->Html->script('ace-elements.min.js') ?>
 
         <?php echo $this->Html->script('ace.min.js') ?>
+        
+        <?php echo $this->Html->script('spinbox.min.js') ?>
 
         <?php echo $this->Html->script('custom.js') ?>
 

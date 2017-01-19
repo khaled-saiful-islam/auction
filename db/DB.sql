@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2017 at 01:56 PM
+-- Generation Time: Jan 19, 2017 at 01:36 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -48,11 +48,12 @@ CREATE TABLE IF NOT EXISTS `products` (
   `highest_bid` int(11) DEFAULT '0',
   `highest_bidder_id` int(11) DEFAULT NULL,
   `winner_id` int(11) DEFAULT NULL,
+  `image1_path` varchar(255) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`

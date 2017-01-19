@@ -11,7 +11,7 @@
                 <div class="sale-box"><span class="on_sale title_shop">New</span></div>	
                 <div class="price">
                     <div class="cart-left">
-                        <?php echo $this->Html->link('<p class="title">Product 1</p>', array('controller' => 'Products', 'action' => 'view'), array('class' => 'item-hover','escape' => false)) ?>
+                        <?php echo $this->Html->link('<p class="title">Product 1</p>', array('controller' => 'Products', 'action' => 'viewFromHome'), array('class' => 'item-hover','escape' => false)) ?>
                         <div class="price1">
                             <span class="actual">$12.00</span>
                         </div>

@@ -37,7 +37,7 @@
                                         if ($loginUser['level'] <= $user['level']) {
                                             ?>
                                             <div class="action-buttons">
-                                                <?php echo $this->Html->link('<i class="ace-icon fa fa-user"></i><span class="sr-only">Details</span>', array('controller' => 'Users', 'action' => 'view', $user->id), array('class' => 'blue bigger-140 show-details-btn', 'escape' => false)) ?>
+                                                <?php echo $this->Html->link('<i class="ace-icon fa fa-user"></i><span class="sr-only">Details</span>', array('controller' => 'Users', 'action' => 'view', $user->id, 'index'), array('class' => 'blue bigger-140 show-details-btn', 'escape' => false)) ?>
                                             </div>
                                         <?php } ?>
                                     </td>

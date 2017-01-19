@@ -17,7 +17,7 @@
         ?>
 
         <div class="navbar-header pull-left">
-            <?php echo $this->Html->link('<small><i class="fa fa-legal"></i> Auction</small>', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>
+            <?php echo $this->Html->link('<small><i class="fa fa-legal"></i> Auction</small>', array('controller' => 'Home', 'action' => 'index'), array('class' => 'navbar-brand', 'escape' => false)) ?>
         </div>
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
