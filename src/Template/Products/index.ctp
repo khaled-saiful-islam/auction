@@ -26,6 +26,8 @@
                                 <th class="detail-col">Details</th>
                                 <th>Code</th>
                                 <th>Title</th>
+                                <th>Min Bid</th>
+                                <th>Min Increment</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -39,6 +41,8 @@
                                     </td>
                                     <td><?php echo h($product->code) ?></td>
                                     <td><?php echo h($product->title) ?></td>
+                                    <td><?php echo h($product->minimum_bid) ?></td>
+                                    <td><?php echo h($product->minimum_increment) ?></td>
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
                                             <?php

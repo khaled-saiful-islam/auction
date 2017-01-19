@@ -36,9 +36,47 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Details: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('details', array('class' => 'col-xs-10 col-sm-7', 'placeholder' => 'Details', 'label' => false, 'type' => 'textarea')); ?>
+                            <?php echo $this->Form->input('details', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Details', 'label' => false, 'type' => 'textarea')); ?>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Minimum Bid: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('minimum_bid', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Bid', 'label' => false, 'type' => 'text')); ?>
+                            <div class="space-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Minimum Increment: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
+                            <div class="space-6"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Image 1: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('image1_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
+                        </div>
+                    </div>
+<!--                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Image 2: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('image2_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Image 3: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('image3_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Image 4: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('image4_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
+                        </div>
+                    </div>-->
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
                         <div class="col-sm-9">

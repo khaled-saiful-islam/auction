@@ -42,7 +42,6 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-2 center">
                                             <span class="profile-picture">
-                                                <?php //echo $this->Html->image('upload_images/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]); ?>
                                                 <?php
                                                 if (isset($user['image_path']) && !empty($user['image_path'])) {
                                                     echo $this->Html->image('upload_images/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]);

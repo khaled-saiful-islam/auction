@@ -43,7 +43,11 @@
                                         <div class="col-xs-12 col-sm-2 center">
                                             <span class="profile-picture">
                                                 <?php
-                                                echo $this->Html->image('no-image.jpg', ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]);
+                                                if (isset($product['image1_path']) && !empty($product['image1_path'])) {
+                                                    echo $this->Html->image('uploaded_images/products/' . $product['image1_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "Product"]);
+                                                } else {
+                                                    echo $this->Html->image('no-image.jpg', ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "Product"]);
+                                                }
                                                 ?>
                                             </span>
 

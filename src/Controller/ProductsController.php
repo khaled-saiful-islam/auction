@@ -38,6 +38,35 @@ class ProductsController extends AppController {
 
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
+
+            if (!empty($this->request->data['image1_path']['name'])) {
+                $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
+                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($ext, $supported_ext)) {
+                    $uploadFolder = WWW_ROOT . 'img/uploaded_images/products';
+                    $file_name = time() . '_' . $this->request->data['image1_path']['name'];
+                    $uploadPath = $uploadFolder . DS . $file_name;
+                    if (!file_exists($uploadFolder)) {
+                        mkdir($uploadFolder);
+                    }
+                    if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
+                        $this->request->data['image1_path'] = $file_name;
+                    } else {
+                        $this->Flash->error('Image has not been saved', [
+                            'params' => [
+                                'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                            ]
+                        ]);
+                    }
+                } else {
+                    $this->Flash->error('Image extension was not supported', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
+            }
+
             $product = $this->Products->patchEntity($product, $this->request->data);
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.', [
@@ -66,7 +95,45 @@ class ProductsController extends AppController {
 
         $product = $this->Products->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if (!empty($this->request->data['image1_path']['name'])) {
+                $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
+                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
+                if (in_array($ext, $supported_ext)) {
+                    $uploadFolder = WWW_ROOT . 'img/uploaded_images/products';
+                    $file_name = time() . '_' . $this->request->data['image1_path']['name'];
+                    $uploadPath = $uploadFolder . DS . $file_name;
+                    if (!file_exists($uploadFolder)) {
+                        mkdir($uploadFolder);
+                    }
+
+                    if (!empty($product['image1_path']) && file_exists($uploadFolder . DS . $product['image1_path'])) {
+                        unlink($uploadFolder . DS . $product['image1_path']);
+                    }
+
+                    if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
+                        $this->request->data['image1_path'] = $file_name;
+                    } else {
+                        $this->Flash->error('Image has not been saved', [
+                            'params' => [
+                                'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                            ]
+                        ]);
+                    }
+                } else {
+                    $this->Flash->error('Image extension was not supported', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
+            }
+
             $product = $this->Products->patchEntity($product, $this->request->data);
+
+            if (isset($this->request->data['image1_path']['name']) && empty($this->request->data['image1_path']['name'])) {
+                unset($product['image1_path']);
+            }
 
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been Edited.', [
