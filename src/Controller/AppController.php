@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -24,8 +26,7 @@ use Cake\Controller\Controller;
  *
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller
-{
+class AppController extends Controller {
 
     /**
      * Initialization hook method.
@@ -34,8 +35,7 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function initialize()
-    {
+    public function initialize() {
         parent::initialize();
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
@@ -63,8 +63,30 @@ class AppController extends Controller
         $this->Auth->allow(['display']);
     }
 
-    public function isAuthorized($user)
-    {
+    public function isSupportedExt($filename = '') {
+        $ext = substr(strtolower(strrchr($filename, '.')), 1);
+        $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
+        if (in_array($ext, $supported_ext)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function uploadFile($uploadFolder = '', $file_name = '', $file = '') {
+        $uploadPath = $uploadFolder . DS . $file_name;
+        if (!file_exists($uploadFolder)) {
+            mkdir($uploadFolder, 0775, true);
+        }
+        if (move_uploaded_file($file, $uploadPath)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isAuthorized($user) {
         return false;
     }
+
 }

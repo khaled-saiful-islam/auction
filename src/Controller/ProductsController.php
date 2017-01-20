@@ -39,17 +39,11 @@ class ProductsController extends AppController {
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
 
+            $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
             if (!empty($this->request->data['image1_path']['name'])) {
-                $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
-                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
-                if (in_array($ext, $supported_ext)) {
-                    $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
+                if ($this->isSupportedExt($this->request->data['image1_path']['name'])) {
                     $file_name = time() . '_' . $this->request->data['image1_path']['name'];
-                    $uploadPath = $uploadFolder . DS . $file_name;
-                    if (!file_exists($uploadFolder)) {
-                        mkdir($uploadFolder, 0775, true);
-                    }
-                    if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
+                    if ($this->uploadFile($uploadFolder, $file_name, $this->request->data['image1_path']['tmp_name'])) {
                         $this->request->data['image1_path'] = $file_name;
                     } else {
                         $this->Flash->error('Image has not been saved', [
