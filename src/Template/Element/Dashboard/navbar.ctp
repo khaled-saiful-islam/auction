@@ -28,7 +28,7 @@
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <?php
                             if (isset($loginUser['image_path']) && !empty($loginUser['image_path'])) {
-                                echo $this->Html->image('upload_images/' . $loginUser['image_path'], ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
+                                echo $this->Html->image('uploaded_images/users/' . $loginUser['image_path'], ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
                             } else {
                                 echo $this->Html->image('blank_image.png', ['class' => 'nav-user-photo', 'alt' => "User's Photo"]);
                             }

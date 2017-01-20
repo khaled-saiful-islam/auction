@@ -43,11 +43,11 @@ class ProductsController extends AppController {
                 $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
                 $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($ext, $supported_ext)) {
-                    $uploadFolder = WWW_ROOT . 'img/uploaded_images/products';
+                    $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
                     $file_name = time() . '_' . $this->request->data['image1_path']['name'];
                     $uploadPath = $uploadFolder . DS . $file_name;
                     if (!file_exists($uploadFolder)) {
-                        mkdir($uploadFolder);
+                        mkdir($uploadFolder, 0775, true);
                     }
                     if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
                         $this->request->data['image1_path'] = $file_name;
@@ -100,11 +100,11 @@ class ProductsController extends AppController {
                 $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
                 $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($ext, $supported_ext)) {
-                    $uploadFolder = WWW_ROOT . 'img/uploaded_images/products';
+                    $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
                     $file_name = time() . '_' . $this->request->data['image1_path']['name'];
                     $uploadPath = $uploadFolder . DS . $file_name;
                     if (!file_exists($uploadFolder)) {
-                        mkdir($uploadFolder);
+                        mkdir($uploadFolder, 0775, true);
                     }
 
                     if (!empty($product['image1_path']) && file_exists($uploadFolder . DS . $product['image1_path'])) {
@@ -177,6 +177,12 @@ class ProductsController extends AppController {
     public function delete($id = null) {
         $this->viewBuilder()->layout('dashboard');
         $product = $this->Products->get($id);
+
+        $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
+
+        if (!empty($product['image1_path']) && file_exists($uploadFolder . DS . $product['image1_path'])) {
+            unlink($uploadFolder . DS . $product['image1_path']);
+        }
 
         if ($this->Products->delete($product)) {
             $this->Flash->success('The product has been deleted.', [

@@ -66,11 +66,11 @@ class UsersController extends AppController {
                 $ext = substr(strtolower(strrchr($this->request->data['image_path']['name'], '.')), 1);
                 $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($ext, $supported_ext)) {
-                    $uploadFolder = WWW_ROOT . 'img/upload_images';
+                    $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'users';
                     $file_name = time() . '_' . $this->request->data['image_path']['name'];
                     $uploadPath = $uploadFolder . DS . $file_name;
                     if (!file_exists($uploadFolder)) {
-                        mkdir($uploadFolder);
+                        mkdir($uploadFolder, 0775, true);
                     }
                     if (move_uploaded_file($this->request->data['image_path']['tmp_name'], $uploadPath)) {
                         $this->request->data['image_path'] = $file_name;
@@ -129,11 +129,11 @@ class UsersController extends AppController {
                 $ext = substr(strtolower(strrchr($this->request->data['image_path']['name'], '.')), 1);
                 $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
                 if (in_array($ext, $supported_ext)) {
-                    $uploadFolder = WWW_ROOT . 'img/upload_images';
+                    $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'users';
                     $file_name = time() . '_' . $this->request->data['image_path']['name'];
                     $uploadPath = $uploadFolder . DS . $file_name;
                     if (!file_exists($uploadFolder)) {
-                        mkdir($uploadFolder);
+                        mkdir($uploadFolder, 0775, true);
                     }
 
                     if (!empty($user['image_path']) && file_exists($uploadFolder . DS . $user['image_path'])) {
@@ -162,7 +162,7 @@ class UsersController extends AppController {
             if (isset($this->request->data['password']) && empty($this->request->data['password'])) {
                 unset($user['password']);
             }
-            if (isset($this->request->data['image_path']) && empty($this->request->data['image_path'])) {
+            if (isset($this->request->data['image_path']['name']) && empty($this->request->data['image_path']['name'])) {
                 unset($user['image_path']);
             }
             if ($this->Users->save($user)) {
@@ -199,8 +199,7 @@ class UsersController extends AppController {
         $this->viewBuilder()->layout('dashboard');
         $user = $this->Users->get($id);
 
-        $uploadFolder = WWW_ROOT . 'img/upload_images';
-        $uploadPath = $uploadFolder . DS . $user['image_path'];
+        $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'users';
 
         if (!empty($user['image_path']) && file_exists($uploadFolder . DS . $user['image_path'])) {
             unlink($uploadFolder . DS . $user['image_path']);

@@ -44,7 +44,7 @@
                                             <span class="profile-picture">
                                                 <?php
                                                 if (isset($user['image_path']) && !empty($user['image_path'])) {
-                                                    echo $this->Html->image('upload_images/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]);
+                                                    echo $this->Html->image('uploaded_images/users/' . $user['image_path'], ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]);
                                                 } else {
                                                     echo $this->Html->image('blank_image.png', ['id' => 'avatar2', 'class' => 'editable img-responsive', 'alt' => "User's Photo"]);
                                                 }
