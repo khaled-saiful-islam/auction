@@ -40,24 +40,26 @@ class ProductsController extends AppController {
         if ($this->request->is('post')) {
 
             $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
-            if (!empty($this->request->data['image1_path']['name'])) {
-                if ($this->isSupportedExt($this->request->data['image1_path']['name'])) {
-                    $file_name = time() . '_' . $this->request->data['image1_path']['name'];
-                    if ($this->uploadFile($uploadFolder, $file_name, $this->request->data['image1_path']['tmp_name'])) {
-                        $this->request->data['image1_path'] = $file_name;
+            for ($i = 1; $i < 5; $i++) {
+                if (!empty($this->request->data['image' . $i . '_path']['name'])) {
+                    if ($this->isSupportedExt($this->request->data['image' . $i . '_path']['name'])) {
+                        $file_name = time() . '_' . $this->request->data['image' . $i . '_path']['name'];
+                        if ($this->uploadFile($uploadFolder, $file_name, $this->request->data['image' . $i . '_path']['tmp_name'])) {
+                            $this->request->data['image' . $i . '_path'] = $file_name;
+                        } else {
+                            $this->Flash->error('Image has not been saved', [
+                                'params' => [
+                                    'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                                ]
+                            ]);
+                        }
                     } else {
-                        $this->Flash->error('Image has not been saved', [
+                        $this->Flash->error('Image extension was not supported', [
                             'params' => [
                                 'class' => 'alert alert-block alert-danger alert-custom-msg-block'
                             ]
                         ]);
                     }
-                } else {
-                    $this->Flash->error('Image extension was not supported', [
-                        'params' => [
-                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
-                        ]
-                    ]);
                 }
             }
 
@@ -90,43 +92,39 @@ class ProductsController extends AppController {
         $product = $this->Products->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
 
-            if (!empty($this->request->data['image1_path']['name'])) {
-                $ext = substr(strtolower(strrchr($this->request->data['image1_path']['name'], '.')), 1);
-                $supported_ext = array('jpg', 'jpeg', 'gif', 'png');
-                if (in_array($ext, $supported_ext)) {
-                    $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
-                    $file_name = time() . '_' . $this->request->data['image1_path']['name'];
-                    $uploadPath = $uploadFolder . DS . $file_name;
-                    if (!file_exists($uploadFolder)) {
-                        mkdir($uploadFolder, 0775, true);
-                    }
-
-                    if (!empty($product['image1_path']) && file_exists($uploadFolder . DS . $product['image1_path'])) {
-                        unlink($uploadFolder . DS . $product['image1_path']);
-                    }
-
-                    if (move_uploaded_file($this->request->data['image1_path']['tmp_name'], $uploadPath)) {
-                        $this->request->data['image1_path'] = $file_name;
+            $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
+            for ($i = 1; $i < 5; $i++) {
+                if (!empty($this->request->data['image' . $i . '_path']['name'])) {
+                    if ($this->isSupportedExt($this->request->data['image' . $i . '_path']['name'])) {
+                        $file_name = time() . '_' . $this->request->data['image' . $i . '_path']['name'];
+                        if ($this->uploadFile($uploadFolder, $file_name, $this->request->data['image' . $i . '_path']['tmp_name'])) {
+                            if (!empty($product['image' . $i . '_path']) && file_exists($uploadFolder . DS . $product['image' . $i . '_path'])) {
+                                unlink($uploadFolder . DS . $product['image' . $i . '_path']);
+                            }
+                            $this->request->data['image' . $i . '_path'] = $file_name;
+                        } else {
+                            $this->Flash->error('Image has not been saved', [
+                                'params' => [
+                                    'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                                ]
+                            ]);
+                        }
                     } else {
-                        $this->Flash->error('Image has not been saved', [
+                        $this->Flash->error('Image extension was not supported', [
                             'params' => [
                                 'class' => 'alert alert-block alert-danger alert-custom-msg-block'
                             ]
                         ]);
                     }
-                } else {
-                    $this->Flash->error('Image extension was not supported', [
-                        'params' => [
-                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
-                        ]
-                    ]);
                 }
             }
 
             $product = $this->Products->patchEntity($product, $this->request->data);
 
-            if (isset($this->request->data['image1_path']['name']) && empty($this->request->data['image1_path']['name'])) {
-                unset($product['image1_path']);
+            for ($i = 1; $i < 5; $i++) {
+                if (isset($this->request->data['image' . $i . '_path']['name']) && empty($this->request->data['image' . $i . '_path']['name'])) {
+                    unset($product['image' . $i . '_path']);
+                }
             }
 
             if ($this->Products->save($product)) {
@@ -174,8 +172,10 @@ class ProductsController extends AppController {
 
         $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
 
-        if (!empty($product['image1_path']) && file_exists($uploadFolder . DS . $product['image1_path'])) {
-            unlink($uploadFolder . DS . $product['image1_path']);
+        for ($i = 1; $i < 5; $i++) {
+            if (!empty($product['image' . $i . '_path']) && file_exists($uploadFolder . DS . $product['image' . $i . '_path'])) {
+                unlink($uploadFolder . DS . $product['image' . $i . '_path']);
+            }
         }
 
         if ($this->Products->delete($product)) {

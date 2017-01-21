@@ -1,4 +1,3 @@
-
 <div class="main-content">
     <div class="main-content-inner">        
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
@@ -59,7 +58,7 @@
                             <?php echo $this->Form->input('image1_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
                         </div>
                     </div>
-<!--                    <div class="form-group">
+                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Image 2: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('image2_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
@@ -76,7 +75,7 @@
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('image4_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
                         <div class="col-sm-9">
@@ -93,3 +92,19 @@
         </div><!-- /.page-content -->
     </div>
 </div><!-- /.main-content -->
+
+<script type="text/javascript">
+    $('.upload_file').ace_file_input({
+        no_file: 'No File ...',
+        btn_choose: 'Choose',
+        btn_change: 'Change',
+        droppable: false,
+        onchange: null,
+        thumbnail: false //| true | large
+                //whitelist:'gif|png|jpg|jpeg'
+                //blacklist:'exe|php'
+                //onchange:''
+                //
+    });
+    $('.spin-box-bid').ace_spinner({value: 0, min: 0, max: 90000, btn_up_class: 'btn-info', btn_down_class: 'btn-info'});
+</script>
