@@ -32,6 +32,14 @@
                             <?php echo $this->Form->input('title', array('pattern' => '.{4,}', 'title' => 'Minimum length 4', 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Category: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('category_string', array('multiple' => true, 'id' => 'multiple_tag', 'options' => (isset($tag) && !empty($tag)) ? $tag : array(), 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Category', 'label' => false, 'type' => 'select', 'required' => true)); ?>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Details: </label>
                         <div class="col-sm-9">
@@ -106,5 +114,11 @@
                 //onchange:''
                 //
     });
+
     $('.spin-box-bid').ace_spinner({value: 0, min: 0, max: 90000, btn_up_class: 'btn-info', btn_down_class: 'btn-info'});
+
+    $("#multiple_tag").select2({
+        placeholder: "Select a Category",
+        allowClear: true
+    });
 </script>

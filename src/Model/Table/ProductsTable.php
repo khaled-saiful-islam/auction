@@ -26,6 +26,11 @@ class ProductsTable extends Table {
         $this->displayField('title');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
+        $this->belongsToMany('Categories', [
+            'foreignKey' => 'product_id',
+            'targetForeignKey' => 'category_id',
+            'joinTable' => 'products_categories'
+        ]);
     }
 
     public function validationDefault(Validator $validator) {
@@ -52,6 +57,38 @@ class ProductsTable extends Table {
     public function buildRules(RulesChecker $rules) {
         $rules->add($rules->isUnique(['code']));
         return $rules;
+    }
+
+    public function beforeSave($event, $entity, $options) {
+        if ($entity->category_string) {
+            $entity->categories = $this->_buildCategories($entity->category_string);
+        }
+    }
+
+    protected function _buildCategories($categoryString) {
+        $addCategory = [];
+        $query = $this->Categories->find()
+                ->where(['Categories.name IN' => $categoryString]);
+
+        // Remove existing tags from the list of new tags.
+        foreach ($query->extract('name') as $existing) {
+            $index = array_search($existing, $categoryString);
+            if ($index !== false) {
+                unset($categoryString[$index]);
+            }
+        }
+
+        // Add existing tags.
+        foreach ($query as $tag) {
+            $addCategory[] = $tag;
+        }
+
+        // Add new tags.
+        foreach ($categoryString as $tag) {
+            $addCategory[] = $this->Categories->newEntity(['name' => $tag]);
+        }
+
+        return $addCategory;
     }
 
 }

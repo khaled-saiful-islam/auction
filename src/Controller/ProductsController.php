@@ -36,6 +36,13 @@ class ProductsController extends AppController {
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
+        $this->loadModel('Categories');
+        $categories = $this->Categories->find('all');
+        $tag = array();
+        foreach ($categories as $category) {
+            $tag[$category->name] = $category->name;
+        }
+
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
 
@@ -64,6 +71,7 @@ class ProductsController extends AppController {
             }
 
             $product = $this->Products->patchEntity($product, $this->request->data);
+
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.', [
                     'params' => [
@@ -79,8 +87,8 @@ class ProductsController extends AppController {
                 ]);
             }
         }
-        $this->set(compact('product', 'loginUser', 'leftNavActive'));
-        $this->set('_serialize', ['product', 'loginUser', 'leftNavActive']);
+        $this->set(compact('product', 'loginUser', 'leftNavActive', 'tag'));
+        $this->set('_serialize', ['product', 'loginUser', 'leftNavActive', 'tag']);
     }
 
     public function edit($id = null, $from = '') {
@@ -89,7 +97,20 @@ class ProductsController extends AppController {
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
-        $product = $this->Products->get($id, ['contain' => []]);
+        $this->loadModel('Categories');
+        $categories = $this->Categories->find('all');
+        $tag = array();
+        foreach ($categories as $category) {
+            $tag[$category->name] = $category->name;
+        }
+
+        $product = $this->Products->get($id, ['contain' => ['Categories']]);
+
+        $selectedTag = array();
+        foreach ($product->categories as $category) {
+            $selectedTag[$category->name] = $category->name;
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             $uploadFolder = WWW_ROOT . 'img' . DS . 'uploaded_images' . DS . 'products';
@@ -146,8 +167,8 @@ class ProductsController extends AppController {
                 ]);
             }
         }
-        $this->set(compact('product', 'leftNavActive', 'loginUser'));
-        $this->set('_serialize', ['product', 'leftNavActive', 'loginUser']);
+        $this->set(compact('product', 'leftNavActive', 'loginUser', 'tag', 'selectedTag'));
+        $this->set('_serialize', ['product', 'leftNavActive', 'loginUser', 'tag', 'selectedTag']);
     }
 
     /**

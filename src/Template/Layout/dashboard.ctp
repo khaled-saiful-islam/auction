@@ -51,6 +51,8 @@ use Cake\Routing\Router;
         <!--[if lte IE 9]>
         <?php echo $this->Html->css('ace-ie.min.css') ?>
         <![endif]-->
+        
+        <?php echo $this->Html->css('select2.min.css') ?>
 
         <?php echo $this->Html->css('custom.css') ?>
 
@@ -73,6 +75,8 @@ use Cake\Routing\Router;
         <?php echo $this->Html->script('ace.min.js') ?>
         
         <?php echo $this->Html->script('spinbox.min.js') ?>
+        
+        <?php echo $this->Html->script('select2.full.min.js') ?>
 
         <?php echo $this->Html->script('custom.js') ?>
 

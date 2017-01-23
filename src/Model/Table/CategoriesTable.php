@@ -17,6 +17,12 @@ class CategoriesTable extends Table {
         $this->table('Categories');
         $this->displayField('name');
         $this->primaryKey('id');
+        $this->addBehavior('Timestamp');
+        $this->belongsToMany('Products', [
+            'foreignKey' => 'category_id',
+            'targetForeignKey' => 'product_id',
+            'joinTable' => 'products_categories'
+        ]);
     }
 
     public function validationDefault(Validator $validator) {
@@ -31,9 +37,10 @@ class CategoriesTable extends Table {
 
         return $validator;
     }
-    
+
     public function buildRules(RulesChecker $rules) {
         $rules->add($rules->isUnique(['name']));
         return $rules;
     }
+
 }

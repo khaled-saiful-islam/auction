@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2017 at 09:38 AM
+-- Generation Time: Jan 23, 2017 at 01:24 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,7 +64,16 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'Computer Accessories', '2017-01-23 12:21:51', '2017-01-23 12:21:51'),
+(2, 'Home Appliance', '2017-01-23 12:22:44', '2017-01-23 12:22:44'),
+(3, 'Sports', '2017-01-23 12:23:23', '2017-01-23 12:23:23');
 
 -- --------------------------------------------------------
 
@@ -90,23 +99,20 @@ CREATE TABLE IF NOT EXISTS `products` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_categories`
+-- Table structure for table `products_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `product_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `products_categories` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `product_id` (`product_id`,`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`product_id`,`category_id`),
+  KEY `category_key` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -132,6 +138,17 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `level`, `image_path`, `created`, `modified`) VALUES
 (1, 'Khaled Saiful Islam', 'khaled_sfl@yahoo.com', '$2y$10$mC71iGlr.MzYoueQDoOmcOHIq3621JHfUhLy.jT2fvH2fx.6ACwou', 1, '', '2016-12-01 03:10:35', '2017-01-05 11:39:11');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  ADD CONSTRAINT `products_categories_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `products_categories_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
