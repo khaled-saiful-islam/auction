@@ -53,6 +53,8 @@ use Cake\Routing\Router;
         <![endif]-->
         
         <?php echo $this->Html->css('select2.min.css') ?>
+        
+        <?php echo $this->Html->css('colorbox.min.css') ?>
 
         <?php echo $this->Html->css('custom.css') ?>
 
@@ -77,6 +79,8 @@ use Cake\Routing\Router;
         <?php echo $this->Html->script('spinbox.min.js') ?>
         
         <?php echo $this->Html->script('select2.full.min.js') ?>
+        
+        <?php echo $this->Html->script('jquery.colorbox.min.js') ?>
 
         <?php echo $this->Html->script('custom.js') ?>
 

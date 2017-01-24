@@ -86,54 +86,82 @@
                                                 </div>
 
                                                 <div class="profile-info-row">
-                                                    <div class="profile-info-name"> Joined </div>
+                                                    <div class="profile-info-name"> Initial Bid </div>
 
                                                     <div class="profile-info-value">
-                                                        <span>2010/06/20</span>
+                                                        <span><?php echo $product['minimum_bid'] . " BDT" ?></span>
                                                     </div>
                                                 </div>
 
                                                 <div class="profile-info-row">
-                                                    <div class="profile-info-name"> Last Online </div>
+                                                    <div class="profile-info-name"> Minimum Bid </div>
 
                                                     <div class="profile-info-value">
-                                                        <span>3 hours ago</span>
+                                                        <span><?php echo $product['minimum_increment'] . " BDT"; ?></span>
                                                     </div>
                                                 </div>
+                                                <?php if (isset($product['highest_bid']) && !empty($product['highest_bid'])) { ?>
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name"> Highest Bid </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
+                                                        </div>
+                                                    </div>
+                                                <?php } if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
+                                                    <div class="profile-info-row">
+                                                        <div class="profile-info-name"> Winner </div>
+
+                                                        <div class="profile-info-value">
+                                                            <span><?php echo $product['winner_id'] . " BDT"; ?></span>
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
 
                                             <div class="hr hr-8 dotted"></div>
 
-                                            <div class="profile-user-info">
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name"> Website </div>
+                                            <div>
+                                                <ul class="ace-thumbnails clearfix">
+                                                    <li>
+                                                        <a href='<?php echo "uploaded_images/products/"; ?>' data-rel="colorbox">
+                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image1_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
+                                                            <div class="text">
+                                                                <div class="inner">Sample Caption on Hover</div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
 
-                                                    <div class="profile-info-value">
-                                                        <a href="#" target="_blank">www.alexdoe.com</a>
-                                                    </div>
-                                                </div>
+                                                    <li>
+                                                        <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
+                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image2_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
+                                                            <div class="text">
+                                                                <div class="inner">Sample Caption on Hover</div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
 
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name">
-                                                        <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
-                                                    </div>
+                                                    <li>
+                                                        <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
+                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image3_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
+                                                            <div class="text">
+                                                                <div class="inner">Sample Caption on Hover</div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
 
-                                                    <div class="profile-info-value">
-                                                        <a href="#">Find me on Facebook</a>
-                                                    </div>
-                                                </div>
+                                                    <li>
+                                                        <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
+                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image4_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
+                                                            <div class="text">
+                                                                <div class="inner">Sample Caption on Hover</div>
+                                                            </div>
+                                                        </a>
+                                                    </li>                                                
+                                                </ul>
+                                            </div><!-- PAGE CONTENT ENDS -->
 
-                                                <div class="profile-info-row">
-                                                    <div class="profile-info-name">
-                                                        <i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
-                                                    </div>
-
-                                                    <div class="profile-info-value">
-                                                        <a href="#">Follow me on Twitter</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- /.col -->
+                                        </div><!-- /.col -->                                        
                                     </div><!-- /.row -->
                                 </div><!-- /#home -->
 
@@ -150,6 +178,38 @@
     </div>
 </div><!-- /.main-content -->
 
-<div id="loading_text">
-    <?php echo $this->Html->image('ajax-loader.gif'); ?>
-</div>
+<script type="text/javascript">
+    jQuery(function ($) {
+        var $overflow = '';
+        var colorbox_params = {
+            rel: 'colorbox',
+            reposition: true,
+            scalePhotos: true,
+            scrolling: false,
+            previous: '<i class="ace-icon fa fa-arrow-left"></i>',
+            next: '<i class="ace-icon fa fa-arrow-right"></i>',
+            close: '&times;',
+            current: '{current} of {total}',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            onOpen: function () {
+                $overflow = document.body.style.overflow;
+                document.body.style.overflow = 'hidden';
+            },
+            onClosed: function () {
+                document.body.style.overflow = $overflow;
+            },
+            onComplete: function () {
+                $.colorbox.resize();
+            }
+        };
+
+        $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+        $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+
+
+        $(document).one('ajaxloadstart.page', function (e) {
+            $('#colorbox, #cboxOverlay').remove();
+        });
+    })
+</script>
