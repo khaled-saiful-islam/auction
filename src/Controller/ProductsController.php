@@ -7,6 +7,7 @@
  */
 
 namespace App\Controller;
+use Cake\Routing\Router;
 
 /**
  * Description of ProductsController
@@ -183,8 +184,11 @@ class ProductsController extends AppController {
         $loginUser = $this->Auth->user();
 
         $product = $this->Products->get($id);
-        $this->set(compact('loginUser', 'product', 'leftNavActive'));
-        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive']);
+        
+        $path = Router::url('/', true);
+        
+        $this->set(compact('loginUser', 'product', 'leftNavActive', 'path'));
+        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive', 'path']);
     }
 
     public function delete($id = null) {

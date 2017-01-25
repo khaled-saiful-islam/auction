@@ -124,37 +124,37 @@
                                             <div>
                                                 <ul class="ace-thumbnails clearfix">
                                                     <li>
-                                                        <a href='<?php echo "uploaded_images/products/"; ?>' data-rel="colorbox">
+                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image1_path']; ?>' data-rel="colorbox">
                                                             <?php echo $this->Html->image('uploaded_images/products/' . $product['image1_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
                                                             <div class="text">
-                                                                <div class="inner">Sample Caption on Hover</div>
+                                                                <div class="inner"><?php echo $product['title']; ?></div>
                                                             </div>
                                                         </a>
                                                     </li>
 
                                                     <li>
-                                                        <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
+                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image2_path']; ?>' data-rel="colorbox">
                                                             <?php echo $this->Html->image('uploaded_images/products/' . $product['image2_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
                                                             <div class="text">
-                                                                <div class="inner">Sample Caption on Hover</div>
+                                                                <div class="inner"><?php echo $product['title']; ?></div>
                                                             </div>
                                                         </a>
                                                     </li>
 
                                                     <li>
-                                                        <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
+                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image3_path']; ?>' data-rel="colorbox">
                                                             <?php echo $this->Html->image('uploaded_images/products/' . $product['image3_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
                                                             <div class="text">
-                                                                <div class="inner">Sample Caption on Hover</div>
+                                                                <div class="inner"><?php echo $product['title']; ?></div>
                                                             </div>
                                                         </a>
                                                     </li>
 
                                                     <li>
-                                                        <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
+                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image4_path']; ?>' data-rel="colorbox">
                                                             <?php echo $this->Html->image('uploaded_images/products/' . $product['image4_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
                                                             <div class="text">
-                                                                <div class="inner">Sample Caption on Hover</div>
+                                                                <div class="inner"><?php echo $product['title']; ?></div>
                                                             </div>
                                                         </a>
                                                     </li>                                                
