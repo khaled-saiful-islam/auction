@@ -61,11 +61,15 @@
                                         <div class="col-xs-12 col-sm-9">
                                             <h4 class="blue">
                                                 <span class="middle"><?php echo $product['title'] ?></span>
-
-                                                <span class="label label-success arrowed-in-right">
-                                                    <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
-                                                    New Product
-                                                </span>
+                                                <?php if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
+                                                    <span class="label label-danger arrowed-in-right">
+                                                        Sold Product
+                                                    </span>
+                                                <?php } else { ?>
+                                                    <span class="label label-success arrowed-in-right">
+                                                        New Product
+                                                    </span>
+                                                <?php } ?>
                                             </h4>
 
                                             <div class="profile-user-info">
@@ -121,43 +125,24 @@
 
                                             <div class="hr hr-8 dotted"></div>
 
-                                            <div>
+                                            <div style="margin-top: 20px;">
                                                 <ul class="ace-thumbnails clearfix">
-                                                    <li>
-                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image1_path']; ?>' data-rel="colorbox">
-                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image1_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
-                                                            <div class="text">
-                                                                <div class="inner"><?php echo $product['title']; ?></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image2_path']; ?>' data-rel="colorbox">
-                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image2_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
-                                                            <div class="text">
-                                                                <div class="inner"><?php echo $product['title']; ?></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image3_path']; ?>' data-rel="colorbox">
-                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image3_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
-                                                            <div class="text">
-                                                                <div class="inner"><?php echo $product['title']; ?></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image4_path']; ?>' data-rel="colorbox">
-                                                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image4_path'], ['style' => 'width: 150px; height: 150px;', 'alt' => "150x150"]); ?>
-                                                            <div class="text">
-                                                                <div class="inner"><?php echo $product['title']; ?></div>
-                                                            </div>
-                                                        </a>
-                                                    </li>                                                
+                                                    <?php
+                                                    for ($i = 1; $i < 5; $i++) {
+                                                        if (isset($product['image' . $i . '_path']) && !empty($product['image' . $i . '_path'])) {
+                                                            ?>
+                                                            <li>
+                                                                <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image' . $i . '_path']; ?>' data-rel="colorbox">
+                                                                    <?php echo $this->Html->image('uploaded_images/products/' . $product['image' . $i . '_path'], ['style' => 'width: 165px; height: 130px;', 'alt' => "165x130"]); ?>
+                                                                    <div class="text">
+                                                                        <div class="inner"><?php echo $product['title']; ?></div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>                                                    
                                                 </ul>
                                             </div><!-- PAGE CONTENT ENDS -->
 

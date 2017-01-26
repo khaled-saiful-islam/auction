@@ -69,21 +69,18 @@
                                                 if ($user['level'] > 20) {
                                                     ?>
                                                     <span class="label label-success arrowed-in-right">
-                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
                                                         User
                                                     </span>
                                                     <?php
                                                 } else if ($user['level'] > 10) {
                                                     ?>
                                                     <span class="label label-warning arrowed-in-right">
-                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
                                                         Admin
                                                     </span>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <span class="label label-danger arrowed-in-right">
-                                                        <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
                                                         Super Admin
                                                     </span>
                                                     <?php

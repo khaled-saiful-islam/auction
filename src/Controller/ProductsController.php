@@ -7,7 +7,6 @@
  */
 
 namespace App\Controller;
-use Cake\Routing\Router;
 
 /**
  * Description of ProductsController
@@ -71,6 +70,7 @@ class ProductsController extends AppController {
                 }
             }
 
+            $product['created_by'] = $loginUser['id'];
             $product = $this->Products->patchEntity($product, $this->request->data);
 
             if ($this->Products->save($product)) {
@@ -94,7 +94,6 @@ class ProductsController extends AppController {
 
     public function edit($id = null, $from = '') {
         $leftNavActive['product'] = true;
-        $leftNavActive['productIndex'] = true;
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
@@ -179,16 +178,13 @@ class ProductsController extends AppController {
      */
     public function view($id = null) {
         $leftNavActive['product'] = true;
-        $leftNavActive['productIndex'] = true;
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
         $product = $this->Products->get($id);
-        
-        $path = Router::url('/', true);
-        
-        $this->set(compact('loginUser', 'product', 'leftNavActive', 'path'));
-        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive', 'path']);
+
+        $this->set(compact('loginUser', 'product', 'leftNavActive'));
+        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive']);
     }
 
     public function delete($id = null) {
