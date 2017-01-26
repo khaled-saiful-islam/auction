@@ -19,9 +19,29 @@
                 </div>
                 <!-- /Texts container -->
             </div>
-            <!-- /Duplicate to create more slides -->
+
             <div class="slide">
-                <?php echo $this->Html->image('banner1.jpg', ['alt' => ""]); ?>
+                <?php echo $this->Html->image('banner3.jpg', ['alt' => ""]); ?>
+                <div class="slide_content">
+                    <div class="slide_content_wrap">
+                        <h4 class="title">consectetuer adipiscing </h4>
+                        <p class="description">diam nonummy nibh euismod</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <?php echo $this->Html->image('banner4.jpg', ['alt' => ""]); ?>
+                <div class="slide_content">
+                    <div class="slide_content_wrap">
+                        <h4 class="title">consectetuer adipiscing </h4>
+                        <p class="description">diam nonummy nibh euismod</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <?php echo $this->Html->image('banner5.jpg', ['alt' => ""]); ?>
                 <div class="slide_content">
                     <div class="slide_content_wrap">
                         <h4 class="title">consectetuer adipiscing </h4>

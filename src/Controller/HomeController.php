@@ -22,10 +22,17 @@ class HomeController extends AppController {
     public function index() {
         $home['slider'] = true;
         $this->viewBuilder()->layout('home');
-
         $loginUser = $this->Auth->user();
-        $this->set(compact('loginUser', 'home'));
-        $this->set('_serialize', ['loginUser', 'home']);
+        
+        $this->loadModel('Products');
+        $products = $this->Products->find('all');
+        
+        foreach($products as $product){
+            //pr($product);
+        }
+        
+        $this->set(compact('loginUser', 'home', 'products'));
+        $this->set('_serialize', ['loginUser', 'home', 'products']);
     }
 
 }

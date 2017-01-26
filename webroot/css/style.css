@@ -374,7 +374,7 @@ ul.last li a:hover{
 	width:77.1%;
 }
 .span_1_of_3 {
-	width:31.2%;
+	width:22.2%;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	-o-transition: all 0.4s ease;
@@ -387,7 +387,7 @@ ul.last li a:hover{
 .col_1_of_3{
 	display: block;
 	float:left;
-	margin: 1% 0 1% 2.6%;
+        margin: 0 2% 2% 0;
 	box-shadow:0 0 5px #aaa;
 	-webkit-box-shadow:0 0 5px #aaa;
 	-moz-box-shadow:0 0 5px #aaa;
@@ -413,7 +413,7 @@ ul.last li a:hover{
 }
 .col_1_of_3:first-child { margin-left: 0; }
 h2.head{
-	font-size: 1.7em;
+	font-size: 16px;
 	text-transform: uppercase;
 	color: #777;
 	margin-bottom: 10px;
@@ -422,7 +422,7 @@ h2.head{
 	padding:10px 0 0 0;
 }
 .inner_content {
-	padding:10px;
+	padding:5px;
 	position: relative;
 }
 .product_image {
@@ -471,8 +471,8 @@ h2.head{
 	margin-right: 2.6%;
 }
 p.title{
-	color: #777;
-	font-size:1.3em;
+	/*color: #777;*/
+	font-size:14px;
 }
 p.title a:hover{
 	color:#7DB122;
@@ -491,7 +491,7 @@ p.title a:hover{
 }
 .span_1_of_3:hover .cart-right{
 	float: right;
-	background: url(../img/cart3.png)2px 0px #000;
+	background: url(../img/cart2.png)2px 0px #000;
 	border-radius: 100px;
 	width: 40px;
 	height: 40px;
