@@ -1,40 +1,32 @@
-
-
 <div class="mens">
     <div class="cont span_2_of_3">
         <div class="grid images_3_of_2">
             <ul id="etalage">
-                <li>
-                    <a href="optionallink.html">
-                        <?php echo $this->Html->image('s-img.jpg', ['class' => "etalage_thumb_image img-responsive"]); ?>
-                        <?php echo $this->Html->image('s1.jpg', ['class' => "etalage_source_image img-responsive"]); ?>
-                    </a>
-                </li>
-                <li>
-                    <?php echo $this->Html->image('s-img.jpg', ['class' => "etalage_thumb_image img-responsive"]); ?>
-                    <?php echo $this->Html->image('s1.jpg', ['class' => "etalage_source_image img-responsive"]); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->image('s-img.jpg', ['class' => "etalage_thumb_image img-responsive"]); ?>
-                    <?php echo $this->Html->image('s1.jpg', ['class' => "etalage_source_image img-responsive"]); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->image('s-img.jpg', ['class' => "etalage_thumb_image img-responsive"]); ?>
-                    <?php echo $this->Html->image('s1.jpg', ['class' => "etalage_source_image img-responsive"]); ?>
-                </li>
+                <?php
+                for ($i = 1; $i < 5; $i++) {
+                    if (isset($product['image' . $i . '_path']) && !empty($product['image' . $i . '_path'])) {
+                        ?>
+                        <li>
+                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image' . $i . '_path'], ['class' => "etalage_thumb_image img-responsive"]); ?>
+                            <?php echo $this->Html->image('uploaded_images/products/' . $product['image' . $i . '_path'], ['class' => "etalage_source_image img-responsive"]); ?>
+                        </li>
+                        <?php
+                    }
+                }
+                ?>
             </ul>
             <div class="clearfix"></div>
         </div>
         <div class="desc1 span_3_of_2">
-            <h3 class="m_3">Product 1</h3>
-            <p class="m_5">Rs. 888 <span class="reducedfrom">Rs. 999</span></p>
+            <h3 class="m_3"><?php echo $product['title'] ?></h3>
+            <p class="m_5"><?php echo $product['minimum_bid'] . " BDT" ?></p>
             <div class="btn_form">
                 <form>
                     <input type="submit" value="Bid" title="">
                 </form>
             </div>
-            <span class="m_link"><a href="#">login to save in wishlist</a> </span>
-            <p class="m_text2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit </p>
+            <span class="m_link"><?php echo $this->Html->link('login to save in wishlist', array('controller' => 'Users', 'action' => 'login')) ?></span>
+            <p class="m_text2"><?php echo $product['details'] ?></p>
         </div>
         <div class="clear"></div>	
         <div class="clients">

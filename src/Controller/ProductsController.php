@@ -215,13 +215,15 @@ class ProductsController extends AppController {
         return $this->redirect(['action' => 'index']);
     }
 
-    public function viewFromHome() {
+    public function viewFromHome($id = null) {
         $home['slider'] = false;
         $this->viewBuilder()->layout('home');
-
         $loginUser = $this->Auth->user();
-        $this->set(compact('loginUser', 'home'));
-        $this->set('_serialize', ['loginUser', 'home']);
+
+        $product = $this->Products->get($id);
+
+        $this->set(compact('loginUser', 'home', 'product'));
+        $this->set('_serialize', ['loginUser', 'home', 'product']);
     }
 
     public function isAuthorized($user) {
