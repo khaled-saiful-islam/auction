@@ -18,17 +18,101 @@
             <div class="clearfix"></div>
         </div>
         <div class="desc1 span_3_of_2">
-            <h3 class="m_3"><?php echo $product['title'] ?></h3>
-            <p class="m_5"><?php echo $product['minimum_bid'] . " BDT" ?></p>
-            <div class="btn_form">
-                <form>
-                    <input type="submit" value="Bid" title="">
-                </form>
+            <h4 class="blue">
+                <span class="middle"><?php echo $product['title'] ?></span>
+                <?php if (isset($loginUser['id']) && !empty($loginUser['id'])) { ?>
+                    <?php echo $this->Html->link('<span class="label label-success arrowed-in arrowed-in-right">Bookmark</span>', array('controller' => 'Users', 'action' => 'login'), array('escape' => false)) ?>
+                <?php } ?>
+            </h4>
+
+            <div class="profile-user-info">
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Code </div>
+
+                    <div class="profile-info-value">
+                        <span><?php echo $product['code'] ?></span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Description </div>
+
+                    <div class="profile-info-value">
+                        <span><?php echo $product['details'] ?></span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Initial Bid </div>
+
+                    <div class="profile-info-value">
+                        <span><?php echo $product['minimum_bid'] . " BDT" ?></span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Minimum Bid </div>
+
+                    <div class="profile-info-value">
+                        <span><?php echo $product['minimum_increment'] . " BDT"; ?></span>
+                    </div>
+                </div>
+                <?php if (isset($product['highest_bid']) && !empty($product['highest_bid'])) { ?>
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Highest Bid </div>
+
+                        <div class="profile-info-value">
+                            <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
+                        </div>
+                    </div>
+                <?php } if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Winner </div>
+
+                        <div class="profile-info-value">
+                            <span><?php echo $product['winner_id'] . " BDT"; ?></span>
+                        </div>
+                    </div>
+                <?php } ?>
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Current Bid </div>
+
+                    <div class="profile-info-value">
+                        <span><?php echo $product['minimum_bid'] . " BDT"; ?></span>
+                    </div>
+                </div>
             </div>
-            <span class="m_link"><?php echo $this->Html->link('login to save in wishlist', array('controller' => 'Users', 'action' => 'login')) ?></span>
-            <p class="m_text2"><?php echo $product['details'] ?></p>
+            <div class="hr hr-8 dotted"></div>
+
+            <?php
+            if (isset($loginUser['id']) && !empty($loginUser['id'])) {
+                ?>
+                <div style="margin-top: 30px;">
+                    <?php echo $this->Form->create('Bid', array('class' => 'form-horizontal', 'role' => 'form')) ?>
+                    <div class="form-group">
+                        <label style="color: #667e99; font-size: 13px;" class="col-sm-4 control-label no-padding-right" > Minimum Increment: </label>
+                        <div class="col-sm-5">
+                            <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
+                            <div class="space-6"></div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="Submit" class="btn btn-white btn-info btn-bold">
+                                <i class="ace-icon fa fa-legal bigger-120 blue"></i>
+                                Bid
+                            </button>                   
+                            <div class="space-6"></div>
+                        </div>
+                    </div>
+                    <?php echo $this->Form->end() ?>
+                </div>
+                <?php
+            } else {
+                echo $this->Html->link('Login for Bid', array('controller' => 'Users', 'action' => 'login'), array('class' => 'custom_bid_button'));
+            }
+            ?>
         </div>
-        <div class="clear"></div>	
+        <div class="clear"></div>
+
         <div class="clients">
             <h3 class="m_3">Similar Products: </h3>
             <ul id="flexiselDemo3">
@@ -72,12 +156,13 @@
         });
 
         $('#etalage').etalage({
-            thumb_image_width: 360,
-            thumb_image_height: 360,
+            thumb_image_width: 260,
+            thumb_image_height: 260,
             source_image_width: 900,
             source_image_height: 900,
             show_hint: true
         });
 
     });
+    $('.spin-box-bid').ace_spinner({value: 0, min: 0, max: 90000, btn_up_class: 'btn-info', btn_down_class: 'btn-info'});
 </script>

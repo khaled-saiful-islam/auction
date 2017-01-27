@@ -363,7 +363,7 @@ ul.last li a:hover{
 .cont{
 	display: block;
 	float:left;
-	margin: 1% 0 1% 0;
+	margin: 2% 0 2% 0;
 }
 .rsidebar{
 	display: block;
@@ -1572,7 +1572,8 @@ ul.kids li a:hover{
 	color:#000;
 }
 .mens{
-	border-top:1px solid #ddd;
+	border-top:2px solid #ddd;
+        margin-top: 10px;
 }
 ul.color-list{
 	margin:20px;
@@ -1658,9 +1659,9 @@ span.color7{
 	margin:0;
 }
 .images_3_of_2 {
-	width: 41.2%;
+	width: 35.2%;
 	float: left;
-	margin-right: 2.6%;
+	/*margin-right: 2.6%;*/
 }
 #container {
 	margin: 0 auto;
@@ -1709,7 +1710,7 @@ ul.breadcrumb a:hover{
 	float: right;
 }
 .span_3_of_2 {
-	width: 51.3333%;
+	width: 56.3333%;
 }
 h3.m_3{
 	color:#555;
@@ -2109,7 +2110,7 @@ ul.delivery-list li a:hover{
 	outline: none;
 }
 .text input[type="text"], .text textarea {
-	width: 98.3%;
+/*	width: 98.3%;
 	font-size:0.85em;
 	margin: 10px 0;
 	border: 1px solid #EEE;
@@ -2118,7 +2119,7 @@ ul.delivery-list li a:hover{
 	outline: none;
 	margin-bottom: 25px;
 	height: 150px;
-	padding:10px 9px;
+	padding:10px 9px;*/
 }
 .submit input[type="submit"] {
 	padding:10px 30px;

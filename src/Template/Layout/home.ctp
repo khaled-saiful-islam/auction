@@ -47,6 +47,9 @@ use Cake\Routing\Router;
         <?php echo $this->Html->script("jquery.nivo.slider.js"); ?>
         <?php echo $this->Html->script("jquery.etalage.min.js"); ?>
         <?php echo $this->Html->script("jquery.flexisel.js"); ?>
+        <?php echo $this->Html->script('ace.min.js') ?>
+        <?php echo $this->Html->script('ace-elements.min.js') ?>
+        <?php echo $this->Html->script('spinbox.min.js') ?>
         <?php echo $this->Html->script("custom.js"); ?>
 
         <?php $path = Router::url('/', true); ?>

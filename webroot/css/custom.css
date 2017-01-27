@@ -40,3 +40,25 @@ and open the template in the editor.
     transform: translateY(10px);
     transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
 }
+
+.custom_bid_button {
+	font-family: 'Exo 2', sans-serif;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	display: inline-block;
+	font-size: 1em;
+	padding: 10px 34px;
+	background:#4CB1CA;
+	color: #FFF;
+	text-transform: uppercase;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.custom_bid_button:hover{
+	background:#555;
+        text-decoration: none;
+        color: #FFF;
+}

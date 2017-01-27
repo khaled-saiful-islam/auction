@@ -18,7 +18,7 @@
 /* Large thumbnail: */
 #etalage .etalage_thumb{
 	background: white url(../img/ajax-loader.gif) center no-repeat;
-	  border: 1px solid #F0F0F0;
+	  border: 1px solid #337ab7;
 	  width: 100%;
 }
 
@@ -28,7 +28,7 @@
 /* Small thumbnails: */
 #etalage .etalage_small_thumbs li{
 	
-	border: 1px solid #ddd;
+	border: 1px solid #337ab7;
 	margin: 10px;
 	
 	cursor:pointer;
