@@ -20,9 +20,11 @@
         <div class="desc1 span_3_of_2">
             <h4 class="blue">
                 <span class="middle"><?php echo $product['title'] ?></span>
-                <?php if (isset($loginUser['id']) && !empty($loginUser['id'])) { ?>
-                    <?php echo $this->Html->link('<span class="label label-success arrowed-in arrowed-in-right">Bookmark</span>', array('controller' => 'Users', 'action' => 'login'), array('escape' => false)) ?>
-                <?php } ?>
+                <?php
+                if (isset($loginUser['id']) && !empty($loginUser['id'])) {
+                    echo $this->Html->link('<span class="label label-success arrowed-in arrowed-in-right">Bookmark</span>', array(), array('value' => $product['id'], 'id' => 'addBookmark', 'escape' => false));
+                }
+                ?>
             </h4>
 
             <div class="profile-user-info">
@@ -57,7 +59,7 @@
                         <span><?php echo $product['minimum_increment'] . " BDT"; ?></span>
                     </div>
                 </div>
-                <?php if (isset($product['highest_bid']) && !empty($product['highest_bid'])) { ?>
+<?php if (isset($product['highest_bid']) && !empty($product['highest_bid'])) { ?>
                     <div class="profile-info-row">
                         <div class="profile-info-name"> Highest Bid </div>
 
@@ -65,7 +67,7 @@
                             <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
                         </div>
                     </div>
-                <?php } if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
+<?php } if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
                     <div class="profile-info-row">
                         <div class="profile-info-name"> Winner </div>
 
@@ -73,7 +75,7 @@
                             <span><?php echo $product['winner_id'] . " BDT"; ?></span>
                         </div>
                     </div>
-                <?php } ?>
+<?php } ?>
                 <div class="profile-info-row">
                     <div class="profile-info-name"> Current Bid </div>
 
@@ -88,11 +90,11 @@
             if (isset($loginUser['id']) && !empty($loginUser['id'])) {
                 ?>
                 <div style="margin-top: 30px;">
-                    <?php echo $this->Form->create('Bid', array('class' => 'form-horizontal', 'role' => 'form')) ?>
+    <?php echo $this->Form->create('Bid', array('class' => 'form-horizontal', 'role' => 'form')) ?>
                     <div class="form-group">
                         <label style="color: #667e99; font-size: 13px;" class="col-sm-4 control-label no-padding-right" > Minimum Increment: </label>
                         <div class="col-sm-5">
-                            <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
+    <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
                             <div class="space-6"></div>
                         </div>
                         <div class="col-sm-3">
@@ -103,7 +105,7 @@
                             <div class="space-6"></div>
                         </div>
                     </div>
-                    <?php echo $this->Form->end() ?>
+                <?php echo $this->Form->end() ?>
                 </div>
                 <?php
             } else {
@@ -166,3 +168,7 @@
     });
     $('.spin-box-bid').ace_spinner({value: 0, min: 0, max: 90000, btn_up_class: 'btn-info', btn_down_class: 'btn-info'});
 </script>
+
+<div id="loading_text">
+<?php echo $this->Html->image('ajax-loader.gif'); ?>
+</div>
