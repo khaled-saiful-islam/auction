@@ -131,9 +131,9 @@
                                                     for ($i = 1; $i < 5; $i++) {
                                                         if (isset($product['image' . $i . '_path']) && !empty($product['image' . $i . '_path'])) {
                                                             ?>
-                                                            <li>
+                                                            <li class="editable img-responsive" style="width: 16%;">
                                                                 <a href='<?php echo $this->request->webroot . "img/" . "uploaded_images/" . "products/" . $product['image' . $i . '_path']; ?>' data-rel="colorbox">
-                                                                    <?php echo $this->Html->image('uploaded_images/products/' . $product['image' . $i . '_path'], ['style' => 'width: 165px; height: 130px;', 'alt' => "165x130"]); ?>
+                                                                    <?php echo $this->Html->image('uploaded_images/products/' . $product['image' . $i . '_path'], ['style' => 'max-width: 100%;', 'alt' => "Product Image"]); ?>
                                                                     <div class="text">
                                                                         <div class="inner"><?php echo $product['title']; ?></div>
                                                                     </div>
