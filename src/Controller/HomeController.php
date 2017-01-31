@@ -25,14 +25,11 @@ class HomeController extends AppController {
         $loginUser = $this->Auth->user();
         
         $this->loadModel('Products');
-        $products = $this->Products->find('all');
+        $products = $this->Products->find('all', array('conditions' => array('isAuction' => 0)));
+        $bidding_products = $this->Products->find('all', array('conditions' => array('isAuction' => 1)));       
         
-        foreach($products as $product){
-            //pr($product);
-        }
-        
-        $this->set(compact('loginUser', 'home', 'products'));
-        $this->set('_serialize', ['loginUser', 'home', 'products']);
+        $this->set(compact('loginUser', 'home', 'products', 'bidding_products'));
+        $this->set('_serialize', ['loginUser', 'home', 'products', 'bidding_products']);
     }
 
 }

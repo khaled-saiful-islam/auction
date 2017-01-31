@@ -35,7 +35,7 @@
     <h2 class="head">Bidding Products</h2>
     <div class="top-box">
         <?php
-        foreach ($products as $product) {
+        foreach ($bidding_products as $product) {
             if (isset($product['image1_path']) && !empty($product['image1_path'])) {
                 ?>
                 <div class="col_1_of_3 span_1_of_3"> 
