@@ -54,7 +54,11 @@
                                             <div class="space space-4"></div>
 
                                             <?php
-                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Product Edit</span>', array('controller' => 'Products', 'action' => 'edit', $product->id, 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            if (isset($product['isAuction']) && $product['isAuction'] > 0) {
+                                                echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Stop Auction</span>', array('controller' => 'Products', 'action' => 'stopAuction', $product->id), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            } else {
+                                                echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Product Edit</span>', array('controller' => 'Products', 'action' => 'edit', $product->id, 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            }
                                             ?>                                           
                                         </div><!-- /.col -->
 
@@ -65,11 +69,17 @@
                                                     <span class="label label-danger arrowed-in-right">
                                                         Sold Product
                                                     </span>
-                                                <?php } else { ?>
+                                                <?php } else if (isset($product['isAuction']) && $product['isAuction'] > 0) { ?>
+                                                    <span class="label label-warning arrowed-in-right">
+                                                        Auction On Going
+                                                    </span>
+                                                <?php } else {
+                                                    ?>
                                                     <span class="label label-success arrowed-in-right">
                                                         New Product
                                                     </span>
-                                                <?php } ?>
+                                                <?php }
+                                                ?>
                                             </h4>
 
                                             <div class="profile-user-info">
@@ -124,24 +134,20 @@
                                             </div>
 
                                             <div class="hr hr-8 dotted"></div>
-
-                                            <div style="margin-top: 30px;">
-                                                <?php echo $this->Form->create('Product', array('class' => 'form-horizontal', 'role' => 'form')) ?>
-                                                <div class="form-group">
-                                                    <label style="color: #667e99; font-size: 13px;" class="col-sm-2 control-label no-padding-right" > End Bidding Time: </label>
-                                                    <div class="col-sm-5">
-                                                        <?php echo $this->Form->input('end_time', array('data-date-format' => 'YYYY-MM-DD HH:mm', 'class' => 'date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text')); ?>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <button type="Submit" class="btn btn-white btn-info btn-bold">
-                                                            <i class="ace-icon fa fa-legal bigger-120 blue"></i>
-                                                            Start Auction
-                                                        </button>
+                                            <?php if (isset($product['isAuction']) && $product['isAuction'] < 1) { ?>
+                                                <div style="margin-top: 30px;">
+                                                    <div class="form-group">
+                                                        <label style="color: #667e99; font-size: 13px;" class="col-sm-2 control-label no-padding-right" > End Bidding Time: </label>
+                                                        <div class="col-sm-5">
+                                                            <?php echo $this->Form->input('end_time', array('data-date-format' => 'YYYY-MM-DD HH:mm', 'class' => 'date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text')); ?>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-legal bigger-120 blue"></i>Start Auction', array(), array('value' => $product['id'], 'id' => 'startAuction', 'class' => 'btn btn-white btn-info btn-bold', 'escape' => false)); ?>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <?php echo $this->Form->end() ?>
-                                            </div>
-
+                                            <?php } ?>
+                                            <div style="clear: both;"></div>
                                             <div style="margin-top: 40px;">
                                                 <ul class="ace-thumbnails clearfix">
                                                     <?php

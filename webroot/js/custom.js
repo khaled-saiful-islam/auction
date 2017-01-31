@@ -39,21 +39,24 @@ jQuery(function ($) {
         });
     });
 
-    $('#addBookmark').on('click', function (e)
+    $('#startAuction').on('click', function (e)
     {
         e.preventDefault();
         var id = $(this).attr('value');
+        var end_date = $('#end-time').val();
 
-//        bootbox.confirm("Are you sure?", function (result) {
-//            if (result) {
+        bootbox.confirm("Are you sure?", function (result) {
+            if (result) {
                 $.ajax({
+                    type: 'POST',
+                    data: {id: id, end_date: end_date},
                     beforeSend: function (xhr) {
                         $('#loading_text').show();
                     },
                     complete: function (jqXHR, textStatus) {
                         $('#loading_text').hide();
                     },
-                    url: BASEURL + 'bookmarks/add/' + id,
+                    url: BASEURL + 'products/startAuction/',
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
@@ -63,6 +66,34 @@ jQuery(function ($) {
 
                     }
                 });
+            }
+        });
+    });
+
+    $('#addBookmark').on('click', function (e)
+    {
+        e.preventDefault();
+        var id = $(this).attr('value');
+
+//        bootbox.confirm("Are you sure?", function (result) {
+//            if (result) {
+        $.ajax({
+            beforeSend: function (xhr) {
+                $('#loading_text').show();
+            },
+            complete: function (jqXHR, textStatus) {
+                $('#loading_text').hide();
+            },
+            url: BASEURL + 'bookmarks/add/' + id,
+            success: function (data, textStatus, jqXHR)
+            {
+                location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+
+            }
+        });
 //            }
 //        });
     });

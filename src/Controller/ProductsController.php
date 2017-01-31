@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use Cake\I18n\Time;
+
 /**
  * Description of ProductsController
  *
@@ -226,9 +228,29 @@ class ProductsController extends AppController {
         $this->set('_serialize', ['loginUser', 'home', 'product']);
     }
 
+    public function startAuction() {
+        $this->autoRender = false;
+        $message = "";
+
+        $product = $this->Products->get($this->request->data['id'], ['contain' => []]);
+        if ($this->request->is('ajax')) {
+            $data['isAuction'] = 1;
+            $data['start_date'] = new Time(date('Y-m-d H:i'));
+            $data['end_date'] = new Time($this->request->data['end_date']);
+
+            $product = $this->Products->patchEntity($product, $data);
+            if ($this->Products->save($product)) {
+                $message = 'Product was Open for Auction';
+            } else {
+                $message = 'Product was not Open for Auction';
+            }
+        }
+        echo $message;
+    }
+
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
-        if (in_array($action, ['add', 'index', 'edit', 'view', 'delete'])) {
+        if (in_array($action, ['add', 'index', 'edit', 'view', 'delete', 'startAuction'])) {
             return true;
         }
         return parent::isAuthorized($user);
