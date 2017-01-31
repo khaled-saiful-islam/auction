@@ -1,0 +1,2 @@
+ALTER TABLE `products` ADD `start_date` DATETIME NULL DEFAULT NULL AFTER `created_by`, ADD `end_date` DATETIME NULL DEFAULT NULL AFTER `start_date`;
+

@@ -50,14 +50,12 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Minimum Bid: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('minimum_bid', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Bid', 'label' => false, 'type' => 'text')); ?>
-                            <div class="space-6"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Minimum Increment: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
-                            <div class="space-6"></div>
                         </div>
                     </div>
                     <div class="form-group">

@@ -125,7 +125,24 @@
 
                                             <div class="hr hr-8 dotted"></div>
 
-                                            <div style="margin-top: 20px;">
+                                            <div style="margin-top: 30px;">
+                                                <?php echo $this->Form->create('Product', array('class' => 'form-horizontal', 'role' => 'form')) ?>
+                                                <div class="form-group">
+                                                    <label style="color: #667e99; font-size: 13px;" class="col-sm-2 control-label no-padding-right" > End Bidding Time: </label>
+                                                    <div class="col-sm-5">
+                                                        <?php echo $this->Form->input('end_time', array('data-date-format' => 'YYYY-MM-DD HH:mm', 'class' => 'date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text')); ?>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <button type="Submit" class="btn btn-white btn-info btn-bold">
+                                                            <i class="ace-icon fa fa-legal bigger-120 blue"></i>
+                                                            Start Auction
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <?php echo $this->Form->end() ?>
+                                            </div>
+
+                                            <div style="margin-top: 40px;">
                                                 <ul class="ace-thumbnails clearfix">
                                                     <?php
                                                     for ($i = 1; $i < 5; $i++) {
@@ -196,5 +213,28 @@
         $(document).one('ajaxloadstart.page', function (e) {
             $('#colorbox, #cboxOverlay').remove();
         });
+
+        $('.date-timepicker').datetimepicker({
+            //format: 'YYYY-MM-DD h:mm:ss A',//use this option to display seconds
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-arrows ',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            }
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+        });
     })
 </script>
+
+<style type="text/css">
+    .col-sm-5{
+        width: 25%;
+    }
+</style>
