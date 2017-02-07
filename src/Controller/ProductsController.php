@@ -73,6 +73,13 @@ class ProductsController extends AppController {
             }
 
             $product['created_by'] = $loginUser['id'];
+            if (isset($this->request->data['start_date']) && !empty($this->request->data['start_date'])) {
+                $this->request->data['start_date'] = new Time($this->request->data['start_date']);
+            }
+            if (isset($this->request->data['end_date']) && !empty($this->request->data['end_date'])) {
+                $this->request->data['end_date'] = new Time($this->request->data['end_date']);
+            }
+
             $product = $this->Products->patchEntity($product, $this->request->data);
 
             if ($this->Products->save($product)) {
@@ -140,6 +147,13 @@ class ProductsController extends AppController {
                         ]);
                     }
                 }
+            }
+
+            if (isset($this->request->data['start_date']) && !empty($this->request->data['start_date'])) {
+                $this->request->data['start_date'] = new Time($this->request->data['start_date']);
+            }
+            if (isset($this->request->data['end_date']) && !empty($this->request->data['end_date'])) {
+                $this->request->data['end_date'] = new Time($this->request->data['end_date']);
             }
 
             $product = $this->Products->patchEntity($product, $this->request->data);

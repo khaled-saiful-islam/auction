@@ -56,7 +56,7 @@ use Cake\Routing\Router;
         
         <?php echo $this->Html->css('colorbox.min.css') ?>
         
-        <?php echo $this->Html->css('bootstrap-datetimepicker.min.css') ?>
+        <?php echo $this->Html->css('bootstrap-datetimepicker.css') ?>
 
         <?php echo $this->Html->css('custom.css') ?>
 
@@ -86,7 +86,7 @@ use Cake\Routing\Router;
         
         <?php echo $this->Html->script('moment.min.js') ?>
         
-        <?php echo $this->Html->script('bootstrap-datetimepicker.min.js') ?>
+        <?php echo $this->Html->script('bootstrap-datetimepicker.js') ?>
 
         <?php echo $this->Html->script('custom.js') ?>
 

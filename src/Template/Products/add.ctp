@@ -32,14 +32,12 @@
                             <?php echo $this->Form->input('title', array('pattern' => '.{4,}', 'title' => 'Minimum length 4', 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Title', 'label' => false, 'required' => true)); ?>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Category: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('category_string', array('multiple' => true, 'id' => 'multiple_tag', 'options' => (isset($tag) && !empty($tag)) ? $tag : array(), 'class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Category', 'label' => false, 'type' => 'select', 'required' => true)); ?>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Details: </label>
                         <div class="col-sm-9">
@@ -56,6 +54,18 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Minimum Increment: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Start Bidding Time: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('start_date', array('class' => 'col-xs-10 col-sm-5 date-timepicker', 'placeholder' => 'Start Bidding Time', 'label' => false, 'type' => 'text')); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> End Bidding Time: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('end_date', array('class' => 'col-xs-10 col-sm-5 date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text')); ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -118,5 +128,9 @@
     $("#multiple_tag").select2({
         placeholder: "Select a Category",
         allowClear: true
+    });
+
+    $('.date-timepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
     });
 </script>

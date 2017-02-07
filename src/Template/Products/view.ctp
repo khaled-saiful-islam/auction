@@ -135,7 +135,7 @@
 
                                             <div class="hr hr-8 dotted"></div>
                                             <?php if (isset($product['isAuction']) && $product['isAuction'] < 1) { ?>
-                                                <div style="margin-top: 30px;">
+<!--                                                <div style="margin-top: 30px;">
                                                     <div class="form-group">
                                                         <label style="color: #667e99; font-size: 13px;" class="col-sm-2 control-label no-padding-right" > End Bidding Time: </label>
                                                         <div class="col-sm-5">
@@ -145,7 +145,7 @@
                                                             <?php echo $this->Html->link('<i class="ace-icon fa fa-legal bigger-120 blue"></i>Start Auction', array(), array('value' => $product['id'], 'id' => 'startAuction', 'class' => 'btn btn-white btn-info btn-bold', 'escape' => false)); ?>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>-->
                                             <?php } ?>
                                             <div style="clear: both;"></div>
                                             <div style="margin-top: 40px;">
