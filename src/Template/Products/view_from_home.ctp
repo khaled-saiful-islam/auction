@@ -1,3 +1,8 @@
+<?php
+$c_date = strtotime(date('Y-m-d H:i'));
+$s_date = strtotime($product['start_date']);
+$e_date = strtotime($product['end_date']);
+?>
 <div class="mens">
     <div class="cont span_2_of_3">
         <div class="grid images_3_of_2">
@@ -22,9 +27,17 @@
                 <span class="middle"><?php echo $product['title'] ?></span>
                 <?php
                 if (isset($loginUser['id']) && !empty($loginUser['id'])) {
-                    echo $this->Html->link('<span class="label label-success arrowed-in arrowed-in-right">Bookmark</span>', array(), array('value' => $product['id'], 'id' => 'addBookmark', 'escape' => false));
+                    if ($s_date > $c_date) {
+                        echo $this->Html->link('<span class="label label-success arrowed-in arrowed-in-right">Bookmark</span>', array(), array('value' => $product['id'], 'id' => 'addBookmark', 'escape' => false));
+                    }
                 }
-                ?>
+
+                if ($e_date > $c_date) {
+                    ?>
+                    <span id="auction_product" class="label label-success arrowed-in arrowed-in-right"></span>
+                    <?php
+                }
+                ?>                
             </h4>
 
             <div class="profile-user-info">
@@ -88,26 +101,26 @@
 
             <?php
             if (isset($loginUser['id']) && !empty($loginUser['id'])) {
-                ?>
-                <div style="margin-top: 30px;">
-                    <?php echo $this->Form->create('Bid', array('class' => 'form-horizontal', 'role' => 'form')) ?>
-                    <div class="form-group">
-                        <label style="color: #667e99; font-size: 13px;" class="col-sm-4 control-label no-padding-right" > Minimum Bid: </label>
-                        <div class="col-sm-5">
-                            <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
-                            <!--<div class="space-6"></div>-->
+                if ($s_date < $c_date) {
+                    ?>
+                    <div style="margin-top: 30px;">
+                        <?php echo $this->Form->create('Bid', array('class' => 'form-horizontal', 'role' => 'form')) ?>
+                        <div class="form-group">
+                            <label style="color: #667e99; font-size: 13px;" class="col-sm-4 control-label no-padding-right" > Minimum Bid: </label>
+                            <div class="col-sm-5">
+                                <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="Submit" class="btn btn-white btn-info btn-bold">
+                                    <i class="ace-icon fa fa-legal bigger-120 blue"></i>
+                                    Bid
+                                </button>                   
+                            </div>
                         </div>
-                        <div class="col-sm-3">
-                            <button type="Submit" class="btn btn-white btn-info btn-bold">
-                                <i class="ace-icon fa fa-legal bigger-120 blue"></i>
-                                Bid
-                            </button>                   
-                            <!--<div class="space-6"></div>-->
-                        </div>
+                        <?php echo $this->Form->end() ?>
                     </div>
-                    <?php echo $this->Form->end() ?>
-                </div>
-                <?php
+                    <?php
+                }
             } else {
                 echo $this->Html->link('Login for Bid', array('controller' => 'Users', 'action' => 'login'), array('class' => 'custom_bid_button'));
             }
@@ -126,7 +139,7 @@
             </ul>
 
         </div>
-    </div>    
+    </div>
     <!--<div class="clear"></div>-->
 </div>
 <div class="clear"></div>
@@ -167,6 +180,42 @@
 
     });
     $('.spin-box-bid').ace_spinner({value: 0, min: 0, max: 90000, btn_up_class: 'btn-info', btn_down_class: 'btn-info'});
+
+    $(function () {
+        var end_date = '<?php echo date('F d, Y H:i', strtotime($product['end_date'])); ?>';
+        var times = [
+            {
+                'end': new Date(end_date),
+            }
+        ];
+
+
+        function countdown()
+        {
+            var now = new Date();
+            console.log('updating time');
+
+            $.each(times, function (key, value) {
+                var left = value.end - now;
+                var days = Math.floor(left / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((left % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((left % (1000 * 60)) / 1000);
+
+                displayTime = '';
+                if (days > 0) {
+                    displayTime = "Days: " + days;
+                }
+                displayTime = displayTime + " Hours: " + hours + " Minutes: " + minutes + " Seconds: " +
+                        seconds;
+
+                $('#auction_product').text(displayTime)
+            });
+
+        }
+        timer = setInterval(countdown, 1000);
+
+    });
 </script>
 
 <div id="loading_text">
