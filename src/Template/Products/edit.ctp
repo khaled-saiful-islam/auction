@@ -39,6 +39,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Start Bidding Time: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('start_date', array('class' => 'col-xs-10 col-sm-5 date-timepicker', 'placeholder' => 'Start Bidding Time', 'label' => false, 'type' => 'text', 'value' => (isset($product['start_date']) && !empty(isset($product['start_date']))) ? date('Y-m-d H:i', strtotime($product['start_date'])) : '', 'required' => true)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> End Bidding Time: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('end_date', array('class' => 'col-xs-10 col-sm-5 date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text', 'value' => (isset($product['end_date']) && !empty(isset($product['end_date']))) ? date('Y-m-d H:i', strtotime($product['end_date'])) : '', 'required' => true)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Details: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('details', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Details', 'label' => false, 'type' => 'textarea', 'value' => $product['details'])); ?>
@@ -56,18 +68,6 @@
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text', 'value' => $product['minimum_increment'])); ?>
                             <div class="space-6"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Start Bidding Time: </label>
-                        <div class="col-sm-9">
-                            <?php echo $this->Form->input('start_date', array('class' => 'col-xs-10 col-sm-5 date-timepicker', 'placeholder' => 'Start Bidding Time', 'label' => false, 'type' => 'text', 'value' => (isset($product['start_date']) && !empty(isset($product['start_date']))) ? date('Y-m-d H:i', strtotime($product['start_date'])) : '')); ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> End Bidding Time: </label>
-                        <div class="col-sm-9">
-                            <?php echo $this->Form->input('end_date', array('class' => 'col-xs-10 col-sm-5 date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text', 'value' => (isset($product['end_date']) && !empty(isset($product['end_date']))) ? date('Y-m-d H:i', strtotime($product['end_date'])) : '')); ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -133,6 +133,7 @@
 
 
     $('.date-timepicker').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii'
+        format: 'yyyy-mm-dd hh:ii',
+        autoclose: true
     });
 </script>

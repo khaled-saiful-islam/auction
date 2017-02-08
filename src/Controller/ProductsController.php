@@ -73,30 +73,39 @@ class ProductsController extends AppController {
             }
 
             $product['created_by'] = $loginUser['id'];
-            if (isset($this->request->data['start_date']) && !empty($this->request->data['start_date'])) {
+
+            $c_date = strtotime(date('Y-m-d H:i'));
+            $s_date = strtotime($this->request->data['start_date']);
+            $e_date = strtotime($this->request->data['end_date']);
+
+            if ($s_date > $c_date && ($e_date > $c_date && $e_date > $s_date)) {
                 $this->request->data['start_date'] = new Time($this->request->data['start_date']);
-            }
-            if (isset($this->request->data['end_date']) && !empty($this->request->data['end_date'])) {
                 $this->request->data['end_date'] = new Time($this->request->data['end_date']);
-            }
 
-            $product = $this->Products->patchEntity($product, $this->request->data);
-
-            if ($this->Products->save($product)) {
-                $this->Flash->success('The product has been saved.', [
-                    'params' => [
-                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
-                    ]
-                ]);
-                return $this->redirect(['action' => 'index']);
+                $product = $this->Products->patchEntity($product, $this->request->data);
+                if ($this->Products->save($product)) {
+                    $this->Flash->success('The product has been saved.', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                        ]
+                    ]);
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error('The product could not be saved.', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
+                }
             } else {
-                $this->Flash->error('The product could not be saved.', [
+                $this->Flash->error('Start Date and End Date was not right', [
                     'params' => [
                         'class' => 'alert alert-block alert-danger alert-custom-msg-block'
                     ]
                 ]);
             }
         }
+
         $this->set(compact('product', 'loginUser', 'leftNavActive', 'tag'));
         $this->set('_serialize', ['product', 'loginUser', 'leftNavActive', 'tag']);
     }
@@ -149,34 +158,42 @@ class ProductsController extends AppController {
                 }
             }
 
-            if (isset($this->request->data['start_date']) && !empty($this->request->data['start_date'])) {
+            $c_date = strtotime(date('Y-m-d H:i'));
+            $s_date = strtotime($this->request->data['start_date']);
+            $e_date = strtotime($this->request->data['end_date']);
+
+            if ($s_date > $c_date && ($e_date > $c_date && $e_date > $s_date)) {
                 $this->request->data['start_date'] = new Time($this->request->data['start_date']);
-            }
-            if (isset($this->request->data['end_date']) && !empty($this->request->data['end_date'])) {
                 $this->request->data['end_date'] = new Time($this->request->data['end_date']);
-            }
 
-            $product = $this->Products->patchEntity($product, $this->request->data);
+                $product = $this->Products->patchEntity($product, $this->request->data);
 
-            for ($i = 1; $i < 5; $i++) {
-                if (isset($this->request->data['image' . $i . '_path']['name']) && empty($this->request->data['image' . $i . '_path']['name'])) {
-                    unset($product['image' . $i . '_path']);
+                for ($i = 1; $i < 5; $i++) {
+                    if (isset($this->request->data['image' . $i . '_path']['name']) && empty($this->request->data['image' . $i . '_path']['name'])) {
+                        unset($product['image' . $i . '_path']);
+                    }
                 }
-            }
 
-            if ($this->Products->save($product)) {
-                $this->Flash->success('The product has been Edited.', [
-                    'params' => [
-                        'class' => 'alert alert-block alert-success alert-custom-msg-block'
-                    ]
-                ]);
-                if ($from == 'view') {
-                    return $this->redirect(['controller' => 'Products', 'action' => 'view', $id]);
+                if ($this->Products->save($product)) {
+                    $this->Flash->success('The product has been Edited.', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-success alert-custom-msg-block'
+                        ]
+                    ]);
+                    if ($from == 'view') {
+                        return $this->redirect(['controller' => 'Products', 'action' => 'view', $id]);
+                    } else {
+                        return $this->redirect(['action' => 'index']);
+                    }
                 } else {
-                    return $this->redirect(['action' => 'index']);
+                    $this->Flash->error('The product could not be Edited.', [
+                        'params' => [
+                            'class' => 'alert alert-block alert-danger alert-custom-msg-block'
+                        ]
+                    ]);
                 }
             } else {
-                $this->Flash->error('The product could not be Edited.', [
+                $this->Flash->error('Start Date and End Date was not right', [
                     'params' => [
                         'class' => 'alert alert-block alert-danger alert-custom-msg-block'
                     ]

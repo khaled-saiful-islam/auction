@@ -1,2 +1,3 @@
 ALTER TABLE `products` ADD `start_date` DATETIME NULL DEFAULT NULL AFTER `created_by`, ADD `end_date` DATETIME NULL DEFAULT NULL AFTER `start_date`;
-ALTER TABLE `products` ADD `isAuction` INT(11) NOT NULL DEFAULT '0' AFTER `created_by`;
+
+ALTER TABLE `products` ADD `isPause` INT(11) NOT NULL DEFAULT '0' AFTER `created_by`;

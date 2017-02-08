@@ -51,6 +51,40 @@ class ProductsTable extends Table {
         $validator
                 ->allowEmpty('details');
 
+        $validator
+                ->notEmpty('start_date');
+
+        $validator
+                ->notEmpty('end_date');
+
+        $validator
+                ->allowEmpty('image1_path')
+                ->requirePresence('image1_path', 'create')
+                ->add('image1_path', 'validFormat', [
+                    'rule' => ['custom', '([^\s]+(\.(?i)(png|jpg|jpeg|gif))$)']
+        ]);
+
+        $validator
+                ->allowEmpty('image2_path')
+                ->requirePresence('image2_path', 'create')
+                ->add('image2_path', 'validFormat', [
+                    'rule' => ['custom', '([^\s]+(\.(?i)(png|jpg|jpeg|gif))$)']
+        ]);
+
+        $validator
+                ->allowEmpty('image3_path')
+                ->requirePresence('image3_path', 'create')
+                ->add('image3_path', 'validFormat', [
+                    'rule' => ['custom', '([^\s]+(\.(?i)(png|jpg|jpeg|gif))$)']
+        ]);
+
+        $validator
+                ->allowEmpty('image4_path')
+                ->requirePresence('image4_path', 'create')
+                ->add('image4_path', 'validFormat', [
+                    'rule' => ['custom', '([^\s]+(\.(?i)(png|jpg|jpeg|gif))$)']
+        ]);
+
         return $validator;
     }
 
