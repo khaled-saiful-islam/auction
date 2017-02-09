@@ -73,6 +73,9 @@ class ProductsController extends AppController {
             }
 
             $product['created_by'] = $loginUser['id'];
+            if (isset($this->request->data['minimum_bid']) && !empty($this->request->data['minimum_bid'])) {
+                $product['highest_bid'] = $this->request->data['minimum_bid'];
+            }
 
             $c_date = strtotime(date('Y-m-d H:i'));
             $s_date = strtotime($this->request->data['start_date']);
@@ -156,6 +159,10 @@ class ProductsController extends AppController {
                         ]);
                     }
                 }
+            }
+
+            if (isset($this->request->data['minimum_bid']) && !empty($this->request->data['minimum_bid'])) {
+                $product['highest_bid'] = $this->request->data['minimum_bid'];
             }
 
             $c_date = strtotime(date('Y-m-d H:i'));

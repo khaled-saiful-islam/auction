@@ -32,7 +32,7 @@ $e_date = strtotime($product['end_date']);
                     }
                 }
 
-                if ($e_date > $c_date) {
+                if ($s_date <= $c_date) {
                     ?>
                     <span id="auction_product" class="label label-success arrowed-in arrowed-in-right"></span>
                     <?php
@@ -72,15 +72,7 @@ $e_date = strtotime($product['end_date']);
                         <span><?php echo $product['minimum_increment'] . " BDT"; ?></span>
                     </div>
                 </div>
-                <?php if (isset($product['highest_bid']) && !empty($product['highest_bid'])) { ?>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Highest Bid </div>
-
-                        <div class="profile-info-value">
-                            <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
-                        </div>
-                    </div>
-                <?php } if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
+                <?php if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
                     <div class="profile-info-row">
                         <div class="profile-info-name"> Winner </div>
 
@@ -93,22 +85,24 @@ $e_date = strtotime($product['end_date']);
                     <div class="profile-info-name"> Current Bid </div>
 
                     <div class="profile-info-value">
-                        <span><?php echo $product['minimum_bid'] . " BDT"; ?></span>
+                        <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
                     </div>
                 </div>
             </div>
             <div class="hr hr-8 dotted"></div>
-
+            <?php echo $this->Flash->render(); ?>
             <?php
             if (isset($loginUser['id']) && !empty($loginUser['id'])) {
-                if ($s_date < $c_date) {
+                if ($s_date <= $c_date) {
                     ?>
                     <div style="margin-top: 30px;">
-                        <?php echo $this->Form->create('Bid', array('class' => 'form-horizontal', 'role' => 'form')) ?>
+                        <?php echo $this->Form->create(null, array('url' => array('controller' => 'Bids', 'action' => 'add', $loginUser['id'], $product['id']), 'class' => 'form-horizontal', 'role' => 'form')) ?>
                         <div class="form-group">
-                            <label style="color: #667e99; font-size: 13px;" class="col-sm-4 control-label no-padding-right" > Minimum Bid: </label>
+                            <label style="color: #667e99; font-size: 13px;" class="col-sm-3 control-label no-padding-right" > Amount: </label>
                             <div class="col-sm-5">
-                                <?php echo $this->Form->input('minimum_increment', array('class' => 'spin-box-bid', 'placeholder' => 'Minimum Increment', 'label' => false, 'type' => 'text')); ?>
+                                <?php echo $this->Form->hidden('minimum_increment', array('value' => $product['minimum_increment'])); ?>
+                                <?php echo $this->Form->hidden('end_date', array('value' => $e_date)); ?>
+                                <?php echo $this->Form->input('bid_amount', array('min' => $product['minimum_increment'], 'placeholder' => 'Bid Amount', 'label' => false, 'type' => 'number', 'required' => true)); ?>
                             </div>
                             <div class="col-sm-3">
                                 <button type="Submit" class="btn btn-white btn-info btn-bold">
