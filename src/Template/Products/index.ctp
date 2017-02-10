@@ -1,4 +1,3 @@
-
 <div class="main-content">
     <div class="main-content-inner">
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
@@ -28,11 +27,17 @@
                                 <th>Title</th>
                                 <th>Min Bid</th>
                                 <th>Min Increment</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($products as $product): ?>
+                                <?php
+                                $c_date = strtotime(date('Y-m-d H:i'));
+                                $s_date = strtotime($product['start_date']);
+                                $e_date = strtotime($product['end_date']);
+                                ?>
                                 <tr>
                                     <td>
                                         <div class="action-buttons">
@@ -43,6 +48,23 @@
                                     <td><?php echo h($product->title) ?></td>
                                     <td><?php echo h($product->minimum_bid) ?></td>
                                     <td><?php echo h($product->minimum_increment) ?></td>
+                                    <td>                                                
+                                        <?php if ((isset($product['winner_id']) && !empty($product['winner_id'])) && $e_date < $c_date) { ?>
+                                            <span class="label label-danger arrowed-in-right">
+                                                Sold Product
+                                            </span>
+                                        <?php } else if (($product['isPause'] < 1) && ($s_date <= $c_date) && $e_date >= $c_date) { ?>
+                                            <span class="label label-warning arrowed-in-right">
+                                                Auction On Going
+                                            </span>
+                                        <?php } else {
+                                            ?>
+                                            <span class="label label-success arrowed-in-right">
+                                                New Product
+                                            </span>
+                                        <?php }
+                                        ?>
+                                    </td>
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
                                             <?php

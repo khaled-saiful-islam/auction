@@ -25,8 +25,9 @@ class HomeController extends AppController {
         $loginUser = $this->Auth->user();
 
         $this->loadModel('Products');
-        $products = $this->Products->find('all');
-        $bidding_products = $this->Products->find('all');
+        $c_date = date('Y-m-d H:i');
+        $products = $this->Products->find('all', array('conditions' => array('start_date >' => $c_date)));
+        $bidding_products = $this->Products->find('all', array('conditions' => array('start_date <=' => $c_date, 'end_date >' => $c_date)));
 
         $this->set(compact('loginUser', 'home', 'products', 'bidding_products'));
         $this->set('_serialize', ['loginUser', 'home', 'products', 'bidding_products']);

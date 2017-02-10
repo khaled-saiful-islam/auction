@@ -18,6 +18,8 @@ use App\Controller\AppController;
 class BidsController extends AppController {
 
     public function add($user_id = null, $product_id = null) {
+        //$this->autoRender = false;
+
         $bid = $this->Bids->newEntity();
         if ($this->request->is('post')) {
 
@@ -54,7 +56,6 @@ class BidsController extends AppController {
                                 ]
                             ]);
                         }
-                        return $this->redirect(['controller' => 'Products', 'action' => 'viewFromHome', $product_id]);
                     } else {
                         $this->Flash->error('Your Bid was not submitted', [
                             'params' => [
@@ -76,6 +77,7 @@ class BidsController extends AppController {
                     ]
                 ]);
             }
+            return $this->redirect(['controller' => 'Products', 'action' => 'viewFromHome', $product_id]);
         }
     }
 

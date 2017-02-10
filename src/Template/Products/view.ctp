@@ -28,14 +28,14 @@ $e_date = strtotime($product['end_date']);
                         <div class="tabbable">
                             <ul class="nav nav-tabs padding-18">
                                 <li class="active">
-                                    <a data-toggle="tab" href="#details">
+                                    <a data-toggle="tab" href="#home">
                                         <i class="green ace-icon fa fa-folder-open bigger-120"></i>
                                         Details
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a data-toggle="tab" href="#product_histories">
+                                    <a data-toggle="tab" href="#feed">
                                         <i class="blue ace-icon fa fa-history bigger-120"></i>
                                         Product Histories
                                     </a>
@@ -62,7 +62,7 @@ $e_date = strtotime($product['end_date']);
                                             if (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] < 1) {
                                                 echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Stop Auction</span>', array(), array('id' => 'stopAuction', 'class' => 'btn btn-sm btn-block btn-danger', 'value' => $product['id'], 'escape' => false));
                                             } else if (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] > 0) {
-                                                echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Start Auction</span>', array(), array('id' => 'startAuction', 'class' => 'btn btn-sm btn-block btn-warning', 'value' => $product['id'], 'escape' => false));
+                                                echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Start Auction</span>', array(), array('id' => 'startAuction', 'class' => 'btn btn-sm btn-block btn-primary', 'value' => $product['id'], 'escape' => false));
                                             }
                                             echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Product Edit</span>', array('controller' => 'Products', 'action' => 'edit', $product['id'], 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
                                             ?>                                           
@@ -159,8 +159,8 @@ $e_date = strtotime($product['end_date']);
                                     </div><!-- /.row -->
                                 </div><!-- /#home -->
 
-                                <div id="activity_histories" class="tab-pane">
-
+                                <div id="feed" class="tab-pane">
+                                    Histories will be shown here
                                 </div>
                             </div>
                         </div>

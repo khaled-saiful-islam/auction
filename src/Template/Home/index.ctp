@@ -1,7 +1,7 @@
 <?php echo $this->Flash->render(); ?>
 
 <div class="cont span_2_of_3">
-    <h2 class="head">New Products</h2>
+    <h2 class="head">Up Coming Products</h2>
     <div class="top-box">
         <?php
         foreach ($products as $product) {
