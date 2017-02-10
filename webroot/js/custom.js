@@ -39,24 +39,51 @@ jQuery(function ($) {
         });
     });
 
-    $('#startAuction').on('click', function (e)
+    $('#stopAuction').on('click', function (e)
     {
         e.preventDefault();
         var id = $(this).attr('value');
-        var end_date = $('#end-time').val();
 
         bootbox.confirm("Are you sure?", function (result) {
             if (result) {
                 $.ajax({
                     type: 'POST',
-                    data: {id: id, end_date: end_date},
                     beforeSend: function (xhr) {
                         $('#loading_text').show();
                     },
                     complete: function (jqXHR, textStatus) {
                         $('#loading_text').hide();
                     },
-                    url: BASEURL + 'products/startAuction/',
+                    url: BASEURL + 'products/stopAuction/' + id,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+
+                    }
+                });
+            }
+        });
+    });
+
+    $('#startAuction').on('click', function (e)
+    {
+        e.preventDefault();
+        var id = $(this).attr('value');
+
+        bootbox.confirm("Are you sure?", function (result) {
+            if (result) {
+                $.ajax({
+                    type: 'POST',
+                    beforeSend: function (xhr) {
+                        $('#loading_text').show();
+                    },
+                    complete: function (jqXHR, textStatus) {
+                        $('#loading_text').hide();
+                    },
+                    url: BASEURL + 'products/startAuction/' + id,
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();

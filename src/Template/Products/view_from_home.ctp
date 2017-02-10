@@ -32,9 +32,13 @@ $e_date = strtotime($product['end_date']);
                     }
                 }
 
-                if ($s_date <= $c_date) {
+                if (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] < 1) {
                     ?>
                     <span id="auction_product" class="label label-success arrowed-in arrowed-in-right"></span>
+                    <?php
+                } elseif (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] > 0) {
+                    ?>
+                    <span class="label label-warning arrowed-in arrowed-in-right">Auction was currently stopped by Admin</span>
                     <?php
                 }
                 ?>                
@@ -72,17 +76,8 @@ $e_date = strtotime($product['end_date']);
                         <span><?php echo $product['minimum_increment'] . " BDT"; ?></span>
                     </div>
                 </div>
-                <?php if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Winner </div>
-
-                        <div class="profile-info-value">
-                            <span><?php echo $product['winner_id'] . " BDT"; ?></span>
-                        </div>
-                    </div>
-                <?php } ?>
                 <div class="profile-info-row">
-                    <div class="profile-info-name"> Current Bid </div>
+                    <div class="profile-info-name"> Current Price </div>
 
                     <div class="profile-info-value">
                         <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
@@ -93,15 +88,13 @@ $e_date = strtotime($product['end_date']);
             <?php echo $this->Flash->render(); ?>
             <?php
             if (isset($loginUser['id']) && !empty($loginUser['id'])) {
-                if ($s_date <= $c_date) {
+                if (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] < 1) {
                     ?>
                     <div style="margin-top: 30px;">
                         <?php echo $this->Form->create(null, array('url' => array('controller' => 'Bids', 'action' => 'add', $loginUser['id'], $product['id']), 'class' => 'form-horizontal', 'role' => 'form')) ?>
                         <div class="form-group">
                             <label style="color: #667e99; font-size: 13px;" class="col-sm-3 control-label no-padding-right" > Amount: </label>
                             <div class="col-sm-5">
-                                <?php echo $this->Form->hidden('minimum_increment', array('value' => $product['minimum_increment'])); ?>
-                                <?php echo $this->Form->hidden('end_date', array('value' => $e_date)); ?>
                                 <?php echo $this->Form->input('bid_amount', array('min' => $product['minimum_increment'], 'placeholder' => 'Bid Amount', 'label' => false, 'type' => 'number', 'required' => true)); ?>
                             </div>
                             <div class="col-sm-3">

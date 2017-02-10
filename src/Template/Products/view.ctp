@@ -1,3 +1,8 @@
+<?php
+$c_date = strtotime(date('Y-m-d H:i'));
+$s_date = strtotime($product['start_date']);
+$e_date = strtotime($product['end_date']);
+?>
 <div class="main-content">
     <div class="main-content-inner">
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
@@ -54,22 +59,23 @@
                                             <div class="space space-4"></div>
 
                                             <?php
-                                            if (isset($product['isAuction']) && $product['isAuction'] > 0) {
-                                                echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Stop Auction</span>', array('controller' => 'Products', 'action' => 'stopAuction', $product->id), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
-                                            } else {
-                                                echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Product Edit</span>', array('controller' => 'Products', 'action' => 'edit', $product->id, 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+                                            if (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] < 1) {
+                                                echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Stop Auction</span>', array(), array('id' => 'stopAuction', 'class' => 'btn btn-sm btn-block btn-danger', 'value' => $product['id'], 'escape' => false));
+                                            } else if (($s_date <= $c_date && $e_date >= $c_date) && $product['isPause'] > 0) {
+                                                echo $this->Html->link('<i class="ace-icon fa fa-remove bigger-110"></i><span>Start Auction</span>', array(), array('id' => 'startAuction', 'class' => 'btn btn-sm btn-block btn-warning', 'value' => $product['id'], 'escape' => false));
                                             }
+                                            echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Product Edit</span>', array('controller' => 'Products', 'action' => 'edit', $product['id'], 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
                                             ?>                                           
                                         </div><!-- /.col -->
 
                                         <div class="col-xs-12 col-sm-9">
                                             <h4 class="blue">
                                                 <span class="middle"><?php echo $product['title'] ?></span>
-                                                <?php if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
+                                                <?php if ((isset($product['winner_id']) && !empty($product['winner_id'])) && $e_date < $c_date) { ?>
                                                     <span class="label label-danger arrowed-in-right">
                                                         Sold Product
                                                     </span>
-                                                <?php } else if (isset($product['isAuction']) && $product['isAuction'] > 0) { ?>
+                                                <?php } else if (($product['isPause'] < 1) && ($s_date <= $c_date) && $e_date >= $c_date) { ?>
                                                     <span class="label label-warning arrowed-in-right">
                                                         Auction On Going
                                                     </span>
@@ -122,32 +128,12 @@
                                                             <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
                                                         </div>
                                                     </div>
-                                                <?php } if (isset($product['winner_id']) && !empty($product['winner_id'])) { ?>
-                                                    <div class="profile-info-row">
-                                                        <div class="profile-info-name"> Winner </div>
-
-                                                        <div class="profile-info-value">
-                                                            <span><?php echo $product['winner_id'] . " BDT"; ?></span>
-                                                        </div>
-                                                    </div>
                                                 <?php } ?>
                                             </div>
 
                                             <div class="hr hr-8 dotted"></div>
-                                            <?php if (isset($product['isAuction']) && $product['isAuction'] < 1) { ?>
-<!--                                                <div style="margin-top: 30px;">
-                                                    <div class="form-group">
-                                                        <label style="color: #667e99; font-size: 13px;" class="col-sm-2 control-label no-padding-right" > End Bidding Time: </label>
-                                                        <div class="col-sm-5">
-                                                            <?php echo $this->Form->input('end_time', array('data-date-format' => 'YYYY-MM-DD HH:mm', 'class' => 'date-timepicker', 'placeholder' => 'End Bidding Time', 'label' => false, 'type' => 'text')); ?>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <?php echo $this->Html->link('<i class="ace-icon fa fa-legal bigger-120 blue"></i>Start Auction', array(), array('value' => $product['id'], 'id' => 'startAuction', 'class' => 'btn btn-white btn-info btn-bold', 'escape' => false)); ?>
-                                                        </div>
-                                                    </div>
-                                                </div>-->
-                                            <?php } ?>
                                             <div style="clear: both;"></div>
+
                                             <div style="margin-top: 40px;">
                                                 <ul class="ace-thumbnails clearfix">
                                                     <?php
@@ -238,6 +224,10 @@
         });
     })
 </script>
+
+<div id="loading_text">
+    <?php echo $this->Html->image('ajax-loader.gif'); ?>
+</div>
 
 <style type="text/css">
     .col-sm-5{

@@ -21,21 +21,24 @@ class BidsController extends AppController {
         $bid = $this->Bids->newEntity();
         if ($this->request->is('post')) {
 
-            $c_date = strtotime(date('Y-m-d H:i'));
-            if ($this->request->data['end_date'] >= $c_date) {
+            $this->loadModel('Products');
+            $product = $this->Products->get($product_id);
 
-                if ($this->request->data['bid_amount'] >= $this->request->data['minimum_increment']) {
+            $c_date = strtotime(date('Y-m-d H:i'));
+            $e_date = strtotime($product['end_date']);
+
+            if (($e_date >= $c_date) && $product['isPause'] < 1) {
+
+                if ($this->request->data['bid_amount'] >= $product['minimum_increment']) {
                     $this->request->data['user_id'] = $user_id;
                     $this->request->data['product_id'] = $product_id;
 
                     $bid = $this->Bids->patchEntity($bid, $this->request->data);
                     if ($this->Bids->save($bid)) {
 
-                        $this->loadModel('Products');
-                        $product = $this->Products->get($product_id);
-
                         $data['highest_bid'] = $product['highest_bid'] + $this->request->data['bid_amount'];
                         $data['highest_bidder_id'] = $user_id;
+                        $data['winner_id'] = $user_id;
 
                         $product = $this->Products->patchEntity($product, $data);
                         if ($this->Products->save($product)) {
