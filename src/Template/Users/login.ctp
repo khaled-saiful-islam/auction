@@ -29,21 +29,23 @@
 
                                         <label class="block clearfix">
                                             <span class="block input-icon input-icon-right">
-                                                <?php echo $this->Form->input('password', array('class' => 'form-control', 'placeholder' => 'Password', 'label' => false, 'type' => 'password','required' => true)); ?>
+                                                <?php echo $this->Form->input('password', array('class' => 'form-control', 'placeholder' => 'Password', 'label' => false, 'type' => 'password', 'required' => true)); ?>
                                                 <i class="ace-icon fa fa-lock"></i>
                                             </span>
                                         </label>
 
-                                        <div class="space"></div>
+                                        <div class="space-24"></div>
 
                                         <div class="clearfix">
+                                            <div>
+                                                <?php echo $this->Html->link('<i class="ace-icon fa fa-refresh"></i>Back', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'width-30 pull-left btn btn-sm', 'escape' => false)) ?>
+                                            </div>
+
                                             <button type="Login" class="width-35 pull-right btn btn-sm btn-primary">
                                                 <i class="ace-icon fa fa-key"></i>
                                                 <span class="bigger-110">Login</span>
                                             </button>
                                         </div>
-
-                                        <div class="space-4"></div>
                                     </fieldset>
                                     <?php echo $this->Form->end() ?>
                                 </div><!-- /.widget-main -->
@@ -70,22 +72,6 @@
                         <?php echo $this->element('User/register') ?>
 
                     </div><!-- /.position-relative -->
-
-                    <div class="navbar-fixed-top align-right">
-                        <br />
-                        &nbsp;
-                        <a id="btn-login-dark" href="#">Dark</a>
-                        &nbsp;
-                        <span class="blue">/</span>
-                        &nbsp;
-                        <a id="btn-login-blur" href="#">Blur</a>
-                        &nbsp;
-                        <span class="blue">/</span>
-                        &nbsp;
-                        <a id="btn-login-light" href="#">Light</a>
-                        &nbsp; &nbsp; &nbsp;<!--
-                    </div>-->
-                    </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.main-content -->

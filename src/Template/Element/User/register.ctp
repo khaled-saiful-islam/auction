@@ -7,9 +7,6 @@
                 New User Registration
             </h4>
 
-            <div class="space-6"></div>
-            <p> Enter your details to begin: </p>
-
             <?php echo $this->Form->create('User', array('id' => 'addUser')) ?>
             <fieldset>
                 <label class="block clearfix">
@@ -33,11 +30,17 @@
                     </span>
                 </label>
 
-                <label class="block">
-                    <input type="checkbox" class="ace" />
-                    <span class="lbl">
-                        I accept the
-                        <a href="#">User Agreement</a>
+                <label class="block clearfix">
+                    <span class="block input-icon input-icon-right">
+                        <?php echo $this->Form->input('address', array('class' => 'form-control', 'placeholder' => 'Address', 'label' => false)); ?>
+                        <i class="ace-icon fa fa-home"></i>
+                    </span>
+                </label>
+
+                <label class="block clearfix">
+                    <span class="block input-icon input-icon-right">
+                        <?php echo $this->Form->input('phone_number', array('class' => 'form-control input-mask-phone', 'placeholder' => 'Cell Number', 'label' => false)); ?>
+                        <i class="ace-icon fa fa-phone"></i>
                     </span>
                 </label>
 

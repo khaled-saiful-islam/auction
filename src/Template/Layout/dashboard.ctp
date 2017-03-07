@@ -87,6 +87,8 @@ use Cake\Routing\Router;
         <?php echo $this->Html->script('moment.min.js') ?>
         
         <?php echo $this->Html->script('bootstrap-datetimepicker.js') ?>
+        
+        <?php echo $this->Html->script("jquery.maskedinput.min.js"); ?> 
 
         <?php echo $this->Html->script('custom.js') ?>
 

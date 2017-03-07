@@ -9,7 +9,7 @@ jQuery(function ($) {
     });
 });
 
-jQuery(function ($) {    
+jQuery(function ($) {
     $('#btn-login-dark').on('click', function (e) {
         $('body').attr('class', 'login-layout');
         $('#id-text2').attr('class', 'white');
@@ -68,4 +68,6 @@ jQuery(function ($) {
         });
         e.preventDefault();
     });
+
+    $('.input-mask-phone').mask('(999) 99999999');
 });

@@ -1,3 +1,5 @@
 ALTER TABLE `products` ADD `start_date` DATETIME NULL DEFAULT NULL AFTER `created_by`, ADD `end_date` DATETIME NULL DEFAULT NULL AFTER `start_date`;
 
 ALTER TABLE `products` ADD `isPause` INT(11) NOT NULL DEFAULT '0' AFTER `created_by`;
+
+ALTER TABLE `users` ADD `address` VARCHAR(255) NOT NULL AFTER `password`, ADD `phone_number` VARCHAR(20) NOT NULL AFTER `address`;

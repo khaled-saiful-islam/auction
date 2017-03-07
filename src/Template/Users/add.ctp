@@ -39,6 +39,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Address: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('address', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Address', 'label' => false)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cell Phone: </label>
+                        <div class="col-sm-9">
+                            <?php echo $this->Form->input('phone_number', array('class' => 'col-xs-10 col-sm-5 input-mask-phone', 'placeholder' => 'Cell Phone', 'label' => false)); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Profile Image: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('image_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
@@ -74,4 +86,5 @@
                 //onchange:''
                 //
     });
+    $('.input-mask-phone').mask('(999) 99999999');
 </script>

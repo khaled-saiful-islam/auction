@@ -64,7 +64,9 @@ use Cake\Routing\Router;
 
         <?php echo $this->Html->script("bootbox.js"); ?>       
 
-        <?php echo $this->Html->script("loginJS.js"); ?>       
+        <?php echo $this->Html->script("loginJS.js"); ?>
+        
+        <?php echo $this->Html->script("jquery.maskedinput.min.js"); ?> 
 
         <?php $path = Router::url('/', true); ?>
         <script type="text/javascript">
