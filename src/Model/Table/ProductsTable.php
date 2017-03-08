@@ -52,12 +52,6 @@ class ProductsTable extends Table {
                 ->allowEmpty('details');
 
         $validator
-                ->notEmpty('start_date');
-
-        $validator
-                ->notEmpty('end_date');
-
-        $validator
                 ->allowEmpty('image1_path')
                 ->requirePresence('image1_path', 'create')
                 ->add('image1_path', 'validFormat', [

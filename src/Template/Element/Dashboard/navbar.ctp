@@ -60,7 +60,7 @@
                     ?>
                     <div class="cssmenu">
                         <ul>                        
-                            <li><?php echo $this->Html->link('<i class="fa fa-group fa-2x"></i>', array('controller' => 'Users', 'action' => 'login'), array('escape' => false)) ?></li>
+                            <li><?php echo $this->Html->link('<i class="fa fa-sign-in fa-2x"></i>', array('controller' => 'Users', 'action' => 'login'), array('escape' => false)) ?></li>
                         </ul>
                     </div> 
                     <?php

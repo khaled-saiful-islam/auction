@@ -4,7 +4,7 @@
         <div class="widget-main">
             <h4 class="header green lighter bigger">
                 <i class="ace-icon fa fa-users blue"></i>
-                New User Registration
+                User Registration
             </h4>
 
             <?php echo $this->Form->create('User', array('id' => 'addUser')) ?>

@@ -77,14 +77,21 @@ class ProductsController extends AppController {
                 $product['highest_bid'] = $this->request->data['minimum_bid'];
             }
 
-            $c_date = strtotime(date('Y-m-d H:i'));
-            $s_date = strtotime($this->request->data['start_date']);
-            $e_date = strtotime($this->request->data['end_date']);
+            $date_validation = true;
+            if ((isset($this->request->data['start_date']) & !empty($this->request->data['start_date'])) && (isset($this->request->data['end_date']) && !empty($this->request->data['end_date']))) {
+                $c_date = strtotime(date('Y-m-d H:i'));
+                $s_date = strtotime($this->request->data['start_date']);
+                $e_date = strtotime($this->request->data['end_date']);
 
-            if ($s_date > $c_date && ($e_date > $c_date && $e_date > $s_date)) {
                 $this->request->data['start_date'] = new Time($this->request->data['start_date']);
                 $this->request->data['end_date'] = new Time($this->request->data['end_date']);
 
+                if ($s_date < $c_date || $e_date < $c_date || $e_date < $s_date) {
+                    $date_validation = false;
+                }
+            }
+
+            if ($date_validation) {
                 $product = $this->Products->patchEntity($product, $this->request->data);
                 if ($this->Products->save($product)) {
                     $this->Flash->success('The product has been saved.', [
@@ -165,14 +172,21 @@ class ProductsController extends AppController {
                 $product['highest_bid'] = $this->request->data['minimum_bid'];
             }
 
-            $c_date = strtotime(date('Y-m-d H:i'));
-            $s_date = strtotime($this->request->data['start_date']);
-            $e_date = strtotime($this->request->data['end_date']);
+            $date_validation = true;
+            if ((isset($this->request->data['start_date']) & !empty($this->request->data['start_date'])) && (isset($this->request->data['end_date']) && !empty($this->request->data['end_date']))) {
+                $c_date = strtotime(date('Y-m-d H:i'));
+                $s_date = strtotime($this->request->data['start_date']);
+                $e_date = strtotime($this->request->data['end_date']);
 
-            if ($s_date > $c_date && ($e_date > $c_date && $e_date > $s_date)) {
                 $this->request->data['start_date'] = new Time($this->request->data['start_date']);
                 $this->request->data['end_date'] = new Time($this->request->data['end_date']);
 
+                if ($s_date < $c_date || $e_date < $c_date || $e_date < $s_date) {
+                    $date_validation = false;
+                }
+            }
+
+            if ($date_validation) {
                 $product = $this->Products->patchEntity($product, $this->request->data);
 
                 for ($i = 1; $i < 5; $i++) {

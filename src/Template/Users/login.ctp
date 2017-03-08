@@ -38,7 +38,7 @@
 
                                         <div class="clearfix">
                                             <div>
-                                                <?php echo $this->Html->link('<i class="ace-icon fa fa-refresh"></i>Back', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'width-30 pull-left btn btn-sm', 'escape' => false)) ?>
+                                                <?php echo $this->Html->link('<i class="ace-icon fa fa-arrow-left"></i>Back', array('controller' => 'Dashboard', 'action' => 'index'), array('class' => 'width-30 pull-left btn btn-sm', 'escape' => false)) ?>
                                             </div>
 
                                             <button type="Login" class="width-35 pull-right btn btn-sm btn-primary">
@@ -54,13 +54,13 @@
                                     <div>
                                         <a href="#" data-target="#forgot-box" class="forgot-password-link">
                                             <i class="ace-icon fa fa-arrow-left"></i>
-                                            I forgot my password
+                                            Forgot Password ?
                                         </a>
                                     </div>
 
                                     <div>
                                         <a href="#" data-target="#signup-box" class="user-signup-link">
-                                            I want to register
+                                            Registration
                                             <i class="ace-icon fa fa-arrow-right"></i>
                                         </a>
                                     </div>
