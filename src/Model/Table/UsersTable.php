@@ -30,6 +30,9 @@ class UsersTable extends Table {
         $this->displayField('id');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
+        $this->hasMany('Bookmarks', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**

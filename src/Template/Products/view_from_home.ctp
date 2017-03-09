@@ -27,8 +27,10 @@ $e_date = strtotime($product['end_date']);
                 <span class="middle"><?php echo $product['title'] ?></span>
                 <?php
                 if (isset($loginUser['id']) && !empty($loginUser['id'])) {
-                    if ($s_date > $c_date) {
-                        echo $this->Html->link('<span class="label label-success arrowed-in arrowed-in-right">Bookmark</span>', array(), array('value' => $product['id'], 'id' => 'addBookmark', 'escape' => false));
+                    if (in_array($product['id'], $bookmarked)) {
+                        echo '<span class="label label-default arrowed-in arrowed-in-right">Bookmarked</span>';
+                    } else {
+                        echo $this->Html->link('<span class="label label-info arrowed-in arrowed-in-right">Bookmark</span>', array(), array('value' => $product['id'], 'id' => 'addBookmark', 'escape' => false));
                     }
                 }
 
@@ -95,7 +97,7 @@ $e_date = strtotime($product['end_date']);
                         <div class="form-group">
                             <label style="color: #667e99; font-size: 13px;" class="col-sm-3 control-label no-padding-right" > Amount: </label>
                             <div class="col-sm-5">
-                                <?php echo $this->Form->input('bid_amount', array('min' => $product['minimum_increment'], 'placeholder' => 'Bid Amount', 'label' => false, 'type' => 'number', 'required' => true)); ?>
+                                <?php echo $this->Form->input('bid_amount', array('min' => ($product['highest_bid'] + $product['minimum_increment']), 'placeholder' => 'Bid Amount', 'label' => false, 'type' => 'number', 'required' => true)); ?>
                             </div>
                             <div class="col-sm-3">
                                 <button type="Submit" class="btn btn-white btn-info btn-bold">
@@ -180,7 +182,6 @@ $e_date = strtotime($product['end_date']);
         function countdown()
         {
             var now = new Date();
-            console.log('updating time');
 
             $.each(times, function (key, value) {
                 var left = value.end - now;
@@ -200,7 +201,7 @@ $e_date = strtotime($product['end_date']);
             });
 
         }
-        timer = setInterval(countdown, 1000);
+        setInterval(countdown, 1000);
 
     });
 </script>

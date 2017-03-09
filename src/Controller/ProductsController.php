@@ -274,10 +274,20 @@ class ProductsController extends AppController {
         $this->viewBuilder()->layout('home');
         $loginUser = $this->Auth->user();
 
+        $bookmarked = array();
+        if (isset($loginUser['id']) && !empty($loginUser['id'])) {
+            $this->loadModel('Users');
+            $bookmarks = $this->Users->get($loginUser['id'], ['contain' => ['Bookmarks']]);
+
+            foreach ($bookmarks['bookmarks'] as $bookmark) {
+                $bookmarked[] = $bookmark['product_id'];
+            }
+        }
+
         $product = $this->Products->get($id);
 
-        $this->set(compact('loginUser', 'home', 'product'));
-        $this->set('_serialize', ['loginUser', 'home', 'product']);
+        $this->set(compact('loginUser', 'home', 'product', 'bookmarked'));
+        $this->set('_serialize', ['loginUser', 'home', 'product', 'bookmarked']);
     }
 
     public function stopAuction($id = null) {

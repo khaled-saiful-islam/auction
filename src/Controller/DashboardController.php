@@ -19,8 +19,12 @@ class DashboardController extends AppController {
         $this->viewBuilder()->layout('dashboard');
 
         $loginUser = $this->Auth->user();
-        $this->set(compact('loginUser'));
-        $this->set('_serialize', ['loginUser']);
+
+        $this->loadModel('Bookmarks');
+        $bookmarks = $this->Bookmarks->find('all', array('conditions' => array('user_id' => $loginUser['id'])));
+
+        $this->set(compact('loginUser', 'bookmarks'));
+        $this->set('_serialize', ['loginUser', 'bookmarks']);
     }
 
     public function isAuthorized($user) {

@@ -25,6 +25,10 @@ class BookmarksTable extends Table {
         $this->table('bookmarks');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**

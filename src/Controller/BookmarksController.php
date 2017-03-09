@@ -30,9 +30,9 @@ class BookmarksController extends AppController {
             $bookmark = $this->Bookmarks->patchEntity($bookmark, $data);
 
             if ($this->Bookmarks->save($bookmark)) {
-                $message = 'Product was set as a bookmark';
+                $message = 'Product is set as a bookmark';
             } else {
-                $message = 'Product was not set as a bookmark';
+                $message = 'Product is not set as a bookmark';
             }
         }
         echo $message;

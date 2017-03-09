@@ -18,7 +18,6 @@ use App\Controller\AppController;
 class BidsController extends AppController {
 
     public function add($user_id = null, $product_id = null) {
-        //$this->autoRender = false;
 
         $bid = $this->Bids->newEntity();
         if ($this->request->is('post')) {
@@ -31,20 +30,22 @@ class BidsController extends AppController {
 
             if (($e_date >= $c_date) && $product['isPause'] < 1) {
 
-                if ($this->request->data['bid_amount'] >= $product['minimum_increment']) {
+                $actual_bid = $this->request->data['bid_amount'] - $product['highest_bid'];
+
+                if ($actual_bid >= $product['minimum_increment']) {
                     $this->request->data['user_id'] = $user_id;
                     $this->request->data['product_id'] = $product_id;
 
                     $bid = $this->Bids->patchEntity($bid, $this->request->data);
                     if ($this->Bids->save($bid)) {
 
-                        $data['highest_bid'] = $product['highest_bid'] + $this->request->data['bid_amount'];
+                        $data['highest_bid'] = $product['highest_bid'] + $actual_bid;
                         $data['highest_bidder_id'] = $user_id;
                         $data['winner_id'] = $user_id;
 
                         $product = $this->Products->patchEntity($product, $data);
                         if ($this->Products->save($product)) {
-                            $this->Flash->success('Your Bid successfully submitted', [
+                            $this->Flash->success('Your Bid is successfully submitted', [
                                 'params' => [
                                     'class' => 'alert alert-block alert-success alert-custom-msg-block'
                                 ]

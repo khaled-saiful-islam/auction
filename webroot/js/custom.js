@@ -102,8 +102,6 @@ jQuery(function ($) {
         e.preventDefault();
         var id = $(this).attr('value');
 
-//        bootbox.confirm("Are you sure?", function (result) {
-//            if (result) {
         $.ajax({
             beforeSend: function (xhr) {
                 $('#loading_text').show();
@@ -121,8 +119,6 @@ jQuery(function ($) {
 
             }
         });
-//            }
-//        });
     });
 
 });
