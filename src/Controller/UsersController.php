@@ -221,7 +221,7 @@ class UsersController extends AppController {
         return $this->redirect(['action' => 'index']);
     }
 
-    public function login() {
+    public function login($product_id = null) {
         $this->viewBuilder()->layout('login');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
@@ -232,7 +232,11 @@ class UsersController extends AppController {
                         'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
-                return $this->redirect($this->Auth->redirectUrl());
+                if(isset($product_id) && !empty($product_id)){
+                    return $this->redirect(['controller' => 'Products', 'action' => 'viewFromHome', $product_id]);
+                }else{
+                    return $this->redirect($this->Auth->redirectUrl());
+                }                
             }
             $this->Flash->error('Your email or password is incorrect.', [
                 'params' => [

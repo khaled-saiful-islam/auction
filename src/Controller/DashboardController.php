@@ -22,9 +22,14 @@ class DashboardController extends AppController {
 
         $this->loadModel('Bookmarks');
         $bookmarks = $this->Bookmarks->find('all', array('conditions' => array('user_id' => $loginUser['id'])));
+        
+        $bookmark_count = 0;
+        foreach($bookmarks as $bookmark){
+            $bookmark_count++;
+        }
 
-        $this->set(compact('loginUser', 'bookmarks'));
-        $this->set('_serialize', ['loginUser', 'bookmarks']);
+        $this->set(compact('loginUser', 'bookmarks', 'bookmark_count'));
+        $this->set('_serialize', ['loginUser', 'bookmarks', 'bookmark_count']);
     }
 
     public function isAuthorized($user) {

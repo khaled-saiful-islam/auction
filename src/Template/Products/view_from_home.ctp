@@ -111,7 +111,7 @@ $e_date = strtotime($product['end_date']);
                     <?php
                 }
             } else {
-                echo $this->Html->link('Login for Bid', array('controller' => 'Users', 'action' => 'login'), array('class' => 'custom_bid_button'));
+                echo $this->Html->link('Login for Bid', array('controller' => 'Users', 'action' => 'login', $product['id']), array('class' => 'custom_bid_button'));
             }
             ?>
         </div>
