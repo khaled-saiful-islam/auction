@@ -4,7 +4,12 @@
             <ul class = "breadcrumb">
                 <li>
                     <i class = "ace-icon fa fa-users home-icon"></i>
-                    <?php echo $this->Html->link('Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false))
+                    <?php
+                    if ($user['level'] < 21) {
+                        echo $this->Html->link('Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false));
+                    } else {
+                        echo $this->Html->link('Users', array());
+                    }
                     ?>
                 </li>
                 <li class="active">View User</li>
