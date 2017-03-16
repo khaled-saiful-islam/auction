@@ -33,10 +33,10 @@
                         <b class="arrow"></b>
                     </li>
 
-<!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
-                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>All Categories', array('controller' => 'Categories', 'action' => 'all'), array('escape' => false)) ?>
-                        <b class="arrow"></b>
-                    </li>-->
+    <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
+                    <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>All Categories', array('controller' => 'Categories', 'action' => 'all'), array('escape' => false)) ?>
+                            <b class="arrow"></b>
+                        </li>-->
                 </ul>
             </li>
         <?php } ?>
@@ -90,6 +90,10 @@
                 </ul>
             </li>
         <?php } ?>
+        <li class="<?php echo (isset($leftNavActive['bookmark']) && $leftNavActive['bookmark']) ? "active" : "" ?>">
+            <?php echo $this->Html->link('<i class="menu-icon fa fa-bookmark"></i><span class="menu-text"> Bookmarks </span>', array('controller' => 'Bookmarks', 'action' => 'index'), array('escape' => false)) ?>
+            <b class="arrow"></b>
+        </li>
     </ul><!-- /.nav-list -->
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
         <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

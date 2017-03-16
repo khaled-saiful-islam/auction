@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number">11</span>
+                                    <span class="infobox-data-number"><?php echo $bids; ?></span>
                                     <div class="infobox-content">Participation</div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number">8</span>
+                                    <span class="infobox-data-number"><?php echo $winning_products; ?></span>
                                     <div class="infobox-content">Purchase</div>
                                 </div>
                             </div>
@@ -57,7 +57,20 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number">Register User</span>
+                                    <?php
+                                    if ($loginUser['level'] > 20) {
+                                        ?>
+                                        <span class="infobox-data-number">Register User</span>
+                                        <?php
+                                    } elseif ($loginUser['level'] > 10) {
+                                        ?>
+                                        <span class="infobox-data-number">Admin</span>
+                                    <?php } else {
+                                        ?>
+                                        <span class="infobox-data-number">Super Admin</span>
+                                        <?php
+                                    }
+                                    ?>
                                     <div class="infobox-content">User Type</div>
                                 </div>
                             </div>
@@ -68,7 +81,7 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number">15/02/2017</span>
+                                    <span class="infobox-data-number"><?php echo date_format($loginUser['created'],"d/m/Y"); ?></span>
                                     <div class="infobox-content">Join</div>
                                 </div>
                             </div>
@@ -79,7 +92,7 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number">15/02/2017</span>
+                                    <span class="infobox-data-number"><?php echo date_format($loginUser['modified'],"d/m/Y"); ?></span>
                                     <div class="infobox-content">Last Update</div>
                                 </div>
                             </div>
@@ -104,42 +117,25 @@
                                             <thead class="thin-border-bottom">
                                                 <tr>
                                                     <th>
-                                                        <i class="ace-icon fa fa-caret-right blue"></i>name
+                                                        <i class="ace-icon fa fa-caret-right blue"></i>Title
                                                     </th>
 
                                                     <th>
-                                                        <i class="ace-icon fa fa-caret-right blue"></i>price
+                                                        <i class="ace-icon fa fa-caret-right blue"></i>Latest Price
                                                     </th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr>
-                                                    <td>internet.com</td>
+                                                <?php foreach ($bidding_products as $bidding_product): ?>
+                                                    <tr>
+                                                        <td><b class="green"><?php echo $bidding_product['title'] ?></b></td>
 
-                                                    <td>
-                                                        <small>
-                                                            <s class="red">$29.99</s>
-                                                        </small>
-                                                        <b class="green">$19.99</b>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>online.com</td>
-
-                                                    <td>
-                                                        <b class="blue">$16.45</b>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>newnet.com</td>
-
-                                                    <td>
-                                                        <b class="blue">$15.00</b>
-                                                    </td>
-                                                </tr>                                                
+                                                        <td>
+                                                            <b class="red"><?php echo $bidding_product['highest_bid'] ?></b>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div><!-- /.widget-main -->
@@ -176,10 +172,6 @@
                                                     </th>
 
                                                     <th>
-                                                        <i class="ace-icon fa fa-caret-right blue"></i>Code
-                                                    </th>
-
-                                                    <th>
                                                         <i class="ace-icon fa fa-caret-right blue"></i>Latest Price
                                                     </th>
 
@@ -199,11 +191,9 @@
                                                     $e_date = strtotime($product['end_date']);
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $product['title']; ?></td>
+                                                        <td><b class="green"><?php echo $product['title']; ?></b></td>
 
-                                                        <td><?php echo $product['code']; ?></td>
-
-                                                        <td><?php echo $product['highest_bid']; ?></td>
+                                                        <td><b class="red"><?php echo $product['highest_bid']; ?></b></td>
 
                                                         <td>                                                
                                                             <?php if ((isset($product['winner_id']) && !empty($product['winner_id'])) && $e_date < $c_date) { ?>

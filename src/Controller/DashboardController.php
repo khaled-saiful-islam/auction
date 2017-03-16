@@ -22,14 +22,22 @@ class DashboardController extends AppController {
 
         $this->loadModel('Bookmarks');
         $bookmarks = $this->Bookmarks->find('all', array('conditions' => array('user_id' => $loginUser['id'])));
-        
+
         $bookmark_count = 0;
-        foreach($bookmarks as $bookmark){
+        foreach ($bookmarks as $bookmark) {
             $bookmark_count++;
         }
 
-        $this->set(compact('loginUser', 'bookmarks', 'bookmark_count'));
-        $this->set('_serialize', ['loginUser', 'bookmarks', 'bookmark_count']);
+        $this->loadModel('Products');
+        $bidding_products = $this->Products->find('all', array('conditions' => array('highest_bidder_id IS NOT NULL', 'AND' => array('DATE(end_date) >' => date('Y-m-d'))), 'limit' => 3));
+
+        $winning_products = $this->Products->find('all', array('conditions' => array('winner_id' => $loginUser['id'], 'AND' => array('DATE(end_date) <' => date('Y-m-d')))))->count();
+        
+        $this->loadModel('Bids');
+        $bids = $this->Bids->find('all', array('conditions' => array('user_id' => $loginUser['id']), 'group' => array('product_id')))->count();
+
+        $this->set(compact('loginUser', 'bookmarks', 'bookmark_count', 'bidding_products', 'bids', 'winning_products'));
+        $this->set('_serialize', ['loginUser', 'bookmarks', 'bookmark_count', 'bidding_products', 'bids', 'winning_products']);
     }
 
     public function isAuthorized($user) {
