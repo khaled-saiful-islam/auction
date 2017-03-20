@@ -237,8 +237,11 @@ class ProductsController extends AppController {
 
         $product = $this->Products->get($id);
 
+        $this->loadModel('Bids');
+        $this->set('bids', $this->paginate($this->Bids, ['conditions' => ['product_id' => $id], 'limit' => 5, 'order' => array('id' => 'asc')]));
+
         $this->set(compact('loginUser', 'product', 'leftNavActive'));
-        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive']);
+        $this->set('_serialize', ['loginUser', 'product', 'leftNavActive', 'bids']);
     }
 
     public function delete($id = null) {

@@ -44,9 +44,15 @@ class UsersController extends AppController {
         $this->viewBuilder()->layout('dashboard');
         $loginUser = $this->Auth->user();
 
+        $this->loadModel('Bids');
+        $bids = $this->Bids->find('all', array('conditions' => array('user_id' => $id), 'limlit' => 10));
+
+        $this->loadModel('Products');
+        $winning_products = $this->Products->find('all', array('conditions' => array('winner_id' => $id, 'AND' => array('DATE(end_date) <' => date('Y-m-d'))), 'limlit' => 10));
+
         $user = $this->Users->get($id);
-        $this->set(compact('user', 'loginUser', 'leftNavActive'));
-        $this->set('_serialize', ['user', 'loginUser', 'leftNavActive']);
+        $this->set(compact('user', 'loginUser', 'leftNavActive', 'bids', 'winning_products'));
+        $this->set('_serialize', ['user', 'loginUser', 'leftNavActive', 'bids', 'winning_products']);
     }
 
     /**
@@ -232,11 +238,11 @@ class UsersController extends AppController {
                         'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
-                if(isset($product_id) && !empty($product_id)){
+                if (isset($product_id) && !empty($product_id)) {
                     return $this->redirect(['controller' => 'Products', 'action' => 'viewFromHome', $product_id]);
-                }else{
+                } else {
                     return $this->redirect($this->Auth->redirectUrl());
-                }                
+                }
             }
             $this->Flash->error('Your email or password is incorrect.', [
                 'params' => [

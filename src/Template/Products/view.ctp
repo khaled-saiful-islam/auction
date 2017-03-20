@@ -160,7 +160,36 @@ $e_date = strtotime($product['end_date']);
                                 </div><!-- /#home -->
 
                                 <div id="feed" class="tab-pane">
-                                    Histories will be shown here
+                                    <div class="page-header">
+                                        <h1>View Bid Histories</h1>
+                                    </div><!-- /.page-header -->
+                                    <table class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>User Name</th>
+                                                <th>Bid Amount</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($bids as $bid): ?>
+                                                <?php $user = $this->Common->findUser($bid['user_id']); ?>
+                                                <tr>
+                                                    <td><b class="green"><?php echo h($user['name']); ?></b></td>
+                                                    <td><b class="red"><?php echo h($bid['bid_amount']); ?></b></td>
+                                                    <td><?php echo date_format($bid['created'], "d/m/Y H:i:s"); ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                    <div class="paginator">
+                                        <ul class="pagination pull-right no-margin">
+                                            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                                            <?= $this->Paginator->numbers() ?>
+                                            <?= $this->Paginator->next(__('next') . ' >') ?>
+                                        </ul>
+                                        <p><?= $this->Paginator->counter() ?></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

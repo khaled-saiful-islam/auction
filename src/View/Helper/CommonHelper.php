@@ -23,4 +23,9 @@ class CommonHelper extends Helper {
         return $products->find('all', array('conditions' => array('id' => $id)))->first();
     }
 
+    function findUser($id = null) {
+        $users = TableRegistry::get('Users');
+        return $users->find('all', array('conditions' => array('id' => $id)))->first();
+    }
+
 }

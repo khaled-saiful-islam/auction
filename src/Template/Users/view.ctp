@@ -123,7 +123,7 @@
                                                     <div class="profile-info-name"> Joined </div>
 
                                                     <div class="profile-info-value">
-                                                        <span><?php echo $user['created'] ?></span>
+                                                        <span><?php echo date_format($user['created'], "d/m/Y H:i:s") ?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,7 +134,52 @@
                                 </div><!-- /#home -->
 
                                 <div id="activity_histories" class="tab-pane">
+                                    <div class="page-header">
+                                        <h1>View Bids</h1>
+                                    </div><!-- /.page-header -->
+                                    <table class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Title</th>
+                                                <th>Bid Amount</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($bids as $bid): ?>
+                                                <?php $product = $this->Common->findProduct($bid['product_id']); ?>
+                                                <tr>
+                                                    <td><b class="green"><?php echo h($product['title']); ?></b></td>
+                                                    <td><b class="red"><?php echo h($bid['bid_amount']); ?></b></td>
+                                                    <td><?php echo date_format($bid['created'], "d/m/Y H:i:s"); ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
 
+                                    <div class="page-header">
+                                        <h1>View Products</h1>
+                                    </div><!-- /.page-header -->
+                                    <table class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Title</th>
+                                                <th>Code</th>
+                                                <th>Price</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($winning_products as $winning_product): ?>
+                                                <tr>
+                                                    <td><b class="green"><?php echo h($winning_product['title']); ?></b></td>
+                                                    <td><b class="red"><?php echo h($winning_product['code']); ?></b></td>
+                                                    <td><b class="blue"><?php echo h($winning_product['highest_bid']); ?></b></td>
+                                                    <td><?php echo date_format($winning_product['modified'], "d/m/Y H:i:s"); ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
