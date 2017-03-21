@@ -359,6 +359,7 @@ ul.last li a:hover{
 /*  GRID OF Content and sidebar   ============================================================================= */
 .main{
 	/*margin:2% 0;*/
+        min-height: 470px;
 }
 .cont{
 	display: block;

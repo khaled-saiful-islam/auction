@@ -6,6 +6,11 @@ namespace App\Controller;
  * Description of CategoriesController
  */
 class CategoriesController extends AppController {
+
+    public function beforeFilter(\Cake\Event\Event $event) {
+        $this->Auth->allow(['all', 'categoryBasedProducts']);
+    }
+
     public function index() {
         $leftNavActive = array();
         $leftNavActive['category'] = true;
@@ -17,18 +22,24 @@ class CategoriesController extends AppController {
         $this->set(compact('categories', 'loginUser', 'leftNavActive'));
         $this->set('_serialize', ['categories', 'loginUser']);
     }
-    
-//    public function all() {
-//        $leftNavActive = array();
-//        $leftNavActive['category'] = true;
-//        $leftNavActive['categoryAll'] = true;
-//        $this->viewBuilder()->layout('dashboard');
-//        $loginUser = $this->Auth->user();
-//
-//        $this->set('categories', $this->paginate($this->Categories, ['limit' => 5, 'order' => array('id' => 'asc')]));
-//        $this->set(compact('categories', 'loginUser', 'leftNavActive'));
-//        $this->set('_serialize', ['categories', 'loginUser']);
-//    }
+
+    public function all() {
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $categories = $this->Categories->find('all');
+        $this->set(compact('categories', 'loginUser'));
+        $this->set('_serialize', ['categories', 'loginUser']);
+    }
+
+    public function categoryBasedProducts($category = '', $id = null) {
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $cat_products = $this->Categories->get($id, ['contain' => 'Products']);
+        $this->set(compact('cat_products', 'loginUser', 'category'));
+        $this->set('_serialize', ['cat_products', 'loginUser', 'category']);
+    }
 
     public function add() {
         $leftNavActive = array();
@@ -121,15 +132,11 @@ class CategoriesController extends AppController {
     public function isAuthorized($user) {
         $action = $this->request->params['action'];
         $loginUser = $this->Auth->user();
-        
+
         if ($loginUser['level'] == 1) {
             if (in_array($action, ['add', 'index', 'all', 'edit', 'delete', 'view'])) {
                 return true;
             }
-        }
-        if (in_array($action, ['index', 'all', 'view'])) {
-//        if (in_array($action, ['add', 'index', 'all', 'edit', 'delete', 'view'])) {
-            return true;
         }
         return parent::isAuthorized($user);
     }
