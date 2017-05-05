@@ -1,5 +1,5 @@
 <div class="mens"></div>
-<h2 class="head">All Categories</h2> 
+<h2 class="head" style="margin-bottom: 20px;">All Categories</h2> 
 <div class="top-box">
     <?php
     foreach ($categories as $category) {
