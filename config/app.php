@@ -1,4 +1,5 @@
 <?php
+
 return [
     /**
      * Debug Level:
@@ -10,7 +11,6 @@ return [
      * true: Errors and warnings shown.
      */
     'debug' => true,
-
     /**
      * Configure basic information about the application.
      *
@@ -53,7 +53,6 @@ return [
             'locales' => [APP . 'Locale' . DS],
         ],
     ],
-
     /**
      * Security and encryption configuration
      *
@@ -64,7 +63,6 @@ return [
     'Security' => [
         'salt' => '43a06640ddee51f0467998d4ca956844fe3fd4a69cf4b6bb5d5618e8f82e3d72',
     ],
-
     /**
      * Apply timestamps with the last modified time to static assets (js, css, images).
      * Will append a querystring parameter containing the time the file was modified.
@@ -74,9 +72,8 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        // 'timestamp' => true,
+    // 'timestamp' => true,
     ],
-
     /**
      * Configure the cache adapters.
      */
@@ -85,7 +82,6 @@ return [
             'className' => 'File',
             'path' => CACHE,
         ],
-
         /**
          * Configure the cache used for general framework caching. Path information,
          * object listings, and translation cache files are stored with this
@@ -98,7 +94,6 @@ return [
             'serialize' => true,
             'duration' => '+2 minutes',
         ],
-
         /**
          * Configure the cache for model and datasource caches. This cache
          * configuration is used to store schema descriptions, and table listings
@@ -112,7 +107,6 @@ return [
             'duration' => '+2 minutes',
         ],
     ],
-
     /**
      * Configure the Error and Exception handlers used by your application.
      *
@@ -146,7 +140,6 @@ return [
         'log' => true,
         'trace' => true,
     ],
-
     /**
      * Email configuration.
      *
@@ -178,8 +171,16 @@ return [
             'client' => null,
             'tls' => null,
         ],
+        'gmail' => [
+            'className' => 'Smtp',
+            // The following keys are used in SMTP transports
+            'host' => 'ssl://smtp.gmail.com',
+            'port' => 465,
+            'timeout' => 30,
+            'username' => 'oc.automation.qa.bjit.01@gmail.com',
+            'password' => 'bjit1234'
+        ]
     ],
-
     /**
      * Email delivery profiles
      *
@@ -193,11 +194,14 @@ return [
         'default' => [
             'transport' => 'default',
             'from' => 'you@localhost',
-            //'charset' => 'utf-8',
-            //'headerCharset' => 'utf-8',
+        //'charset' => 'utf-8',
+        //'headerCharset' => 'utf-8',
         ],
+        'gmail' => [
+            'transport' => 'gmail',
+            'from' => 'oc.automation.qa.bjit.01@gmail.com'
+        ]
     ],
-
     /**
      * Connection information used by the ORM to connect
      * to your application's datastores.
@@ -222,7 +226,6 @@ return [
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
-
             /**
              * Set identifier quoting to true if you are using reserved words or
              * special characters in your table or column names. Enabling this
@@ -232,17 +235,15 @@ return [
              * manipulated before being executed.
              */
             'quoteIdentifiers' => false,
-
-            /**
-             * During development, if using MySQL < 5.6, uncommenting the
-             * following line could boost the speed at which schema metadata is
-             * fetched from the database. It can also be set directly with the
-             * mysql configuration directive 'innodb_stats_on_metadata = 0'
-             * which is the recommended value in production environments
-             */
-            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+        /**
+         * During development, if using MySQL < 5.6, uncommenting the
+         * following line could boost the speed at which schema metadata is
+         * fetched from the database. It can also be set directly with the
+         * mysql configuration directive 'innodb_stats_on_metadata = 0'
+         * which is the recommended value in production environments
+         */
+        //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
-
         /**
          * The test connection is used during the test suite.
          */
@@ -259,10 +260,9 @@ return [
             'timezone' => 'UTC',
             'cacheMetadata' => true,
             'quoteIdentifiers' => false,
-            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+        //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
     ],
-
     /**
      * Configures logging options
      */
@@ -280,7 +280,6 @@ return [
             'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
         ],
     ],
-
     /**
      * Session configuration.
      *

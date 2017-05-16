@@ -4,7 +4,12 @@
     <?php
     foreach ($categories as $category) {
         ?>
-        <div class="wrapper-inner-tab-backgrounds-third"><div class="sim-button button29"><span><?php echo $this->Html->link($category['name'], array('controller' => 'Categories', 'action' => 'categoryBasedProducts', $category['name'], $category['id'])) ?></span></div></div>
+        <div class="wrapper-inner-tab-backgrounds-third">
+            <div class="sim-button button29">
+                <span><?php echo $this->Html->link($category['name'], array('controller' => 'Categories', 'action' => 'categoryBasedProducts', $category['name'], $category['id'])) ?>
+                </span>
+            </div>
+        </div>
         <?php
     }
     ?>

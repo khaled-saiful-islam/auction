@@ -8,7 +8,7 @@
                     <li><?php echo $this->Html->link('All Categories', array('controller' => 'Categories', 'action' => 'all'), array('class' => 'item-hover')) ?></li>
                     <li><?php echo $this->Html->link('Current Bid', array('controller' => 'Home', 'action' => 'currentBid'), array('class' => 'item-hover')) ?></li>				
                     <li><?php echo $this->Html->link('Upcoming Bid', array('controller' => 'Home', 'action' => 'upComingBid'), array('class' => 'item-hover')) ?></li>
-                    <li><a class="item-hover" href="#">Contact Us</a></li>
+                    <li><?php echo $this->Html->link('Contact Us', array('controller' => 'Contacts', 'action' => 'add'), array('class' => 'item-hover')) ?></li>
                 </ul>
             </div>
         </div>
