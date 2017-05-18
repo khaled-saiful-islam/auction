@@ -52,7 +52,7 @@ class AppController extends Controller {
                 'action' => 'index'
             ],
             'loginRedirect' => [
-                'controller' => 'Home',
+                'controller' => 'Dashboard',
                 'action' => 'index',
             ],
             'authorize' => 'Controller',

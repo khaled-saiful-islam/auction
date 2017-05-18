@@ -32,6 +32,25 @@ jQuery(function ($) {
         e.preventDefault();
     });
 
+    $('#userType').on('change', function (e) {
+        e.preventDefault();
+        var type = $(this).val();
+
+        if (type == 1) {
+            bootbox.alert({
+                message: '<h4 style="color: green;">You may not pay any fee for this account</h4>',
+            });
+        } else if (type == 2) {
+            bootbox.alert({
+                message: '<h4 style="color: red;">You have to pay 1000 BDT per year for this account</h4>',
+            });
+        } else if (type == 3) {
+            bootbox.alert({
+                message: '<h4 style="color: red;">You have to pay 2000 BDT per year for this account</h4>',
+            });
+        }
+    });
+
     $("#addUser").submit(function (e)
     {
         var postData = $(this).serializeArray();

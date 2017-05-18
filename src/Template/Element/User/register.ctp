@@ -44,6 +44,12 @@
                     </span>
                 </label>
 
+                <label class="block clearfix">
+                    <span class="block input-icon input-icon-right">
+                        <?php echo $this->Form->input('type', array('id' => 'userType','class' => 'form-control', 'options' => array(1 => 'Regular', 2 => 'Silver', 3 => 'Gold'), 'placeholder' => 'Type', 'label' => false)); ?>
+                    </span>
+                </label>
+
                 <div class="space-24"></div>
 
                 <div class="clearfix">

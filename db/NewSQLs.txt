@@ -3,3 +3,7 @@ ALTER TABLE `products` ADD `start_date` DATETIME NULL DEFAULT NULL AFTER `create
 ALTER TABLE `products` ADD `isPause` INT(11) NOT NULL DEFAULT '0' AFTER `created_by`;
 
 ALTER TABLE `users` ADD `address` VARCHAR(255) NOT NULL AFTER `password`, ADD `phone_number` VARCHAR(20) NOT NULL AFTER `address`;
+
+ALTER TABLE `users` ADD `type` INT(11) NOT NULL DEFAULT '1' AFTER `level`;
+
+ALTER TABLE `users` ADD `payment` INT(11) NOT NULL DEFAULT '0' AFTER `type`;

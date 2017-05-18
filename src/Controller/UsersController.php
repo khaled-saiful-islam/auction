@@ -268,9 +268,9 @@ class UsersController extends AppController {
             $this->autoRender = false;
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $message = 'User was saved successfully';
+                $message = 'You are registered successfully';
             } else {
-                $message = 'User was not saved';
+                $message = 'Error!, You are not registered';
             }
         }
         echo $message;
