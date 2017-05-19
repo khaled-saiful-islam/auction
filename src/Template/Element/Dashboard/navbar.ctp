@@ -42,7 +42,7 @@
                         </a>
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <?php if (($loginUser['type'] > 1 && $loginUser['payment'] != 0)) { ?>
+                            <?php if (($loginUser['type'] == 1 && $loginUser['payment'] == 0) || ($loginUser['type'] > 1 && $loginUser['payment'] != 0)) { ?>
                                 <li>
                                     <?php echo $this->Html->link('<i class="ace-icon fa fa-dashboard"></i>Dashboard', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
                                 </li>
