@@ -21,8 +21,16 @@ class DashboardController extends AppController {
         $loginUser = $this->Auth->user();
 
         if ($loginUser['type'] > 1 && $loginUser['payment'] == 0) {
-            $this->set(compact('loginUser'));
-            $this->set('_serialize', ['loginUser']);
+
+            $amount = 0;
+            if ($loginUser['type'] == 2) {
+                $amount = 1000;
+            } else {
+                $amount = 2000;
+            }
+
+            $this->set(compact('loginUser', 'amount'));
+            $this->set('_serialize', ['loginUser', 'amount']);
 
             $this->render('payment_notification');
         } else {
