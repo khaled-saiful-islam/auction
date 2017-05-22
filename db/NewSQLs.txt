@@ -9,3 +9,5 @@ ALTER TABLE `users` ADD `type` INT(11) NOT NULL DEFAULT '1' AFTER `level`;
 ALTER TABLE `users` ADD `payment` INT(11) NOT NULL DEFAULT '0' AFTER `type`;
 
 ALTER TABLE `payments` DROP `name`;
+
+ALTER TABLE `products` ADD `type` INT(11) NOT NULL DEFAULT '0' AFTER `details`;

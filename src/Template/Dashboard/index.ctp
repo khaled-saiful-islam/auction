@@ -81,7 +81,7 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number"><?php echo date_format($loginUser['created'],"d/m/Y"); ?></span>
+                                    <span class="infobox-data-number"><?php echo date_format($loginUser['created'], "d/m/Y"); ?></span>
                                     <div class="infobox-content">Join</div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                                 </div>
 
                                 <div class="infobox-data">
-                                    <span class="infobox-data-number"><?php echo date_format($loginUser['modified'],"d/m/Y"); ?></span>
+                                    <span class="infobox-data-number"><?php echo date_format($loginUser['modified'], "d/m/Y"); ?></span>
                                     <div class="infobox-content">Last Update</div>
                                 </div>
                             </div>
@@ -146,82 +146,83 @@
 
                     <div class="hr hr32 hr-dotted"></div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="widget-box transparent">
-                                <div class="widget-header widget-header-flat">
-                                    <h4 class="widget-title lighter">
-                                        <i class="ace-icon fa fa-bookmark orange"></i>
-                                        Bookmark products
-                                    </h4>
+                    <?php if ($loginUser['level'] > 20) { ?>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title lighter">
+                                            <i class="ace-icon fa fa-bookmark orange"></i>
+                                            Bookmark products
+                                        </h4>
 
-                                    <div class="widget-toolbar">
-                                        <a href="#" data-action="collapse">
-                                            <i class="ace-icon fa fa-chevron-up"></i>
-                                        </a>
+                                        <div class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="widget-body">
-                                    <div class="widget-main no-padding">
-                                        <table class="table table-bordered table-striped">
-                                            <thead class="thin-border-bottom">
-                                                <tr>
-                                                    <th>
-                                                        <i class="ace-icon fa fa-caret-right blue"></i>Product Name
-                                                    </th>
-
-                                                    <th>
-                                                        <i class="ace-icon fa fa-caret-right blue"></i>Latest Price
-                                                    </th>
-
-                                                    <th>
-                                                        <i class="ace-icon fa fa-caret-right blue"></i>Status
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <?php foreach ($bookmarks as $bookmark): ?>
-                                                    <?php
-                                                    $product = $this->Common->findProduct($bookmark['product_id']);
-
-                                                    $c_date = strtotime(date('Y-m-d H:i'));
-                                                    $s_date = strtotime($product['start_date']);
-                                                    $e_date = strtotime($product['end_date']);
-                                                    ?>
+                                    <div class="widget-body">
+                                        <div class="widget-main no-padding">
+                                            <table class="table table-bordered table-striped">
+                                                <thead class="thin-border-bottom">
                                                     <tr>
-                                                        <td><b class="green"><?php echo $product['title']; ?></b></td>
+                                                        <th>
+                                                            <i class="ace-icon fa fa-caret-right blue"></i>Product Name
+                                                        </th>
 
-                                                        <td><b class="red"><?php echo $product['highest_bid']; ?></b></td>
+                                                        <th>
+                                                            <i class="ace-icon fa fa-caret-right blue"></i>Latest Price
+                                                        </th>
 
-                                                        <td>                                                
-                                                            <?php if ((isset($product['winner_id']) && !empty($product['winner_id'])) && $e_date < $c_date) { ?>
-                                                                <span class="label label-danger arrowed-in-right">
-                                                                    Sold Product
-                                                                </span>
-                                                            <?php } else if (($product['isPause'] < 1) && ($s_date <= $c_date) && $e_date >= $c_date) { ?>
-                                                                <span class="label label-warning arrowed-in-right">
-                                                                    Auction On Going
-                                                                </span>
-                                                            <?php } else {
-                                                                ?>
-                                                                <span class="label label-success arrowed-in-right">
-                                                                    New Product
-                                                                </span>
-                                                            <?php }
-                                                            ?>
-                                                        </td>
+                                                        <th>
+                                                            <i class="ace-icon fa fa-caret-right blue"></i>Status
+                                                        </th>
                                                     </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div><!-- /.widget-main -->
-                                </div><!-- /.widget-body -->
-                            </div><!-- /.widget-box -->
-                        </div><!-- /.col -->                        
-                    </div><!-- /.row -->
+                                                </thead>
 
+                                                <tbody>
+                                                    <?php foreach ($bookmarks as $bookmark): ?>
+                                                        <?php
+                                                        $product = $this->Common->findProduct($bookmark['product_id']);
+
+                                                        $c_date = strtotime(date('Y-m-d H:i'));
+                                                        $s_date = strtotime($product['start_date']);
+                                                        $e_date = strtotime($product['end_date']);
+                                                        ?>
+                                                        <tr>
+                                                            <td><b class="green"><?php echo $product['title']; ?></b></td>
+
+                                                            <td><b class="red"><?php echo $product['highest_bid']; ?></b></td>
+
+                                                            <td>                                                
+                                                                <?php if ((isset($product['winner_id']) && !empty($product['winner_id'])) && $e_date < $c_date) { ?>
+                                                                    <span class="label label-danger arrowed-in-right">
+                                                                        Sold Product
+                                                                    </span>
+                                                                <?php } else if (($product['isPause'] < 1) && ($s_date <= $c_date) && $e_date >= $c_date) { ?>
+                                                                    <span class="label label-warning arrowed-in-right">
+                                                                        Auction On Going
+                                                                    </span>
+                                                                <?php } else {
+                                                                    ?>
+                                                                    <span class="label label-success arrowed-in-right">
+                                                                        New Product
+                                                                    </span>
+                                                                <?php }
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div><!-- /.widget-main -->
+                                    </div><!-- /.widget-body -->
+                                </div><!-- /.widget-box -->
+                            </div><!-- /.col -->                        
+                        </div><!-- /.row -->
+                    <?php } ?>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
