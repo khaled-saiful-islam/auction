@@ -1,6 +1,7 @@
+<?php $user = $this->Common->findUser($loginUser['id']); ?>
 <div id="sidebar" class="sidebar responsive ace-save-state">
     <ul class="nav nav-list">
-        <?php if (($loginUser['type'] == 1 && $loginUser['payment'] == 0) || ($loginUser['type'] > 1 && $loginUser['payment'] != 0)) { ?>
+        <?php if (($user['type'] == 1 && $user['payment'] == 0) || ($user['type'] > 1 && $user['payment'] != 0)) { ?>
             <li class="">
                 <?php echo $this->Html->link('<i class="menu-icon fa fa-home"></i><span class="menu-text"> Home </span>', array('controller' => 'Home', 'action' => 'index'), array('escape' => false)) ?>
                 <b class="arrow"></b>
@@ -35,10 +36,10 @@
                         <b class="arrow"></b>
                     </li>
 
-                                                    <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
+                                                        <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>All Categories', array('controller' => 'Categories', 'action' => 'all'), array('escape' => false)) ?>
-                                                                            <b class="arrow"></b>
-                                                                        </li>-->
+                                                                                <b class="arrow"></b>
+                                                                            </li>-->
                 </ul>
             </li>
         <?php } ?>
@@ -93,12 +94,13 @@
             </li>
         <?php } ?>
         <?php if ($loginUser['level'] > 20) { ?>
-            <?php if (($loginUser['type'] == 1 && $loginUser['payment'] == 0) || ($loginUser['type'] > 1 && $loginUser['payment'] != 0)) { ?>
+            <?php if (($user['type'] == 1 && $user['payment'] == 0) || ($loginUser['type'] > 1 && $user['payment'] != 0)) { ?>
                 <li class="<?php echo (isset($leftNavActive['bookmark']) && $leftNavActive['bookmark']) ? "active" : "" ?>">
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-bookmark"></i><span class="menu-text"> Bookmarks </span>', array('controller' => 'Bookmarks', 'action' => 'index'), array('escape' => false)) ?>
                     <b class="arrow"></b>
                 </li>
-            <?php }
+            <?php
+            }
         }
         ?>
     </ul><!-- /.nav-list -->

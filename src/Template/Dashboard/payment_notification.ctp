@@ -18,8 +18,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <?php echo $this->Form->create(null, array('url' => array('controller' => 'Payments', 'action' => 'registrationFee'), 'class' => 'form-horizontal', 'role' => 'form')) ?>
-                    <?php echo $this->Form->hidden('user_id', array('value' => $loginUser['id'])); ?>
-                    <?php echo $this->Form->hidden('name', array('value' => $loginUser['name'])); ?>
+                    <?php echo $this->Form->hidden('user_id', array('value' => $user['id'])); ?>
                     <?php echo $this->Form->hidden('payment_type', array('value' => 1)); ?>
                     <?php echo $this->Form->hidden('amount', array('value' => $amount)); ?>
                     <div class="form-group">

@@ -1,3 +1,4 @@
+<?php $user = $this->Common->findUser($loginUser['id']); ?>
 <div id="navbar" class="navbar navbar-default ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <?php
@@ -42,7 +43,7 @@
                         </a>
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <?php if (($loginUser['type'] == 1 && $loginUser['payment'] == 0) || ($loginUser['type'] > 1 && $loginUser['payment'] != 0)) { ?>
+                            <?php if (($user['type'] == 1 && $user['payment'] == 0) || ($user['type'] > 1 && $user['payment'] != 0)) { ?>
                                 <li>
                                     <?php echo $this->Html->link('<i class="ace-icon fa fa-dashboard"></i>Dashboard', array('controller' => 'Dashboard', 'action' => 'index'), array('escape' => false)) ?>
                                 </li>
