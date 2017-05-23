@@ -238,8 +238,17 @@ class UsersController extends AppController {
                         'class' => 'alert alert-block alert-success alert-custom-msg-block'
                     ]
                 ]);
+
                 if (isset($product_id) && !empty($product_id)) {
-                    return $this->redirect(['controller' => 'Products', 'action' => 'viewFromHome', $product_id]);
+                    $this->loadModel('Products');
+                    $product = $this->Products->get($product_id, ['contain' => []]);
+                    if ($product['type'] == 2) {
+                        return $this->redirect(['controller' => 'Products', 'action' => 'viewFromSpecial', $product_id]);
+                    } else if ($product['type'] == 3) {
+                        return $this->redirect(['controller' => 'Products', 'action' => 'viewFromExclusive', $product_id]);
+                    } else {
+                        return $this->redirect(['controller' => 'Products', 'action' => 'viewFromHome', $product_id]);
+                    }
                 } else {
                     return $this->redirect($this->Auth->redirectUrl());
                 }

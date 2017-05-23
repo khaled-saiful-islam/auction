@@ -4,7 +4,12 @@
             <ul class = "breadcrumb">
                 <li>
                     <i class = "ace-icon fa fa-users home-icon"></i>
-                    <?php echo $this->Html->link('Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false))
+                    <?php
+                    if ($user['level'] < 21) {
+                        echo $this->Html->link('Users', array('controller' => 'Users', 'action' => 'index'), array('escape' => false));
+                    } else {
+                        echo $this->Html->link('Users', array());
+                    }
                     ?>
                 </li>
                 <li class="active">Edit User</li>
@@ -53,7 +58,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Type: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('type', array('class' => 'col-xs-10 col-sm-5', 'options' => array(1 => 'Regular', 2 => 'Silver', 3 => 'Gold'), 'placeholder' => 'Type', 'label' => false)); ?>
+                            <?php echo $this->Form->input('type', array('id' => 'userType', 'class' => 'col-xs-10 col-sm-5', 'options' => array(1 => 'Regular', 2 => 'Silver', 3 => 'Gold'), 'placeholder' => 'Type', 'label' => false)); ?>
                         </div>
                     </div>
                     <div class="form-group">

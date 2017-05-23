@@ -63,6 +63,10 @@
                                                 echo $this->Html->link('<i class="ace-icon fa fa-plus-circle bigger-120"></i><span>Make as an Admin</span>', array(), array('value' => $user->id, 'id' => 'makeAdmin', 'class' => 'btn btn-sm btn-block btn-success', 'escape' => false));
                                             }
                                             echo $this->Html->link('<i class="ace-icon fa fa-edit bigger-110"></i><span>Profile Edit</span>', array('controller' => 'Users', 'action' => 'edit', $user->id, 'view'), array('class' => 'btn btn-sm btn-block btn-primary', 'escape' => false));
+
+                                            if ($user['type'] > 1 && $user['payment'] == 0) {
+                                                echo $this->Html->link('<i class="ace-icon fa fa-money bigger-110"></i><span>Payment</span>', array('controller' => 'Payments', 'action' => 'registrationFee'), array('class' => 'btn btn-sm btn-block btn-success', 'escape' => false));
+                                            }
                                             ?>                                           
                                         </div><!-- /.col -->
 
