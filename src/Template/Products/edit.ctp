@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Type: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('type', array('class' => 'col-xs-10 col-sm-5', 'options' => array(1 => 'Regular', 2 => 'Silver', 3 => 'Gold'), 'placeholder' => 'Type', 'label' => false)); ?>
+                            <?php echo $this->Form->input('type', array('class' => 'col-xs-10 col-sm-5', 'options' => array(1 => 'Regular', 2 => 'Silver', 3 => 'Gold'), 'placeholder' => 'Type', 'label' => false, 'value' => $product['type'])); ?>
                         </div>
                     </div>
                     <div class="form-group">

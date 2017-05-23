@@ -23,7 +23,7 @@
                                 <span class="actual"><?php echo $product['minimum_bid'] . " BDT"; ?></span>
                             </div>
                         </div>
-                        <?php echo $this->Html->link('<div class="cart-right"> </div>', array('controller' => 'Products', 'action' => 'viewFromHome', $product['id']), array('escape' => false)) ?>
+                        <?php echo $this->Html->link('<div class="cart-right"> </div>', array('controller' => 'Products', 'action' => 'viewFromExclusive', $product['id']), array('escape' => false)) ?>
                         <div class="clear"></div>
                     </div>				
                 </div>

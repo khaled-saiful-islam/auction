@@ -18,7 +18,7 @@ use Cake\I18n\Time;
 class ProductsController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
-        $this->Auth->allow(['viewFromHome', 'specialProduct', 'exclusiveProduct']);
+        $this->Auth->allow(['viewFromHome', 'specialProduct', 'exclusiveProduct', 'viewFromExclusive', 'viewFromSpecial']);
     }
 
     public function index() {
@@ -273,6 +273,48 @@ class ProductsController extends AppController {
     }
 
     public function viewFromHome($id = null) {
+        $home['slider'] = false;
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $bookmarked = array();
+        if (isset($loginUser['id']) && !empty($loginUser['id'])) {
+            $this->loadModel('Users');
+            $bookmarks = $this->Users->get($loginUser['id'], ['contain' => ['Bookmarks']]);
+
+            foreach ($bookmarks['bookmarks'] as $bookmark) {
+                $bookmarked[] = $bookmark['product_id'];
+            }
+        }
+
+        $product = $this->Products->get($id);
+
+        $this->set(compact('loginUser', 'home', 'product', 'bookmarked'));
+        $this->set('_serialize', ['loginUser', 'home', 'product', 'bookmarked']);
+    }
+
+    public function viewFromExclusive($id = null) {
+        $home['slider'] = false;
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $bookmarked = array();
+        if (isset($loginUser['id']) && !empty($loginUser['id'])) {
+            $this->loadModel('Users');
+            $bookmarks = $this->Users->get($loginUser['id'], ['contain' => ['Bookmarks']]);
+
+            foreach ($bookmarks['bookmarks'] as $bookmark) {
+                $bookmarked[] = $bookmark['product_id'];
+            }
+        }
+
+        $product = $this->Products->get($id);
+
+        $this->set(compact('loginUser', 'home', 'product', 'bookmarked'));
+        $this->set('_serialize', ['loginUser', 'home', 'product', 'bookmarked']);
+    }
+
+    public function viewFromSpecial($id = null) {
         $home['slider'] = false;
         $this->viewBuilder()->layout('home');
         $loginUser = $this->Auth->user();
