@@ -11,7 +11,7 @@ use App\Controller\AppController;
 class HomeController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
-        $this->Auth->allow(['index', 'currentBid', 'upComingBid']);
+        $this->Auth->allow(['index', 'currentBid', 'upComingBid', 'newCollection']);
     }
 
     /**
@@ -26,8 +26,8 @@ class HomeController extends AppController {
 
         $this->loadModel('Products');
         $c_date = date('Y-m-d H:i');
-        $products = $this->Products->find('all', array('conditions' => array('start_date >' => $c_date), 'limit' => 8));
-        $bidding_products = $this->Products->find('all', array('conditions' => array('start_date <=' => $c_date, 'end_date >' => $c_date), 'limit' => 8));
+        $products = $this->Products->find('all', array('conditions' => array('start_date >' => $c_date, 'type' => 1), 'limit' => 8));
+        $bidding_products = $this->Products->find('all', array('conditions' => array('start_date <=' => $c_date, 'end_date >' => $c_date, 'type' => 1), 'limit' => 8));
 
         $this->set(compact('loginUser', 'home', 'products', 'bidding_products'));
         $this->set('_serialize', ['loginUser', 'home', 'products', 'bidding_products']);
@@ -40,7 +40,7 @@ class HomeController extends AppController {
 
         $this->loadModel('Products');
         $c_date = date('Y-m-d H:i');
-        $current_bids = $this->Products->find('all', array('conditions' => array('start_date <=' => $c_date, 'end_date >' => $c_date)));
+        $current_bids = $this->Products->find('all', array('conditions' => array('start_date <=' => $c_date, 'end_date >' => $c_date, 'type' => 1)));
 
         $this->set(compact('loginUser', 'home', 'current_bids'));
         $this->set('_serialize', ['loginUser', 'home', 'current_bids']);
@@ -53,10 +53,18 @@ class HomeController extends AppController {
 
         $this->loadModel('Products');
         $c_date = date('Y-m-d H:i');
-        $upcoming_bids = $this->Products->find('all', array('conditions' => array('start_date >' => $c_date)));
+        $upcoming_bids = $this->Products->find('all', array('conditions' => array('start_date >' => $c_date, 'type' => 1)));
 
         $this->set(compact('loginUser', 'home', 'upcoming_bids'));
         $this->set('_serialize', ['loginUser', 'home', 'upcoming_bids']);
+    }
+
+    public function newCollection() {
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $this->set(compact('loginUser'));
+        $this->set('_serialize', ['loginUser']);
     }
 
 }

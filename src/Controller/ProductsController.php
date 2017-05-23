@@ -18,7 +18,7 @@ use Cake\I18n\Time;
 class ProductsController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
-        $this->Auth->allow(['viewFromHome']);
+        $this->Auth->allow(['viewFromHome', 'specialProduct', 'exclusiveProduct']);
     }
 
     public function index() {
@@ -327,6 +327,28 @@ class ProductsController extends AppController {
             }
         }
         echo $message;
+    }
+
+    public function specialProduct() {
+        $home['slider'] = false;
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $specialProducts = $this->Products->find('all', array('conditions' => array('type' => 2)));
+
+        $this->set(compact('loginUser', 'home', 'specialProducts'));
+        $this->set('_serialize', ['loginUser', 'home', 'specialProducts']);
+    }
+
+    public function exclusiveProduct() {
+        $home['slider'] = false;
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $exclusiveProducts = $this->Products->find('all', array('conditions' => array('type' => 3)));
+
+        $this->set(compact('loginUser', 'home', 'exclusiveProducts'));
+        $this->set('_serialize', ['loginUser', 'home', 'exclusiveProducts']);
     }
 
     public function isAuthorized($user) {
