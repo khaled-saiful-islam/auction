@@ -36,10 +36,10 @@
                         <b class="arrow"></b>
                     </li>
 
-                                                        <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
+                                                                        <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>All Categories', array('controller' => 'Categories', 'action' => 'all'), array('escape' => false)) ?>
-                                                                                <b class="arrow"></b>
-                                                                            </li>-->
+                                                                                                <b class="arrow"></b>
+                                                                                            </li>-->
                 </ul>
             </li>
         <?php } ?>
@@ -99,10 +99,35 @@
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-bookmark"></i><span class="menu-text"> Bookmarks </span>', array('controller' => 'Bookmarks', 'action' => 'index'), array('escape' => false)) ?>
                     <b class="arrow"></b>
                 </li>
-            <?php
+                <?php
             }
         }
         ?>
+
+        <?php if ($loginUser['level'] < 21) { ?>
+            <li class="<?php echo (isset($leftNavActive['settings']) && $leftNavActive['settings']) ? "active open" : "" ?>">    
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-cogs"></i>
+                    <span class="menu-text"> Settings </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="<?php echo (isset($leftNavActive['sliderAdd']) && $leftNavActive['sliderAdd']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>Add Slider', array('controller' => 'Sliders', 'action' => 'add'), array('escape' => false)) ?>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="<?php echo (isset($leftNavActive['sliderIndex']) && $leftNavActive['sliderIndex']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Sliders', array('controller' => 'Sliders', 'action' => 'index'), array('escape' => false)) ?>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+        <?php } ?>
     </ul><!-- /.nav-list -->
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
         <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

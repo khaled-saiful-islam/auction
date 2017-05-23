@@ -11,11 +11,11 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Description of Payment
+ * Description of Slider
  *
  * @author Khaled Saiful Islam
  */
-class Payment extends Entity {
+class Slider extends Entity {
 
     protected $_accessible = [
         '*' => true,
