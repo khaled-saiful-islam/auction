@@ -1,55 +1,40 @@
-<?php if (isset($home['slider']) && $home['slider']) { ?>
+<?php
+if (isset($home['slider']) && $home['slider']) {
+    $sliders = $this->Common->findSlider();
+    ?>
     <div id="fwslider">
         <div class="slider_container">
-            <div class="slide"> 
-                <!-- Slide image -->
-                <?php echo $this->Html->image('banner.jpg', ['alt' => ""]); ?>
-                <!-- /Slide image -->
-                <!-- Texts container -->
-                <div class="slide_content">
-                    <div class="slide_content_wrap">
-                        <!-- Text title -->
-                        <h4 class="title">Aluminium Club</h4>
-                        <!-- /Text title -->
-
-                        <!-- Text description -->
-                        <p class="description">Experiance ray ban</p>
-                        <!-- /Text description -->
+            <?php
+            $cnt = 0;
+            foreach ($sliders as $slider) {
+                ?>
+                <div class="slide">
+                    <?php echo $this->Html->image('uploaded_images/sliders/' . $slider['image_path'], ['alt' => "Slider Image"]); ?>
+                    <div class="slide_content">
+                        <div class="slide_content_wrap">
+                            <h4 class="title"><?php echo $slider['title']; ?></h4>
+                            <p class="description"><?php echo $slider['description']; ?></p>
+                        </div>
                     </div>
                 </div>
-                <!-- /Texts container -->
-            </div>
+                <?php
+                $cnt++;
+            }
 
-            <div class="slide">
-                <?php echo $this->Html->image('banner3.jpg', ['alt' => ""]); ?>
-                <div class="slide_content">
-                    <div class="slide_content_wrap">
-                        <h4 class="title">consectetuer adipiscing </h4>
-                        <p class="description">diam nonummy nibh euismod</p>
+            if ($cnt == 0) {
+                ?>
+                <div class="slide">
+                    <?php echo $this->Html->image('banner.jpg', ['alt' => ""]); ?>
+                    <div class="slide_content">
+                        <div class="slide_content_wrap">
+                            <h4 class="title">Slider </h4>
+                            <p class="description">Test data</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="slide">
-                <?php echo $this->Html->image('banner4.jpg', ['alt' => ""]); ?>
-                <div class="slide_content">
-                    <div class="slide_content_wrap">
-                        <h4 class="title">consectetuer adipiscing </h4>
-                        <p class="description">diam nonummy nibh euismod</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide">
-                <?php echo $this->Html->image('banner5.jpg', ['alt' => ""]); ?>
-                <div class="slide_content">
-                    <div class="slide_content_wrap">
-                        <h4 class="title">consectetuer adipiscing </h4>
-                        <p class="description">diam nonummy nibh euismod</p>
-                    </div>
-                </div>
-            </div>
-            <!--/slide -->
+                <?php
+            }
+            ?>
         </div>
         <div class="timers"></div>
         <div class="slidePrev"><span></span></div>

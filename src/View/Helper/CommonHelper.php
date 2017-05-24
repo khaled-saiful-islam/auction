@@ -28,4 +28,8 @@ class CommonHelper extends Helper {
         return $users->find('all', array('conditions' => array('id' => $id)))->first();
     }
 
+    function findSlider() {
+        $sliders = TableRegistry::get('Sliders');
+        return $sliders->find('all', array());
+    }
 }

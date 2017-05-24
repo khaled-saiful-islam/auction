@@ -37,9 +37,6 @@ class SlidersTable extends Table {
                 ->add('id', 'valid', ['rule' => 'numeric'])
                 ->allowEmpty('id', 'create');
 
-        $validator
-                ->notEmpty('image_path');
-
         return $validator;
     }
 
