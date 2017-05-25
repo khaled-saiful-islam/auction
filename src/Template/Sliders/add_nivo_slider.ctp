@@ -1,36 +1,30 @@
-
 <div class="main-content">
     <div class="main-content-inner">        
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
             <ul class = "breadcrumb">
                 <li>
                     <i class = "ace-icon fa fa-cog home-icon"></i>
-                    <?php echo $this->Html->link('Slider', array('controller' => 'Sliders', 'action' => 'index'), array('escape' => false))
+                    <?php echo $this->Html->link('Nivo Slider', array('controller' => 'Sliders', 'action' => 'nivoIndex'), array('escape' => false))
                     ?>
                 </li>
-                <li class="active">Add Slider Image</li>
+                <li class="active">Add Nivo Slider Image</li>
             </ul>
         </div>
         <?php echo $this->Flash->render(); ?>
         <div class="page-content">
             <div class="page-header">
-                <h1>Add Slider Image</h1>
+                <h1>Add Nivo Slider Image</h1>
             </div><!-- /.page-header -->
 
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
                     <?php echo $this->Form->create('Slider', array('class' => 'form-horizontal', 'role' => 'form', 'enctype' => 'multipart/form-data')) ?>
+                    <?php echo $this->Form->hidden('type', array('value' => 2)); ?>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Title: </label>
                         <div class="col-sm-9">
                             <?php echo $this->Form->input('title', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Image Title', 'label' => false)); ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Description: </label>
-                        <div class="col-sm-9">
-                            <?php echo $this->Form->input('description', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Description', 'label' => false)); ?>
                         </div>
                     </div>
                     <div class="form-group">

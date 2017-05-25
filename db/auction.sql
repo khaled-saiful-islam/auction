@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2017 at 07:11 AM
+-- Generation Time: May 25, 2017 at 11:07 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
 -- --------------------------------------------------------
 
@@ -151,6 +151,23 @@ CREATE TABLE IF NOT EXISTS `products_categories` (
   PRIMARY KEY (`product_id`,`category_id`),
   KEY `category_key` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE IF NOT EXISTS `sliders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `description` varchar(128) NOT NULL,
+  `type` int(11) NOT NULL DEFAULT '1',
+  `image_path` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -172,14 +189,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone_number`, `level`, `type`, `payment`, `image_path`, `created`, `modified`) VALUES
-(1, 'Khaled Saiful Islam', 'khaled_sfl@yahoo.com', '$2y$10$mC71iGlr.MzYoueQDoOmcOHIq3621JHfUhLy.jT2fvH2fx.6ACwou', 'Dhaka, Bangladesh', '', 1, 1, 0, '', '2016-12-01 03:10:35', '2017-01-05 11:39:11');
+(1, 'Khaled Saiful Islam', 'admin@admin.com', '$2y$10$SUT973hERlFrT5ktqk5zw./sQh2tVNJVjwP/lFn8rjdkEnymoaOji', 'uttara, Dhaka', '', 1, 1, 0, '', '2017-05-23 00:00:00', '2017-05-23 00:00:00');
 
 --
 -- Constraints for dumped tables

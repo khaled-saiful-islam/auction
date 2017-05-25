@@ -83,23 +83,20 @@
     <div class="border">        
         <div class="slider-wrapper theme-default">
             <div id="slider" class="nivoSlider">
-                <?php echo $this->Html->image('a1.jpg', ['alt' => ""]); ?>
-                <?php echo $this->Html->image('a2.jpg', ['alt' => ""]); ?>
-                <?php echo $this->Html->image('a3.jpg', ['alt' => ""]); ?>
-                <?php echo $this->Html->image('a4.jpg', ['alt' => ""]); ?>
+                <?php
+                $cnt = 0;
+                $sliders = $this->Common->findSlider(2);
+                foreach ($sliders as $slider) {
+                    echo $this->Html->image('uploaded_images/nivoSliders/' . $slider['image_path'], ['alt' => "Slider Image"]);
+                    $cnt++;
+                }
+
+                if ($cnt == 0) {
+                    echo $this->Html->image('a1.jpg', ['alt' => ""]);
+                }
+                ?>
             </div>
         </div>
     </div>
-    <!--    <div class="top-border"> </div>
-        <div class="sidebar-bottom">
-            <h2 class="m_1">Newsletters<br> Signup</h2>
-            <p class="m_text">Lorem ipsum dolor sit amet, consectetuer</p>
-            <div class="subscribe">
-                <form>
-                    <input name="userName" type="text" class="textbox">
-                    <input type="submit" value="Subscribe">
-                </form>
-            </div>
-        </div>-->
 </div>
 <div class="clear"></div>

@@ -28,8 +28,9 @@ class CommonHelper extends Helper {
         return $users->find('all', array('conditions' => array('id' => $id)))->first();
     }
 
-    function findSlider() {
+    function findSlider($type = null) {
         $sliders = TableRegistry::get('Sliders');
-        return $sliders->find('all', array());
+        return $sliders->find('all', array('conditions' => array('type' => $type)));
     }
+
 }

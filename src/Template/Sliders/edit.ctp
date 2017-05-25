@@ -9,13 +9,13 @@
                     <?php echo $this->Html->link('Sliders', array('controller' => 'Sliders', 'action' => 'index'), array('escape' => false))
                     ?>
                 </li>
-                <li class="active">Add Slider Image</li>
+                <li class="active">Edit Slider Image</li>
             </ul>
         </div>
         <?php echo $this->Flash->render(); ?>
         <div class="page-content">
             <div class="page-header">
-                <h1>Add Slider Image</h1>
+                <h1>Edit Slider Image</h1>
             </div><!-- /.page-header -->
 
             <div class="row">

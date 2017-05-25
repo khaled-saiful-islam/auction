@@ -1,20 +1,19 @@
-
 <div class="main-content">
     <div class="main-content-inner">
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
             <ul class = "breadcrumb">
                 <li>
                     <i class = "ace-icon fa fa-cog home-icon"></i>
-                    <?php echo $this->Html->link('Slider', array('controller' => 'Sliders', 'action' => 'index'), array('escape' => false))
+                    <?php echo $this->Html->link('Nivo Slider', array('controller' => 'Sliders', 'action' => 'nivoIndex'), array('escape' => false))
                     ?>
                 </li>
-                <li class="active">View Slider Images</li>
+                <li class="active">View Nivo Slider Images</li>
             </ul>
         </div>
 
         <div class="page-content">
             <div class="page-header">
-                <h1>View Slider Images</h1>
+                <h1>View Nivo Slider Images</h1>
             </div><!-- /.page-header -->
             <?php echo $this->Flash->render(); ?>
             <div class="row">
@@ -24,7 +23,6 @@
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Description</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -32,13 +30,12 @@
                             <?php foreach ($sliders as $slider): ?>
                                 <tr>
                                     <td><?php echo h($slider->title) ?></td>
-                                    <td><?php echo h($slider->description) ?></td>
 
                                     <td>
                                         <div class="hidden-sm hidden-xs action-buttons">
                                             <?php
-                                            echo $this->Html->link('<i class="ace-icon fa fa-pencil bigger-130"></i>', array('controller' => 'Sliders', 'action' => 'edit', $slider->id), array('class' => 'green', 'escape' => false));
-                                            echo $this->Html->link('<i class="ace-icon fa fa-trash-o bigger-130"></i>', array('controller' => 'Sliders', 'action' => 'delete', $slider->id), array('class' => 'red', 'escape' => false, 'confirm' => __('Are you sure you want to delete?')));
+                                            echo $this->Html->link('<i class="ace-icon fa fa-pencil bigger-130"></i>', array('controller' => 'Sliders', 'action' => 'nivoEdit', $slider->id), array('class' => 'green', 'escape' => false));
+                                            echo $this->Html->link('<i class="ace-icon fa fa-trash-o bigger-130"></i>', array('controller' => 'Sliders', 'action' => 'nivoDelete', $slider->id), array('class' => 'red', 'escape' => false, 'confirm' => __('Are you sure you want to delete?')));
                                             ?>
                                         </div>
                                     </td>

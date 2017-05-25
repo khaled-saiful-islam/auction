@@ -1,20 +1,19 @@
-
 <div class="main-content">
     <div class="main-content-inner">        
         <div class = "breadcrumbs ace-save-state" id = "breadcrumbs">
             <ul class = "breadcrumb">
                 <li>
-                    <i class = "ace-icon fa fa-cog home-icon"></i>
-                    <?php echo $this->Html->link('Slider', array('controller' => 'Sliders', 'action' => 'index'), array('escape' => false))
+                    <i class = "ace-icon fa fa-users home-icon"></i>
+                    <?php echo $this->Html->link('Sliders', array('controller' => 'Sliders', 'action' => 'nivoIndex'), array('escape' => false))
                     ?>
                 </li>
-                <li class="active">Add Slider Image</li>
+                <li class="active">Edit Slider Image</li>
             </ul>
         </div>
         <?php echo $this->Flash->render(); ?>
         <div class="page-content">
             <div class="page-header">
-                <h1>Add Slider Image</h1>
+                <h1>Edit Slider Image</h1>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -24,19 +23,13 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Title: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('title', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Image Title', 'label' => false)); ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Description: </label>
-                        <div class="col-sm-9">
-                            <?php echo $this->Form->input('description', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Description', 'label' => false)); ?>
+                            <?php echo $this->Form->input('title', array('class' => 'col-xs-10 col-sm-5', 'placeholder' => 'Image Title', 'label' => false, 'value' => $slider['title'])); ?>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Slider Image: </label>
                         <div class="col-sm-9">
-                            <?php echo $this->Form->input('image_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file', 'required' => true)); ?>
+                            <?php echo $this->Form->input('image_path', array('class' => 'col-xs-10 col-sm-5 upload_file', 'placeholder' => 'Image', 'label' => false, 'type' => 'file')); ?>
                         </div>
                     </div>
                     <div class="form-group">

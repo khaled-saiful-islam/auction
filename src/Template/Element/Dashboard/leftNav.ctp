@@ -36,10 +36,10 @@
                         <b class="arrow"></b>
                     </li>
 
-                                                                        <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
+                                                                                            <!--                    <li class="<?php echo (isset($leftNavActive['categoryAll']) && $leftNavActive['categoryAll']) ? "active" : "" ?>">
                     <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>All Categories', array('controller' => 'Categories', 'action' => 'all'), array('escape' => false)) ?>
-                                                                                                <b class="arrow"></b>
-                                                                                            </li>-->
+                                                                                                                    <b class="arrow"></b>
+                                                                                                                </li>-->
                 </ul>
             </li>
         <?php } ?>
@@ -123,6 +123,16 @@
 
                     <li class="<?php echo (isset($leftNavActive['sliderIndex']) && $leftNavActive['sliderIndex']) ? "active" : "" ?>">
                         <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Sliders', array('controller' => 'Sliders', 'action' => 'index'), array('escape' => false)) ?>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="<?php echo (isset($leftNavActive['nivoSliderAdd']) && $leftNavActive['nivoSliderAdd']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>Add Nivo Slider', array('controller' => 'Sliders', 'action' => 'addNivoSlider'), array('escape' => false)) ?>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="<?php echo (isset($leftNavActive['nivoSliderIndex']) && $leftNavActive['nivoSliderIndex']) ? "active" : "" ?>">
+                        <?php echo $this->Html->link('<i class="menu-icon fa fa-caret-right"></i>View Nivo Sliders', array('controller' => 'Sliders', 'action' => 'nivoIndex'), array('escape' => false)) ?>
                         <b class="arrow"></b>
                     </li>
                 </ul>

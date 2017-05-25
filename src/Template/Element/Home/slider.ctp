@@ -1,6 +1,6 @@
 <?php
 if (isset($home['slider']) && $home['slider']) {
-    $sliders = $this->Common->findSlider();
+    $sliders = $this->Common->findSlider(1);
     ?>
     <div id="fwslider">
         <div class="slider_container">
