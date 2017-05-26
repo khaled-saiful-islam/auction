@@ -11,7 +11,7 @@ use App\Controller\AppController;
 class HomeController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
-        $this->Auth->allow(['index', 'currentBid', 'upComingBid', 'newCollection']);
+        $this->Auth->allow(['index', 'currentBid', 'upComingBid', 'newCollection', 'termsConditions', 'aboutUs']);
     }
 
     /**
@@ -60,6 +60,22 @@ class HomeController extends AppController {
     }
 
     public function newCollection() {
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $this->set(compact('loginUser'));
+        $this->set('_serialize', ['loginUser']);
+    }
+
+    public function aboutUs() {
+        $this->viewBuilder()->layout('home');
+        $loginUser = $this->Auth->user();
+
+        $this->set(compact('loginUser'));
+        $this->set('_serialize', ['loginUser']);
+    }
+
+    public function termsConditions() {
         $this->viewBuilder()->layout('home');
         $loginUser = $this->Auth->user();
 

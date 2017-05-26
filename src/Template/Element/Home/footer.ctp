@@ -7,9 +7,9 @@
             </div>
             <div class="f-list2">
                 <ul>
-                    <li class="active"><a href="#">About Us</a></li> |
-                    <li><a href="#">Terms & Conditions</a></li> |
-                    <li><a href="#">Contact Us</a></li> 
+                    <li><?php echo $this->Html->link('About Us', array('controller' => 'Home', 'action' => 'aboutUs')) ?></li>
+                    <li><?php echo $this->Html->link('Terms & Conditions', array('controller' => 'Home', 'action' => 'termsConditions')) ?></li> |
+                    <li><?php echo $this->Html->link('Contact Us', array('controller' => 'Contacts', 'action' => 'add')) ?></li> 
                 </ul>
             </div>
             <div class="clear"></div>
