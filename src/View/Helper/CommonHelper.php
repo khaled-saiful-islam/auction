@@ -38,4 +38,9 @@ class CommonHelper extends Helper {
         return $bids->find('all', array('conditions' => array('product_id' => $product_id)))->count();
     }
 
+    function findSimilarCategoryProduct($category_id = null) {
+        $categories = TableRegistry::get('Categories');
+        return $categories->get($category_id, ['contain' => ['Products']]);
+    }
+
 }

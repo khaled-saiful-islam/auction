@@ -135,19 +135,44 @@ $e_date = strtotime($product['end_date']);
         </div>
         <div class="clear"></div>
 
+        <?php
+        $similar_products = array();
+        foreach ($product['categories'] as $category) {
+            $cat_products = $this->Common->findSimilarCategoryProduct($category['id']);
+            foreach ($cat_products['products'] as $cat_product) {
+                if ($product['image1_path'] != $cat_product['image1_path']) {
+                    $similar_products[] = $cat_product['image1_path'];
+                }
+            }
+        }
+        ?>
         <div class="clients">
-            <h3 class="m_3">Similar Products: </h3>
-            <ul id="flexiselDemo3">
-                <li><?php echo $this->Html->image('s5.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>
-                <li><?php echo $this->Html->image('s6.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>
-                <li><?php echo $this->Html->image('s5.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>
-                <li><?php echo $this->Html->image('s6.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>
-                <li><?php echo $this->Html->image('s5.jpg', ['class' => ""]); ?><a href="#">Category</a><p>Rs 600</p></li>
-            </ul>
+            <h3 class="m_3">Similar Category: </h3>
+            <?php
+            if (count($similar_products) > 0) {
+                ?>
+                <ul id="flexiselDemo3">
+                    <?php
+                    foreach ($similar_products as $similar_product) {
+                        ?>
+                        <li>
+                            <?php echo $this->Html->image('uploaded_images/products/' . $similar_product, ['class' => ""]); ?>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+                <?php
+            }else{
+                ?>
+            <span style="color: red;">There is no similar product</span>
+            <?php
+            }
+            ?>
+
 
         </div>
     </div>
-    <!--<div class="clear"></div>-->
 </div>
 <div class="clear"></div>
 </div>

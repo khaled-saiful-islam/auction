@@ -287,7 +287,7 @@ class ProductsController extends AppController {
             }
         }
 
-        $product = $this->Products->get($id);
+        $product = $this->Products->get($id, ['contain' => ['Categories']]);
 
         $this->set(compact('loginUser', 'home', 'product', 'bookmarked'));
         $this->set('_serialize', ['loginUser', 'home', 'product', 'bookmarked']);
