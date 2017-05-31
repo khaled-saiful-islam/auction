@@ -85,6 +85,24 @@ $e_date = strtotime($product['end_date']);
                         <span><?php echo $product['highest_bid'] . " BDT"; ?></span>
                     </div>
                 </div>
+                <?php if (($s_date <= $c_date && $e_date >= $c_date)) { ?>
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Bid Placed </div>
+
+                        <div class="profile-info-value">
+                            <span><?php echo $this->Common->totalBids($product['id']); ?></span>
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php if ($s_date >= $c_date) { ?>
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Bid Start Date </div>
+
+                        <div class="profile-info-value">
+                            <span><?php echo date_format($product['start_date'], "d/m/Y H:i a"); ?></span>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
             <div class="hr hr-8 dotted"></div>
             <?php echo $this->Flash->render(); ?>

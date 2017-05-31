@@ -33,4 +33,9 @@ class CommonHelper extends Helper {
         return $sliders->find('all', array('conditions' => array('type' => $type)));
     }
 
+    function totalBids($product_id = null) {
+        $bids = TableRegistry::get('Bids');
+        return $bids->find('all', array('conditions' => array('product_id' => $product_id)))->count();
+    }
+
 }

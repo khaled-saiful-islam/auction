@@ -13,7 +13,10 @@
                     <div class="product_image">
                         <?php echo $this->Html->image('uploaded_images/products/' . $product['image1_path'], ['style' => 'width: 200px; height: 173px;', 'alt' => ""]); ?>
                     </div>
-                    <div class="sale-box1"><span class="on_sale title_shop">Bid Ongoing</span></div>
+                    <div class="sale-box1">
+                        <?php $bid_count = $this->Common->totalBids($product['id']); ?>
+                        <span class="on_sale title_shop"><?php echo $bid_count; ?> Bid Placed</span>
+                    </div>
                     <span id="product_<?php echo $product['id']; ?>" class="label label-info arrowed-in arrowed-in-right"></span>
                     <div class="price">
                         <div class="cart-left">
